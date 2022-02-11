@@ -134,13 +134,15 @@ public class Food2
 		//ingPut() 
 		//{
 			Scanner sc = new Scanner(System.in);
-
+			String ingre = "";
 			System.out.print("어떤 종류의 수량 관리 할래? : "); // 빵 야채 소스
-			String kinds = sc.next();
+			String kinds = " ";
+			kinds = sc.next();
 			
 			System.out.print(kinds + " 종류 입력해줘 : "); // 화이트
-			String ingre = sc.next(); 
-
+			ingre = sc.next(); 
+			
+			/*
 			switch (kinds)
 			{
 				case "빵" : System.out.println(ingre + "의 수량은 " + bread.get(ingre) + "이야."); break;
@@ -149,26 +151,59 @@ public class Food2
 				case "치즈" : System.out.println(ingre + "의 수량은 " + cheese.get(ingre) + "이야."); break;
 				case "사이드 메뉴" : System.out.println(ingre + "의 수량은 " + sidemenu.get(ingre) + "이야."); break;
 			}
-
-			System.out.print("얼마나 늘릴래?");
-			int su = sc.nextInt();
-			
-			
-
-
-			//-----------------------------
-			//String kinds = "화이트";
-			//int getsu = (int)bread.get(kinds);
-			//System.out.println(getsu);
-			
-			/*
-			int temp;
+			*/
+			int tmp = 0;
 			switch (kinds)
 			{
-				case "빵" : System.out.println(bread.values()); break;
-				case "야채" : System.out.println(vegetable.values()); break;
+				case "빵" : tmp = bread.get(ingre); break;
+				case "야채" : tmp = vegetable.get(ingre); break;
+				case "소스" : tmp = sauce.get(ingre); break;
+				case "치즈" : tmp = cheese.get(ingre); break;
+				case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
+			}
+			System.out.printf("%s의 수량은 %d이야.%n", ingre, tmp);
+			System.out.print("얼마나 늘릴래?: ");
+			int su = sc.nextInt();
+			
+			tmp += su;
+			/*
+			if (kinds == "빵")
+			{
+				bread.put(ingre,tmp);
+			}
+			else if (kinds == "야채")
+			{
+				vegetable.put(ingre,tmp);
+				System.out.println("까꿍");
+			}
+			else if (kinds == "소스")
+			{
+				sauce.put(ingre,tmp);
+			}
+			else if (kinds == "치즈")
+			{
+				cheese.put(ingre,tmp);
+			}
+			else if (kinds == "사이드 메뉴")
+			{
+				sidemenu.put(ingre,tmp);
 			}
 			*/
+
+			switch (kinds)
+			{
+				case "빵" : bread.put(ingre,tmp); break;
+				case "야채" : vegetable.put(ingre,tmp); break;
+				case "소스" : sauce.put(ingre,tmp); break;
+				case "치즈" : cheese.put(ingre,tmp); break;
+				case "사이드 메뉴" : sidemenu.put(ingre,tmp); break;
+			}
+			System.out.println(ingre + "의 수량은 " + vegetable.get(ingre) + "이야.");
+
+			
+			
+
+
 		//}
 
 	}
