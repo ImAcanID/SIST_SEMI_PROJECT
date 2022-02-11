@@ -51,6 +51,7 @@ class DefaultMenu
 class SuperMenu
 {
 	//사용자가 입력한 커스텀 수량.
+	int [] vdArray = {
 	vdArray [] = {1,1,1};        //vegetableArray야채커스텀 []  //-- 야채는 뺄거니까 1로 미리 초기화
 	scArray [] ={0, 0, 0, 0};    //souceArray 소스커스텀    // --소스추가하면 1로 초기화
 	cCategory;                   //cheeseCategory 1 2 3 int 
