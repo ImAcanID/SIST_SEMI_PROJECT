@@ -135,16 +135,40 @@ public class Food2
 		//{
 			Scanner sc = new Scanner(System.in);
 
-			System.out.print("어떤 종류의 수량 관리 할래?: "); // 야채 
+			System.out.print("어떤 종류의 수량 관리 할래? : "); // 빵 야채 소스
 			String kinds = sc.next();
+			
+			System.out.print(kinds + " 종류 입력해줘 : "); // 화이트
+			String ingre = sc.next(); 
 
-			System.out.print("종류 입력해줘");
-			String ingre = sc.next();
+			switch (kinds)
+			{
+				case "빵" : System.out.println(ingre + "의 수량은 " + bread.get(ingre) + "이야."); break;
+				case "야채" : System.out.println(ingre + "의 수량은 " + vegetable.get(ingre) + "이야."); break;
+				case "소스" : System.out.println(ingre + "의 수량은 " + sauce.get(ingre) + "이야."); break;
+				case "치즈" : System.out.println(ingre + "의 수량은 " + cheese.get(ingre) + "이야."); break;
+				case "사이드 메뉴" : System.out.println(ingre + "의 수량은 " + sidemenu.get(ingre) + "이야."); break;
+			}
 
-			//System.out.println("현재" + ingre + "수량은" + kinds.values(ingre) + "얼마나 늘릴래?");
-			//int quant = sc.nextInt();
+			System.out.print("얼마나 늘릴래?");
+			int su = sc.nextInt();
+			
+			
 
-			System.out.println(bread.values());
+
+			//-----------------------------
+			//String kinds = "화이트";
+			//int getsu = (int)bread.get(kinds);
+			//System.out.println(getsu);
+			
+			/*
+			int temp;
+			switch (kinds)
+			{
+				case "빵" : System.out.println(bread.values()); break;
+				case "야채" : System.out.println(vegetable.values()); break;
+			}
+			*/
 		//}
 
 	}
