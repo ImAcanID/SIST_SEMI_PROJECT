@@ -296,7 +296,7 @@ class OrderRecord
 
 }
 
-class Manager extends Ingredient
+class Manager extends Ingredient //이거 관리자 클래스 main()에서 하기러함!
 {
 	//얼마증가할래? 토마토 100
 	ingPut ();
