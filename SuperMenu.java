@@ -62,7 +62,7 @@ class SuperMenu
 		}
 	}// end bdCustom()
 
-	void ccSelect() throws IOException // 치즈 선택하기();-----------------------------------------------------------------
+	void ccSelect() throws IOException // 치즈 선택하기() -----------------------------------------
 	{
 		// String [] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
 		// int[] cCategory = {0, 0, 0, 0, 1} // 치즈 카테고리
@@ -142,7 +142,7 @@ class SuperMenu
 		}
 	}//end vdCustom()
 
-	void scCustom() throws IOException // 소스 커스텀()---------------------------------------------------------------
+	void scCustom() throws IOException // 소스 커스텀()--------------------------------------------
 	{
 		//int [] scArray = {0, 0, 0, 0, 0}; 
 
@@ -170,7 +170,7 @@ class SuperMenu
 		}
 	}// end scCustom()
 
-	// void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기------------------------------------
+	// void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기-------------------------------
 	{
 		/* 재고수량 변수 아직 정의 안 됨!
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -222,4 +222,23 @@ class SuperMenu
 	{
 
 	}//end checkCustom()
+
+	void addMenu() throws IOException
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		System.out.print("추가 메뉴를 선택하시겠습니까? Y/N : ");
+		strTemp = br.readLine();
+
+		if (strTemp.equals("Y") || strTemp.equals("y"))
+		{
+			DefaultMenu dm = new DefaultMenu();
+			dm.dmSelect();
+		}
+		else
+		{
+			//결제 클래스 ob = new 결제클래스();
+			//ob.결제메소드();
+		}
+	}
 }

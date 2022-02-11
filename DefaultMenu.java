@@ -5,8 +5,12 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.Scanner;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class DefaultMenu
 {
+	// ※ 변수들 접근제어자 확인 필요
 	int dmCategory;       //defaultMenuCategory 
 	int dmOption;         //defaultMenuOption   
 
@@ -18,19 +22,25 @@ class DefaultMenu
 		// 디폴트 메뉴 선택
 		while (true)
 		{
-			System.out.print("메뉴를 선택해 주세요(에그마요, bmt, 서브웨이클럽) : ");
+			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
 			String strtmp = br.readLine();
 
 			if (strtmp.equals("에그마요"))
 			{
-				System.out.println("에그마요 선택");
-				Bread bread1 = new Bread(); // 빵 객체 생성
+				System.out.println("에그마요 선택"); // 테스트 출력
+				dmCategory = 1;
 				break;
 			}
-			else if (strtmp.equals("bmt"))
+			else if (strtmp.equals("이탈리안 비엠티"))
 			{
-				System.out.println("bmt 선택");
-				Bread bread1 = new Bread(); // 빵 객체 생성
+				System.out.println("이탈리안 비엠티 선택"); // 테스트 출력
+				dmCategory = 2;
+				break;
+			}
+			else if (strtmp.equals("서브웨이클럽"))
+			{
+				System.out.println("서브웨이클럽 선택"); // 테스트 출력
+				dmCategory = 3;
 				break;
 			}
 			else
@@ -48,14 +58,16 @@ class DefaultMenu
 
 			if (strtmp.equals("빵"))
 			{
-				System.out.println("빵 선택");
+				System.out.println("빵 선택"); // 테스트 출력
+				dmOption = 1;
 				ArrayList<Bread> breadArrayList = new ArrayList<Bread>();  // 빵만 담는 ArrayList
 				breadArrayList.add(bread1);   // 추가 주문 적용되는지 확인
 				break;
 			}
 			else if (strtmp.equals("샐러드"))
 			{
-				System.out.println("샐러드 선택");
+				System.out.println("샐러드 선택"); // 테스트 출력
+				dmOption = 2;
 				Salad salad1 = new Salad(); // 샐러드 객체 생성
 				ArrayList<Salad> saladArrayList = new ArrayList<Salad>(); // static 보류 // 샐러드만 담는 ArrayList
 				saladArrayList.add(salad1);
@@ -63,6 +75,8 @@ class DefaultMenu
 			}
 			else if (strtmp.equals("사이드 메뉴"))
 			{
+				dmOption = 3;
+
 				SideMenu sidemenu1 = new sidemenu();
 
 				ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
@@ -70,6 +84,8 @@ class DefaultMenu
 			}
 			else if (strtmp.equals("현재 주문 옵션"))
 			{
+				dmOption = 4;
+
 				nowOrderOption(); // nowOrderOption() 호출
 			}
 			else
