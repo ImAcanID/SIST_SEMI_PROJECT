@@ -40,6 +40,7 @@ public class Food2
 			No  → new 결제 클래스(); // 이렇게 옮기는게 맞나 싶다 ! 
 		}
 		*/
+//===============================================================================================================
 		//void vdCustom(???)//야채 커스텀();
 		//{
 			cusKey = 1;
@@ -54,11 +55,22 @@ public class Food2
 
 			strTemp = br.readLine();
 			String [] strArr = strTemp.split(","); // 토마토, 양상추, 양파
-			for (int n : vbArray)
+
+
+			//테스트! strArr 내용 확인하기.
+			/*
+			for (String n: strArr)
 			{
-				System.out.println("토마토 양상추 오이 양파 올리브");
-				System.out.printf("%5d\n",n);
+	
+				System.out.printf("%s ",n);
 			}
+			System.out.println();
+			*/
+			/*
+			토마토 양상추 오이 양파 올리브
+			제거하고 싶은 야채 말해줘 (콤마구분):오이,양파,토마토,올리브
+			오이 양파 토마토 올리브
+			*/
 			/*
 			//메뉴판 static final로 선언.
 			static final String [] breArray = {"화이트","허니오트","플랫브래드"};
@@ -68,26 +80,27 @@ public class Food2
 			static final String [] sideArray = {"콜라","커피","쿠키","스프","맥주"};
 			*/
 
-			for (int i = 0;i <strArr.length ;i++ )//i  0			1
+			for (int i = 0;i <strArr.length ;i++ )//오이								양파	토마토		올리브
 			{
-				for (int j =0;j<veArray.length ;j++ )//0			0 1 2 3
+				for (int j =0;j<veArray.length ;j++ )//토마토 양상추 오이 양파 올리브
 				{
-					if (strArr[i] == veArray[j])
+					if (strArr[i].equals(veArray[j]))
 					{
 						vbArray[j] =0; // 0면 추가안해.
-						break;
 					}
 				}
 			}
 			
 			
 			//야채커스텀 배열 출력 테스트
+			System.out.println("토마토 양상추 오이 양파 올리브");
 			for (int n : vbArray)
 			{
-				System.out.println("토마토 양상추 오이 양파 올리브");
-				System.out.printf("%5d\n",n);
+				System.out.printf("%6d",n);
 			}
+			System.out.println();
 
+//===============================================================================================================
 			
 			// strTemp = 토마토;
 /*
@@ -95,13 +108,13 @@ public class Food2
 			커스텀옵션확인()
 			pritn(야채)
 		}
-		scCustom()//소스 커스텀();
+		scCustom()//소스 커스텀();		★수민
 		{
 				커스텀옵션확인(n)
 				print(야채,소스)
 				decrease()
 		}
-		ccSelect()//치즈여부선택하기();
+		ccSelect()//치즈여부선택하기();	★문정
 		{ 
 			n = 2
 
@@ -117,7 +130,7 @@ public class Food2
 			
 
 		
-		addCount();//개수추가메소드();
+		addCount();//개수추가메소드();	★
 		{
 				개수 몇개 추가할래? : 3개
 				n = 3;
@@ -131,16 +144,47 @@ public class Food2
 				decrease()
 		}
 
-		decrease() //감소메소드
+		decrease() //감소메소드	★
 		{
 			재료 변수 - 커스텀변수 <0 // 재료가 없음
 			→ 구매불가. 재료품절.
 				매번 커스텀을 할 때마다 감소메소드() 호출
 		}
 
-		checkCustom(int n)
-		{
+		checkCustom(int n)	★
 
+		{
+*/
+//==============================================================================================================
+/*
+									if (vdArray[i] == 1)//선택을 했다면
+									{
+										veArray[i]
+
+									}
+									vdArray[0] == 1; → veArray[0]을 출력해라!
+									vdArray[1] == 0; → veArray[0]을 출력해라!
+									// 이부분은 메소드로 바꾸자.
+									//void checkCustom(int cusKey) → 출력만
+									//cusKey == 1 이면
+									//야채추가 : 야채[0] 야채[1] ... 여기서 break쓰면 안대 왜냐면
+									// cusKey ==2 이면 이게 치즈인가 하는데 그러면 위에서 이미 야채추가에 대한
+									// 정보를 누적해서 보여줘야해서!
+									
+*/
+			System.out.println("==========================================");
+			System.out.println("		[현재주문옵션]");
+			for (int n = 0; n<vbArray.length;n++)
+			{
+				if (vbArray[n] == 1)// 1이면 사용자가 해당 야채를 선택한 것!
+				{
+					System.out.print(veArray[n]+" ");
+				}
+			}
+			System.out.println();
+			System.out.println("==========================================");
+//==============================================================================================================
+			/*
 			int [] customArray= { 디폴트메뉴,빵길이,야채[0], 야채[1], 야채[2], 소스[0], ~~~ };
 			for (int ;i <cusKey ;i++ )
 			{	
@@ -148,9 +192,31 @@ public class Food2
 				print(커스텀용[i]);
 				커스텀옵션 정보 담기 배열 ? 
 			}
-		}
+			*/
 
-*/
+			//디폴트메뉴, 종류 → 디폴트 메뉴 변수들!!!!!
+			//그러면 우선 이 파일에서 출력할 수 있는 야채, 치즈, 소스만 가져오세요.
+			/*
+			
+			==========================================
+						[현재주문옵션]
+			메뉴 : 에그마요							샌드위치, 샐러드만 출력
+			종류 : 샌드위치							샌드위치, 샐러드만 출력
+			길이 : 15cm								샌드위치만 출력
+			선택 빵종류: 화이트						샌드위치만 출력
+			선택 야채  : 토마토, 올리브				샌드위치, 샐러드만 출력
+			선택 치즈  : 슈레드 치즈				샌드위치, 샐러드만 출력
+			선택 소스  : 소스제외					샌드위치, 샐러드만 출력
+			==========================================
+			→ 사이드메뉴 class에서는 이걸 상속받아도 사용하지 않음.
+			→ 샌드위치에만 출력되야하는 옵션이 있음.
+			→ 그러므로 샐러드용으로 출력을 하고
+			   샌드위치에서는 Overriding 해서 사용.
+
+			*/
+		//}
+
+
 
 
 
