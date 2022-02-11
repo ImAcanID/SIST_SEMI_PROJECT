@@ -90,7 +90,7 @@ public class SuperMenu
 
 					cCategory[0] = 1;
 					cCategory[2] = 0;
-					//cheese = "아메리칸 치즈";
+					cheese = "아메리칸 치즈";
 				
 					break;
 				}
@@ -100,7 +100,7 @@ public class SuperMenu
 
 					cCategory[1] = 1;
 					cCategory[2] = 0;
-					//cheese = "슈레드 치즈";
+					cheese = "슈레드 치즈";
 
 					break;
 				}
