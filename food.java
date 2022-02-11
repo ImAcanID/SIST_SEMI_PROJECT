@@ -292,70 +292,7 @@ class OrderRecord
 		setSidemenu();
 }
 
-//재료 관리 클래스
-class IngManagement 
-{		
-		// 야채,소스,치즈,빵,사이드메뉴 수량 담을 자료구조 생성
-		Map<String, int> vegetable = new HashMap<String, int>();
-		Map<String, int> sauce = new HashMap<String, int>();
-		Map<String, int> cheese = new HashMap<String, int>();
-		Map<String, int> bread = new HashMap<String, int>();
-		Map<String, int> sidemenu = new HashMap<String, int>();
-		
-		va[] = {"토마토","양상추","오이","양파","올리브");
 
-		for (String s : va)
-		{
-			vegetable.put(s, 0);
-		}
-
-		sau[] = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
-
-		for (String s : sau)
-		{
-			sauce.put(s, 0);
-		}
-
-		che[] = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
-
-		for (String s : che)
-		{
-			cheese.put(s, 0);
-		}
-
-		bre[] = {"화이트","허니오트","플랫브래드"};
-
-		for (String s : bre)
-		{
-			bread.put(s, 0);
-		}
-
-		sid[] = {"콜라","커피","쿠키","스프","맥주");
-		
-		for (String s : sid)
-		{
-			sidemenu.put(s, 0);
-		}
-	
-		
-		// 관리자가 수량 증가시키는 메소드
-		
-		//야채[0] --;
-		//야채[1] --;
-		ingPut() 
-		{
-			do
-			{
-				Scanner sc = new Scanner(System.in);
-				System.out.print("사용자한테 무슨 종류 수량 늘래?");
-				que = sc.next();
-			}
-			while ();
-			~~ n 
-				~~n1
-				put(n,n1);
-			
-		}
 }
 
 class Manager extends Ingredient
