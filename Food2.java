@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class Food2
 {
-
 	public static void main(String[] args) throws IOException
 	{
 		//메뉴판 static final로 선언.
