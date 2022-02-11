@@ -27,15 +27,14 @@ class Bread extends SuperMenu
 
 		bcSelect();   // 빵 종류, 가격 // 에그마요 
 		bdCustom();     // 빵 커스텀() // 화이트, 허니오트, 플랫브래드 (상속)
+		blSelect();     // 빵길이()
 		ccSelect();     // 치즈 커스텀() (상속)
 		vdCustom();     // 야채 커스텀() (상속)
 		scCustom();     // 소스 커스텀() (상속)
-	
+		
 		//addCount();     // 증가 메소드() (상속)
 		//decrease();     // 감소 메소드() (상속)
 		addMenu();      // 추가 메뉴 메소드() (상속)
-
-		blSelect();     // 빵길이()
 	}
 	
 	void bcSelect() // 1 -> 빵

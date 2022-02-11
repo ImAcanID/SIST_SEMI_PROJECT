@@ -24,9 +24,9 @@ public class SuperMenu
 	String strTemp;
 	
 	static String breadkind;     // 빵 종류 담기
-	//static String cheese;        // 치즈 담기
-	//static String[] vegetable;   // 야채들 담기 
-	//static String[] sauce;         // 소스 담기 
+	static String cheese;        // 치즈 담기
+	static String[] vegetable;   // 야채들 담기 
+	static String[] sauce;         // 소스 담기 
 	
 	void bdCustom() throws IOException // 빵 커스텀()----------------------------------------------------------------------
 	{
@@ -203,6 +203,7 @@ public class SuperMenu
 	
 	void decrease() throws IOException // 감소메소드 ----------------------------------------------
 	{	
+		/*
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (count > 0)
 		{	
@@ -224,6 +225,7 @@ public class SuperMenu
 		{
 			System.out.println("감소할 수량이 없습니다.");
 		}
+		*/
 	}//end decrease()
 	
 	void checkCustom(int n)//----------------------------------------------------------------------

@@ -96,8 +96,8 @@ public class DefaultMenu
 		//ListIterator<Bread> li = breadArrayList.listIterator();
 		//while (li.hasNext())
 		//{
-			//System.out.print(Bread.breadkind);
-			//System.out.print(Bread.cheese);
+			System.out.print(Bread.breadkind);
+			System.out.print(Bread.cheese);
 			//System.out.print(Bread.vegetable);
 			//System.out.print(Bread.sauce);
 		//}
@@ -105,12 +105,14 @@ public class DefaultMenu
 		
 		
 		//System.out.println(breadArrayList.get(0));
+		
+		//Bread bd = new Bread();
 
 		for (int i=0; i<breadArrayList.size(); i++)
 		{
-			System.out.println(breadArrayList.get(i).breadkind);
-			//System.out.println(Bread.breadkind);
-			//System.out.println(Bread.cheese);
+			//System.out.println(breadArrayList.get(i).breadkind);
+			//System.out.println(bd.breadkind);
+			//System.out.println(bd.cheese);
 		}
 	}
 }
