@@ -110,6 +110,7 @@ public class DefaultMenu
 
 		for (int i=0; i<breadArrayList.size(); i++)
 		{
+			System.out.println("ArrayList ±æÀÌ : " + breadArrayList.size());
 			System.out.println(breadArrayList.get(i).breadkind);
 			System.out.println(breadArrayList.get(i).cheese);
 			//System.out.println(breadArrayList.get(1));
