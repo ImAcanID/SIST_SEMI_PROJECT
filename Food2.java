@@ -69,6 +69,7 @@
 //}
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Food2
 {
@@ -129,6 +130,22 @@ public class Food2
 		//테스트
 		//System.out.println(sauce.get("스윗 어니언") + "스윗 어니언 수량");
 		//--==>>100스윗 어니언 수량
+
+		//ingPut() 
+		//{
+			Scanner sc = new Scanner(System.in);
+
+			System.out.print("어떤 종류의 수량 관리 할래?: "); // 야채 
+			String kinds = sc.next();
+
+			System.out.print("종류 입력해줘");
+			String ingre = sc.next();
+
+			//System.out.println("현재" + ingre + "수량은" + kinds.values(ingre) + "얼마나 늘릴래?");
+			//int quant = sc.nextInt();
+
+			System.out.println(bread.values());
+		//}
 
 	}
 }
