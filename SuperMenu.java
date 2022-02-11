@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 
 //샌드위치, 샐러드, 사이드메뉴 class에서 상속하는 슈퍼 클래스.
-class SuperMenu
+public class SuperMenu
 {
-	String[] breArray = {"화이트","허니오트","플랫브래드"};
+	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
 	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
@@ -22,17 +22,16 @@ class SuperMenu
 	int count = 1;
 	int cusKey;
 	String strTemp;
-
-	/* 추가
-	String vegetable[];   // 야채들 담기 
-	String sauce;         // 소스 담기 
-	String cheeze;        // 치즈 담기
-	*/
+	
+	static String breadkind;     // 빵 종류 담기
+	//static String cheese;        // 치즈 담기
+	//static String[] vegetable;   // 야채들 담기 
+	//static String[] sauce;         // 소스 담기 
 	
 	void bdCustom() throws IOException // 빵 커스텀()----------------------------------------------------------------------
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		// String[] breArray = {"화이트","허니오트","플랫브레드"};
+
 		while (true)
 		{
 			System.out.println("빵 종류: 화이트, 허니오트, 플랫브레드");
@@ -43,18 +42,21 @@ class SuperMenu
 			{
 				System.out.println("화이트 선택"); // 테스트 출력
 				bdArray[0] = 1;
+				breadkind = "화이트";
 				break;
 			}
 			else if (strTemp.equals(breArray[1]))
 			{
 				System.out.println("허니오트 선택"); // 테스트 출력
 				bdArray[1] = 1;
+				breadkind = "허니오트";
 				break;
 			}
 			else if (strTemp.equals(breArray[2]))
 			{
-				System.out.println("플랫브래드 선택"); // 테스트 출력
+				System.out.println("플랫브레드 선택"); // 테스트 출력
 				bdArray[2] = 1;
+				breadkind = "플랫브레드";
 				break;
 			}
 			else
@@ -88,6 +90,7 @@ class SuperMenu
 
 					cCategory[0] = 1;
 					cCategory[2] = 0;
+					//cheese = "아메리칸 치즈";
 				
 					break;
 				}
@@ -97,6 +100,7 @@ class SuperMenu
 
 					cCategory[1] = 1;
 					cCategory[2] = 0;
+					//cheese = "슈레드 치즈";
 
 					break;
 				}
@@ -117,34 +121,37 @@ class SuperMenu
 	// 야채 커스텀()-------------------------------------------------------------------------------
 	void vdCustom() throws IOException
 	{
-		cusKey = 1;
+		//cusKey = 1;
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-		for (String s: veArray ) //→ 재료클래스 변수
+		for (String s : veArray) //→ 재료클래스 변수
 		{
 			System.out.print(s + " "); 
 		}
 		System.out.println();
-		System.out.print("제거하고 싶은 야채 말해줘 (콤마구분):"); 
+		System.out.print("제거하고 싶은 야채 말해줘 (콤마구분) : "); 
 		strTemp = br.readLine();
-		String [] strArr = strTemp.split(","); // 토마토, 양상추, 양파
+		String[] strArr = strTemp.split(","); // 토마토, 양상추, 양파
 
-		for (int i = 0;i <strArr.length ;i++ )	
-		{
-			for (int j =0;j<veArray.length ;j++ )//토마토 양상추 오이 양파 올리브
+		for (int i=0; i<strArr.length; i++)	//      0      1      2
+		{                                        // 01234  
+			for (int j=0; j<veArray.length; j++) // 토마토 양상추 오이 양파 올리브
 			{
 				if (strArr[i].equals(veArray[j]))
 				{
-					vbArray[j] =0; // 0면 추가안해.
+					vbArray[j] = 0; // 0면 추가안해.
 				}
+				//else 
+				//vegetable[i] = veArray[j]; 
 			}
 		}
+
 	}//end vdCustom()
 
 	void scCustom() throws IOException // 소스 커스텀()--------------------------------------------
 	{
-		//int [] scArray = {0, 0, 0, 0, 0}; 
+		//int[] scArray = {0, 0, 0, 0, 0}; 
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for (String s: sauArray ) //→ 재료클래스 변수
@@ -156,11 +163,12 @@ class SuperMenu
 		System.out.print("추가하고 싶은 소스 말해줘 (콤마구분):"); 
 		strTemp = br.readLine();
 		
-		String [] strArr = strTemp.split(","); // 스윗 어니언,스윗 칠리
+		String[] strArr = strTemp.split(","); // 스윗 어니언,스윗 칠리
+		//sauce = strArr;
 		
-		for (int i = 0; i<strArr.length; i++ )  
+		for (int i=0; i<strArr.length; i++)  
 		{
-			for (int j =0; j<sauArray.length ; j++)
+			for (int j=0; j<sauArray.length; j++)
 			{
 				if (strArr[i].equals(sauArray[j]))
 				{
