@@ -8,6 +8,66 @@ import java.io.IOException;
 //샌드위치, 샐러드, 사이드메뉴 class에서 상속하는 슈퍼 클래스.
 public class SuperMenu
 {
+	// 재료클래스 변수로 바꿀 예정.
+	String[] breArray = {"화이트","허니오트","플랫브레드"};
+	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
+	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
+	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
+	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+
+	String removeV;//-- 제거할 야채 담는 변수. "토마토 오이"
+
+
+	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	System.out.println("토마토, 양상추, 오이, 양파, 올리브");
+	System.out.println("제거할 야채를 말해주세요. (콤마 구분)");
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//==================================================================================================================================================
+/*
 	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
@@ -116,9 +176,10 @@ public class SuperMenu
 		}
 		System.out.println();
 		*/
-	}// end ccSelect() 
+	//}// end ccSelect() 
 
 	// 야채 커스텀()-------------------------------------------------------------------------------
+	/*
 	void vdCustom() throws IOException
 	{
 		//cusKey = 1;
@@ -200,7 +261,7 @@ public class SuperMenu
 		}
 		*/
 	}// end addCount()
-	
+	/*
 	void decrease() throws IOException // 감소메소드 ----------------------------------------------
 	{	
 		/*
@@ -226,14 +287,15 @@ public class SuperMenu
 			System.out.println("감소할 수량이 없습니다.");
 		}
 		*/
-	}//end decrease()
-	
+//	}//end decrease()
+	/*
 	void checkCustom(int n)//----------------------------------------------------------------------
 	{
 
 	}//end checkCustom()
-
-	void addMenu() throws IOException
+	
+	/*
+	static void addMenu() throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -251,4 +313,14 @@ public class SuperMenu
 			//ob.결제메소드();
 		}
 	}
-}
+	*/////////////////////
+
+	/*
+	void endMenu() // DefaultMenu로 돌아가는 메소드
+	{
+		DefaultMenu dm = new DefaultMenu();
+		dm.dmSelect();
+	}
+	*/
+
+//}
