@@ -82,6 +82,7 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 		Calendar now = Calendar.getInstance();
 		int yy = now.get(Calendar.YEAR);
 		boolean trueJoo = false; // 명확한 주민번호는 true반환.
+		boolean trueAd = false; //성인입니다. 반환할거임.
 
 		// 입력받는 주민번호 (문자열 형태)
 		String str;
@@ -134,10 +135,12 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 		{
 			userAge = yy - Integer.parseInt(str.substring(0,3)) - 1900+1; // 현재나이 계산해서 
 			if (userAge>=20)//20살이상이면.
-				return true;
+				trueAd = true;
 			else if (userAge<20)
-				return false;
+				trueAd= false;
 		}
+
+		return trueAd;
 		
 			
 	}
