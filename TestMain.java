@@ -13,10 +13,10 @@ public class TestMain
 
 
 		DefaultMenu dm = new DefaultMenu();
-		dm.dmSelect();
+		//dm.dmSelect();
 
-		dm.addMenu();
-		dm.dmprint();
+		//dm.addMenu();
+		//dm.dmprint();
 	}
 }
 

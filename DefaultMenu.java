@@ -22,8 +22,11 @@ public class DefaultMenu
 	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
 
 	// 생성자.
-	DefaultMenu()
+	DefaultMenu() throws IOException
 	{
+		dmSelect();
+		addMenu();
+		dmPrint();
 	}
 
 	void dmSelect() throws IOException
@@ -75,7 +78,7 @@ public class DefaultMenu
 		
 	}
 
-	public void dmprint()  //정보출력하기 , 여기서 선언하는 이유 : 객체 담는 ArrayList가 이곳에서 선언되었기 때문!
+	public void dmPrint()  //정보출력하기 , 여기서 선언하는 이유 : 객체 담는 ArrayList가 이곳에서 선언되었기 때문!
 	{
 		System.out.println("지금까지의 정보를 출력해 보자면...");
 		for (int i = 0;i<breadArrayList.size();i++)
