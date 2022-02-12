@@ -49,10 +49,11 @@ public class SuperMenu
 	int cusKey; //-- 나중에 현재옵션진행되는거 확인할 때 사용.
 	String strTemp; 
 	
-	static String breadkind;     // 빵 종류 담기
-	static String cheese;        // 치즈 담기
-	static String[] vegetable;   // 야채들 담기 
-	static String[] sauce;         // 소스 담기 
+	//static 없어도 된다고 생각함.
+	String breadkind;     // 빵 종류 담기
+	String cheese;        // 치즈 담기
+	String[] vegetable;   // 야채들 담기 
+	String[] sauce;         // 소스 담기 
 	
 	void bdCustom() throws IOException // 빵 커스텀()----------------------------------------------------------------------
 	{
@@ -61,7 +62,7 @@ public class SuperMenu
 		while (true)
 		{
 			System.out.println("선택 가능한 빵 종류[화이트, 허니오트, 플랫브레드]");
-			System.out.println("=================================================");
+			//System.out.println("=================================================");
 			System.out.print("빵 종류를 선택해 주세요. : ");
 			strTemp = br.readLine();
 
@@ -109,7 +110,7 @@ public class SuperMenu
 			while (true)
 			{
 				System.out.println("선택 가능한 치즈 종류[아메리칸 치즈,슈레드 치즈]");
-				System.out.println("=================================================");
+				//System.out.println("=================================================");
 				System.out.print("치즈 종류를 선택해 주세요. : ");
 				strtmp = br.readLine();
 
@@ -136,6 +137,10 @@ public class SuperMenu
 				else
 					System.out.println("치즈 이름을 다시 확인해 확인해 주세요!");
 			} // end while
+		}
+		else 
+		{
+			cheese = "치즈 선택 안함.";
 		}// end if
 	}
 		// 치즈 배열 값 테스트
@@ -162,7 +167,7 @@ public class SuperMenu
 			System.out.print(s + ", "); 
 		}
 		System.out.println("]");
-		System.out.println("==========================================");
+		//System.out.println("==========================================");
 
 		System.out.println();
 		System.out.print("빼고 싶은 야채 종류를 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 

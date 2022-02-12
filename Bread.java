@@ -10,12 +10,29 @@ class Bread extends SuperMenu
 	int bLength;      // 빵 길이;
 	//String cheeseBread;
 	
-	/* 
-	// 상속
+	/* 상속해옴.
+	// 재료 클래스에서 받아올 변수.
+	String[] breArray = {"화이트","허니오트","플랫브레드"};
+	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
+	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
+	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
+	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+
+	// 재료수량을 변경하기 위해 배열로 만듬.
+	int[] bdArray = {0, 0, 0}; // 빵
+	int[] cCategory = {0, 0, 1}; // 치즈 카테고리
+	int[] vbArray = {1, 1, 1, 1, 1}; // 야채 
+	int[] scArray = {0, 0, 0, 0, 0}; // 소스
+
+	
+	int count = 1;
+	int cusKey; //-- 나중에 현재옵션진행되는거 확인할 때 사용.
+	String strTemp; 
+	
 	String breadkind;     // 빵 종류 담기
 	String cheese;        // 치즈 담기
-	String vegetable[];   // 야채들 담기 
-	String sauce[];         // 소스 담기
+	String[] vegetable;   // 야채들 담기 
+	String[] sauce;         // 소스 담기 
 	*/
 
 
@@ -26,7 +43,7 @@ class Bread extends SuperMenu
 		//현재 변수의 값을 확인하자.
 		this.bCategory = strTemp;
 		
-		System.out.println("Bread의 생성자 입니다 : "+ bCategory);
+		//System.out.println("Bread의 생성자 입니다 : "+ bCategory);
 		//String cheese;
 		
 		//String breadkind;     // 빵 종류 담기
@@ -36,11 +53,11 @@ class Bread extends SuperMenu
 		
 
 		bcSelect();   // 빵 종류, 가격 // 에그마요 
-		//bdCustom();     // 빵 커스텀() // 화이트, 허니오트, 플랫브래드 (상속)
-		//blSelect();     // 빵길이()
-		//ccSelect();     // 치즈 커스텀() (상속)
-		//vdCustom();     // 야채 커스텀() (상속)
-		//scCustom();     // 소스 커스텀() (상속)
+		bdCustom();     // 빵 커스텀() // 화이트, 허니오트, 플랫브래드 (상속)
+		blSelect();     // 빵길이()
+		ccSelect();     // 치즈 커스텀() (상속)
+		vdCustom();     // 야채 커스텀() (상속)
+		scCustom();     // 소스 커스텀() (상속)
 		
 		//addCount();     // 증가 메소드() (상속)
 		//decrease();     // 감소 메소드() (상속)
@@ -52,18 +69,20 @@ class Bread extends SuperMenu
 	{
 		if (bCategory.equals("에그마요"))
 		{
-			this.bPrice = 4500;
-			System.out.println("여기 실행되낭. 에그마요 가격 4500원");
+			this.bPrice = 4500; //에그마요 가격 변경 예정(샐러드는 여기에 + 1700원)
+			//System.out.println("여기 실행되낭. 에그마요 가격 4500원");
 		}
 		else if (bCategory.equals("이탈리안 비엠티"))
 		{
 			this.bPrice = 70000;
-			System.out.println("여기 실행되낭. 이탈리안 비엠티 가격 70000원");
+			//System.out.println("여기 실행되낭. 이탈리안 비엠티 가격 70000원");
+		}
+		else if (bCategory.equals("서브웨이클럽"))
+		{
+			this.bPrice = 33333;
 		}
 		
-			
-		
-	}
+	} //end bcSelect()
 	
 	/*
 	void bcSelect() // 1 -> 빵
@@ -84,16 +103,16 @@ class Bread extends SuperMenu
 			this.bPrice = 5900;
 		}
 	}
+	
 	*/
 	
 	
-	/*
 	void blSelect() throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
-		System.out.print("빵 길이 선택해줘 15야 30이야? : ");
+		System.out.println("선택 가능한 빵의 길이 [15cm, 30cm]");
+		System.out.print("빵의 길이를 선택해 주세요(15, 30) : ");
 		bLength = Integer.parseInt(br.readLine());
 	}
-	*/
+	
 }

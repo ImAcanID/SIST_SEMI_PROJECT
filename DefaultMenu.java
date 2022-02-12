@@ -41,8 +41,8 @@ public class DefaultMenu
 	
 
 
-
-		System.out.print("종류를 선택해 주세요(빵, 샐러드, 사이드 메뉴, 현재 주문 옵션 입력) : 1	2	3	4로 입력. 테스트 일단 1입력. ");
+		System.out.println("※테스트용 빵객체 생성 → 1번");
+		System.out.print("종류를 선택해 주세요(빵, 샐러드, 사이드 메뉴, 현재 주문 옵션 입력) :");
 		//strTemp2 = br.readLine();
 		nTemp = sc.nextInt();
 
@@ -54,11 +54,11 @@ public class DefaultMenu
 
 	public void addMenu() throws IOException
 	{	
-		Scanner sc = new Scanner(System.in);
-		int n = 0;
+		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+		String userInput1;
 		System.out.print("추가 주문 할거니? (Y/N) 일단 1입력 아니면2 : " );
-		n = sc.nextInt();
-		if (n == 1)
+		userInput1= br.readLine();
+		if (userInput1.equals("Y") ||userInput1.equals("y")  )
 		{
 			this.dmSelect();
 		}
