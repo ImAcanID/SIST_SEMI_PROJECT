@@ -26,7 +26,8 @@ public class TestMain
 			//String strN = dm.breadArrayList.get(i).vegetable[0];
 			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + strN); //야채 - 양상추 빼면 이값이 0으로 출력.
 			
-			System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).cheese);
+			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).cheese);
+			System.out.println("첫번째요소의 가격 : " + dm.breadArrayList.get(i).bPrice);
 
 		}
 		dm.addMenu();	
@@ -36,8 +37,8 @@ public class TestMain
 		{
 			System.out.println("두번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).bCategory);
 			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).vegetable[2]); //야채 - 양상추 안빼서 이값이 1으로 출력.
-			System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).cheese);
-
+			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).cheese);
+			System.out.println("두번째 요소의 가격 : " + dm.breadArrayList.get(i).bPrice);
 		}
 		
 		//dm.addMenu(); //--마지막껄로 옵션 덮어쓰여짐..

@@ -8,6 +8,7 @@ import java.io.IOException;
 //샌드위치, 샐러드, 사이드메뉴 class에서 상속하는 슈퍼 클래스.
 public class SuperMenu
 {
+	/*
 	// 재료클래스 변수로 바꿀 예정.
 	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
@@ -21,53 +22,15 @@ public class SuperMenu
 	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	System.out.println("토마토, 양상추, 오이, 양파, 올리브");
 	System.out.println("제거할 야채를 말해주세요. (콤마 구분)");
+	remoeV = br.readLine();
 
+	String [] removeVarr = removeV.split();
+	
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+*/
 //==================================================================================================================================================
-/*
+
 	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
@@ -80,7 +43,7 @@ public class SuperMenu
 	int[] scArray = {0, 0, 0, 0, 0}; // 소스
 	
 	int count = 1;
-	int cusKey;
+	int cusKey; //-- 나중에 현재옵션진행되는거 확인할 때 사용.
 	String strTemp;
 	
 	static String breadkind;     // 빵 종류 담기
@@ -123,7 +86,8 @@ public class SuperMenu
 				System.out.println("빵 이름을 다시 확인해");
 		}
 	}// end bdCustom()
-
+}
+/*
 	void ccSelect() throws IOException // 치즈 선택하기() -----------------------------------------
 	{
 		// String [] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
@@ -179,7 +143,7 @@ public class SuperMenu
 	//}// end ccSelect() 
 
 	// 야채 커스텀()-------------------------------------------------------------------------------
-	/*
+/*
 	void vdCustom() throws IOException
 	{
 		//cusKey = 1;
@@ -239,6 +203,8 @@ public class SuperMenu
 		}
 	}// end scCustom()
 
+
+//////////////////////////////////////////////////////////////////////////////////////////////////1
 	// void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기-------------------------------
 	{
 		/* 재고수량 변수 아직 정의 안 됨!
@@ -260,7 +226,7 @@ public class SuperMenu
 			System.out.println("재료가 품절되어 추가할 수 없습니다.");
 		}
 		*/
-	}// end addCount()
+//	}// end addCount()
 	/*
 	void decrease() throws IOException // 감소메소드 ----------------------------------------------
 	{	
