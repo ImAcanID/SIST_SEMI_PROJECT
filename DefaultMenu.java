@@ -160,7 +160,7 @@ public class DefaultMenu
 			}
 			//System.out.println();
 		}
-		System.out.println();
+		//System.out.println();
 
 		if (!saladArrayList.isEmpty())
 		{
@@ -200,14 +200,14 @@ public class DefaultMenu
 			}
 			//System.out.println();
 		}
-		System.out.println();
+		//System.out.println();
 
 		if (!sidemenuArrayList.isEmpty()) //-- 사이드메뉴가 하나라도 선택이 됐다면...
 		{
 			for (int i = 0;i<sidemenuArrayList.size();i++)
 			{
 				System.out.println("종류            : 사이드 메뉴");
-				System.out.print("메뉴            :  " +sidemenuArrayList.get(i).smCategory);
+				System.out.print("메뉴            : " + sidemenuArrayList.get(i).smCategory);
 				System.out.println();
 				System.out.print("개당 가격       : " + sidemenuArrayList.get(i).smPrice);
 				System.out.println();
@@ -218,7 +218,7 @@ public class DefaultMenu
 			}
 			System.out.println();
 		}
-		System.out.println();	
+		//System.out.println();	
 	}
 }
 	

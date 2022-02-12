@@ -43,7 +43,6 @@ public class SuperMenu
 	int[] cCategory = {0, 0, 1}; // 치즈 카테고리
 	int[] vbArray = {1, 1, 1, 1, 1}; // 야채 
 	int[] scArray = {0, 0, 0, 0, 0}; // 소스
-
 	
 	int count = 1;
 	int cusKey; //-- 나중에 현재옵션진행되는거 확인할 때 사용.
@@ -89,6 +88,7 @@ public class SuperMenu
 			else
 				System.out.println("빵 종류를 다시 확인해 주세요");
 		}
+		//decrease();
 		System.out.println("\n[현재 선택 옵션]");
 		cusKey = 1;
 		checkCustom();
@@ -305,14 +305,29 @@ public class SuperMenu
 		}
 		System.out.println();
 	}
+	/*-- 문정 하다 말았음ㅋㅋㅋㅋㅋ
+	void decrease()
+	{
+		IngredientManagement im = new IngredientManagement();
+
+		if (breadkind!=null) // breadkind에 값 있을 때 (빵 선택했고, 빵 종류 선택하면)
+		{
+			if (bread.get(breadkind)==0) // 선택한 (ex.허니오트)의 수량
+			{
+				System.out.println(breadkind + "가 현재 품절되어 선택할 수 없습니다.");
+				bdCustom(); // 빵 종류 다시 선택할 수 있도록. 
+			}
+		}
+	}
+	*/
 }
 
-//////////////////////////////////////////////////////////////////////////////////////////////////1
-	// void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기-------------------------------
+	//void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기-------------------------------
 	//{
-		/* 재고수량 변수 아직 정의 안 됨!
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-
+		// 재고수량 변수 아직 정의 안 됨!
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		
+		/*
 		if (재고수량 != 0)
 		{	
 			System.out.printf("\n현재 :%d개 있습니다\n", count); 
@@ -329,10 +344,10 @@ public class SuperMenu
 			System.out.println("재료가 품절되어 추가할 수 없습니다.");
 		}
 		*/
-//	}// end addCount()
-	/*
-	void decrease() throws IOException // 감소메소드 ----------------------------------------------
-	{	
+		
+  //  }// end addCount()
+	//void decrease() throws IOException // 감소메소드 ----------------------------------------------
+	//{
 		/*
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (count > 0)
@@ -355,8 +370,8 @@ public class SuperMenu
 		{
 			System.out.println("감소할 수량이 없습니다.");
 		}
-		*/
-//	}//end decrease()
+		*/		
+	//}//end decrease()
 	/*
 	void checkCustom(int n)//----------------------------------------------------------------------
 	{

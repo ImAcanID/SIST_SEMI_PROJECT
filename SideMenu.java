@@ -20,7 +20,6 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 	//생성자
 	SideMenu() throws IOException
 	{
-		
 		sideSelect();
 	}
 	
@@ -28,20 +27,36 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 	void sideSelect() throws IOException
 	{
 		boolean xAu = false; // -- 미성년자면 맥주 사는거 불가.
-		
-		System.out.print("선택 가능한 사이드메뉴 [");
+		/*
+		System.out.print("\n선택 가능한 사이드메뉴 [");
 		for (String s : sideArray)
 		{
 			System.out.print(s + " ");
 		}
 		System.out.println("]");
-		System.out.println("※ 맥주는 20살 이상만 가능합니다.");
+		*/
+		
+		System.out.print("\n선택 가능한 사이드 메뉴 [");
+		for (int i=0; i<sideArray.length; i++)
+		{
+			System.out.print(sideArray[i]);
+			if (i+1 != sideArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+			{
+				System.out.print(", ");
+			}
+			else
+				System.out.println("]");
+		}
+		
+
+
+		System.out.println(" ※ 맥주는 20살 이상만 가능합니다."); 
 
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		do
 		{
-			System.out.print("사이드 메뉴를 선택해 주세요 : " );
+			System.out.print("\n사이드 메뉴를 입력해 주세요 : " );
 			smCategory = br.readLine();
 		}
 		while (!(smCategory.equals("콜라")||smCategory.equals("커피")||smCategory.equals("쿠키")||smCategory.equals("스프")||smCategory.equals("맥주")));
@@ -51,20 +66,20 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 			xAu = adultCertification();
 			if (xAu == true)
 			{
-			System.out.println("미성년자에게는 맥주를 판매하지 않습니다.");
-			return;
+				System.out.println("미성년자에게는 맥주를 판매하지 않습니다.");
+				return;
 			}
 		}
-			System.out.print("수량을 입력하세요 : " );
+			System.out.print("수량을 입력해 주세요 : " );
 			smCount = Integer.parseInt(br.readLine());
 
 		switch (smCategory)
 		{
-		case "콜라": smPrice = 1500; break;
-		case "커피": smPrice = 4500; break;
-		case "쿠키": smPrice = 6000; break;
-		case "스프": smPrice = 500; break;
-		case "맥주": smPrice = 5555; break;
+		case "콜라": smPrice = 1000; break;
+		case "커피": smPrice = 1000; break;
+		case "쿠키": smPrice = 1000; break;
+		case "스프": smPrice = 2900; break;
+		case "맥주": smPrice = 4000; break;
 		}
 
 		totsmPrice = smCount * smPrice;
@@ -94,13 +109,15 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 
 		int tot = 0; //7*2 + 5*3 + .. + 3 * 5 그래서 초기화 0으로
 		
+		System.out.println("\n성인인증을 위한 주민번호를 입력해 주세요."); 
+
 		do
 		{
-			System.out.print("주민번호입력(XXXXXX - XXXXXXX) : ");
+			System.out.print("주민번호 입력(XXXXXX-XXXXXXX) : ");
 			str = br.readLine();
 			if (str.length() != 14)
 			{
-			System.out.println("다시 한번 입력을 확인해 주세요.");
+			System.out.println("주민번호를 다시 한번 확인해 주세요.");
 			}
 		}
 		while (str.length() != 14);
@@ -128,9 +145,11 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 			trueJoo = true;
 		}
 		else 
+		{
 			System.out.println("주민번호가 유효하지 않습니다.");
+			sideSelect();
+		}
 			
-		
 		if (trueJoo == true) //유효한 주민번호에서
 		{
 			userAge = yy - Integer.parseInt(str.substring(0,3)) - 1900+1; // 현재나이 계산해서 
@@ -140,9 +159,7 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 				trueAd= false;
 		}
 
-		return trueAd;
-		
-			
+		return trueAd;	
 	}
 }
 		

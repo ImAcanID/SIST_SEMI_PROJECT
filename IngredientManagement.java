@@ -48,7 +48,6 @@ class IngredientManagement
 		{
 			sauce.put(s, 100);
 		}
-
 		
 		//치즈종류
 		for(String s:chArray)
@@ -69,9 +68,9 @@ class IngredientManagement
 
 		// 재료 넣기 메소드
 		//void ingPut()
-		//{
 		Scanner sc = new Scanner(System.in);
-		System.out.print("어떤 종류의 수량 관리 할래? : "); // 빵 야채 소스
+		System.out.println("[빵, 치즈, 야채, 소스, 사이드]");
+		System.out.print("어떤 항목의 재료를 관리하시겠습니까? : "); // 빵 야채 소스
 		String kinds = sc.next();
 		
 		System.out.print(kinds + " 종류 입력해줘 : "); // 화이트
@@ -87,7 +86,7 @@ class IngredientManagement
 			case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
 		}
 		System.out.printf("%s의 현재 수량은 %d이야.%n", ingre, tmp);
-		System.out.print("얼마나 늘릴래? : ");
+		System.out.print("증가시킬 수량을 입력해 주세요 : ");
 		int su = sc.nextInt();
 		
 		tmp += su;
@@ -109,7 +108,7 @@ class IngredientManagement
 			case "치즈" : tmp = cheese.get(ingre); break;
 			case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
 		}
-		System.out.printf("%s의 증가 후 수량은 %d이야.%n", ingre, tmp);	
+		System.out.printf("%s의 증가 후 수량은 %d입니다.%n", ingre, tmp);	
 	}
 }
 
