@@ -71,13 +71,12 @@ class Bread extends SuperMenu
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
 		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
 		{
-			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
+			System.out.println("\n선택 가능한 메뉴 [에그마요, 이탈리안 비엠티, 서브웨이 클럽]");
+			System.out.print("메뉴를 입력해 주세요 : ");
 			bCategory = br.readLine();
 
 		}
-		while (!bCategory.equals("에그마요")&&!bCategory.equals("이탈리안 비엠티")&&!bCategory.equals("서브웨이클럽"));
-
-
+		while (!bCategory.equals("에그마요")&&!bCategory.equals("이탈리안 비엠티")&&!bCategory.equals("서브웨이 클럽"));
 
 		if (bCategory.equals("에그마요"))
 		{
@@ -89,7 +88,7 @@ class Bread extends SuperMenu
 			this.bPrice = 70000;
 			//System.out.println("여기 실행되낭. 이탈리안 비엠티 가격 70000원");
 		}
-		else if (bCategory.equals("서브웨이클럽"))
+		else if (bCategory.equals("서브웨이 클럽"))
 		{
 			this.bPrice = 33333;
 		}
@@ -122,10 +121,11 @@ class Bread extends SuperMenu
 	void blSelect() throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        
+		System.out.println("\n선택 가능한 빵 길이 [15cm, 30cm]");
+		System.out.println(" ※ 30cm 선택 시 5000원이 추가 됩니다.");
+		System.out.print("빵의 길이를 입력해 주세요(15, 30) : ");
 
-		System.out.println("선택 가능한 빵의 길이 [15cm, 30cm]");
-		System.out.println(" ※ 30cm는 5000원 추가입니다.");
-		System.out.print("빵의 길이를 선택해 주세요(15, 30) : ");
 		bLength = Integer.parseInt(br.readLine());
 
 		if (bLength == 30)

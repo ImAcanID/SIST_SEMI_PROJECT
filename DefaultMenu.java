@@ -1,5 +1,3 @@
-// 문정 수정 중
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
@@ -13,9 +11,9 @@ import java.util.ListIterator;
 public class DefaultMenu
 {
 //=====================================================================================================================
-	String strTemp; //-- 문자열 타입의 빈 그릇.(에그마요,BMT...)
+	String strTemp;  //-- 문자열 타입의 빈 그릇.(에그마요,BMT...)
 	String strTemp2; //-- 빵, 샐러드, 사이드메뉴, 현재주문확인하기..
-	int nTemp; //-- int타입의 빈 그릇
+	int nTemp;       //-- int타입의 빈 그릇
 	
 	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
 	ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
@@ -30,12 +28,13 @@ public class DefaultMenu
 
 	void dmSelect() throws IOException
 	{
-		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //-- 문자열 담는 용도. 
 		Scanner sc = new Scanner(System.in);
 
-		System.out.println("※테스트용 빵객체 생성 → 1번");
-		System.out.println("※테스트용 사이드메뉴객체 생성 → 3번");
-		System.out.print("종류를 선택해 주세요(빵, 샐러드, 사이드 메뉴, 현재 주문 옵션 입력) :");
+		//System.out.println("테) 빵객체 생성 → 1번");
+		//System.out.println("테) 사이드메뉴객체 생성 → 3번");
+		//System.out.println("안녕하세요. SUBWAY입니다.\n"); // 추가 주문할 때는 얘 나오면 안 되는데 걍 메인에서 ㄱ?
+		System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
 		//strTemp2 = br.readLine();
 		nTemp = sc.nextInt();
 
@@ -69,10 +68,11 @@ public class DefaultMenu
 		String userInput1;
 		do
 		{
-			System.out.print("추가 주문 할거니? (Y/N) 일단 1입력 아니면2 : " );
+			System.out.print("\n추가 주문 하시겠습니까?(Y/N) : " );
 			userInput1= br.readLine();
 			if (userInput1.equals("Y") ||userInput1.equals("y"))
 			{
+				System.out.println();
 				this.dmSelect();
 			}
 				
@@ -84,7 +84,7 @@ public class DefaultMenu
 
 	public void dmPrint()  //정보출력하기 , 여기서 선언하는 이유 : 객체 담는 ArrayList가 이곳에서 선언되었기 때문!
 	{
-		System.out.println("지금까지의 정보를 출력해 보자면...");
+		System.out.println("\n[최종 주문 정보 출력]");
 
 		//ListIterator<String> li = breadArrayList.listIterator();
 		//for (int i = 0;i<breadArrayList.size();i++)
@@ -105,7 +105,8 @@ public class DefaultMenu
 		{
 			for (int i = 0;i<breadArrayList.size();i++)
 			{
-			System.out.print("           메뉴 :  " +breadArrayList.get(i).bCategory);
+				/*
+				System.out.print("           메뉴 : " + breadArrayList.get(i).bCategory);
 				System.out.println();
 				System.out.print("           가격 : " + breadArrayList.get(i).bPrice);
 				System.out.println();
@@ -115,44 +116,56 @@ public class DefaultMenu
 				System.out.println();
 				System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
 				System.out.println();
+				*/
+
+				System.out.print("메뉴            : " + breadArrayList.get(i).bCategory);
+				System.out.println();
+				System.out.print("가격            : " + breadArrayList.get(i).bPrice);
+				System.out.println();
+				System.out.print("빵 길이         : " + breadArrayList.get(i).bLength);
+				System.out.println();
+				System.out.print("빵 종류         : " + breadArrayList.get(i).breadkind);
+				System.out.println();
+				System.out.print("선택 치즈       : " + breadArrayList.get(i).cheese);
+				System.out.println();
 
 
 				//제거선택한 야채 불러오기
 				String strTempx; // 그릇 하나 주세요.
-				System.out.print("   제거 선택 야채 : ");
+				System.out.print("제거 선택 야채  : ");
 				for (String s :breadArrayList.get(i).vegetable)
 				{
 					strTempx = s;
-					System.out.print(s + "제외");
+					System.out.print(s + " ");
 				}
 				System.out.println();
 			
-				System.out.println();
+				//System.out.println();
 
 				//선택한 소스 불러오기
-				/*
+				
 				String strTempy; // 그릇 하나 주세요.
-				System.out.print("      선택 소스 : ");
+				System.out.print("선택 소스       : ");
 				for (String s :breadArrayList.get(i).sauce)
 				{
 					strTempy = s;
 					System.out.print(s + " ");
 				}
 				System.out.println();
-				*/
+				
 			}
 		}
 		if (!sidemenuArrayList.isEmpty()) //-- 사이드메뉴가 하나라도 선택이 됐다면...
 		{
 			for (int i = 0;i<sidemenuArrayList.size();i++)
 			{
-				System.out.print("           메뉴 :  " +sidemenuArrayList.get(i).smCategory);
+				System.out.print("메뉴            :  " +sidemenuArrayList.get(i).smCategory);
 				System.out.println();
-				System.out.print("      개당 가격 : " + sidemenuArrayList.get(i).smPrice);
+				System.out.print("개당 가격       : " + sidemenuArrayList.get(i).smPrice);
 				System.out.println();
-				System.out.print("           수량 : " + sidemenuArrayList.get(i).smCount);
+				System.out.print("수량            : " + sidemenuArrayList.get(i).smCount);
 				System.out.println();
-				System.out.print("        총 가격 : " + sidemenuArrayList.get(i).totsmPrice);
+				System.out.print("총 가격         : " + sidemenuArrayList.get(i).totsmPrice);
 				System.out.println();
 			}
 			System.out.println();

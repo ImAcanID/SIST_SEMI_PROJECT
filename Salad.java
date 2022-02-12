@@ -39,7 +39,7 @@ class Salad extends SuperMenu
 		}
 		else if (DefaultMenu.dmCategory == 3)
 		{
-			this.sCategory = "서브웨이클럽";
+			this.sCategory = "서브웨이 클럽";
 			this.sPrice  = 5900;
 		}
 	}
