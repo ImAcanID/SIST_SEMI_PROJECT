@@ -31,20 +31,23 @@ public class SuperMenu
 */
 //==================================================================================================================================================
 
+	// 재료 클래스에서 받아올 변수.
 	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
 	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
 	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
 
+	// 재료수량을 변경하기 위해 배열로 만듬.
 	int[] bdArray = {0, 0, 0}; // 빵
 	int[] cCategory = {0, 0, 1}; // 치즈 카테고리
 	int[] vbArray = {1, 1, 1, 1, 1}; // 야채 
 	int[] scArray = {0, 0, 0, 0, 0}; // 소스
+
 	
 	int count = 1;
 	int cusKey; //-- 나중에 현재옵션진행되는거 확인할 때 사용.
-	String strTemp;
+	String strTemp; 
 	
 	static String breadkind;     // 빵 종류 담기
 	static String cheese;        // 치즈 담기
@@ -57,13 +60,14 @@ public class SuperMenu
 
 		while (true)
 		{
-			System.out.println("빵 종류: 화이트, 허니오트, 플랫브레드");
-			System.out.print("빵 골라줘 : ");
+			System.out.println("선택 가능한 빵 종류[화이트, 허니오트, 플랫브레드]");
+			System.out.println("=================================================");
+			System.out.print("빵 종류를 선택해 주세요. : ");
 			strTemp = br.readLine();
 
 			if (strTemp.equals(breArray[0]))
 			{
-				System.out.println("화이트 선택"); // 테스트 출력
+				//System.out.println("화이트 선택"); // 테스트 출력
 				bdArray[0] = 1;
 				breadkind = "화이트";
 				break;
@@ -83,11 +87,11 @@ public class SuperMenu
 				break;
 			}
 			else
-				System.out.println("빵 이름을 다시 확인해");
+				System.out.println("빵 이름을 다시 확인해 주세요!");
 		}
 	}// end bdCustom()
-}
-/*
+
+
 	void ccSelect() throws IOException // 치즈 선택하기() -----------------------------------------
 	{
 		// String [] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
@@ -97,20 +101,21 @@ public class SuperMenu
 		//System.out.println("치즈 메뉴: 아메리칸 치즈, 슈레드 치즈, 치즈제외");
 		String con = "Y";
 		String strtmp;
-		System.out.print("치즈 넣을 거야? Y or N : ");
+		System.out.print("치즈 추가 하시겠습니까? Y or N : ");
 		con = br.readLine();
 
 		if (con.equals("Y") || con.equals("y"))
 		{	
 			while (true)
 			{
-				System.out.println("치즈 메뉴: 아메리칸 치즈, 슈레드 치즈");
-				System.out.print("어떤 치즈 넣을 거야? : ");
+				System.out.println("선택 가능한 치즈 종류[아메리칸 치즈,슈레드 치즈]");
+				System.out.println("=================================================");
+				System.out.print("치즈 종류를 선택해 주세요. : ");
 				strtmp = br.readLine();
 
 				if (strtmp.equals(chArray[0]))
 				{
-					System.out.println("아메리칸 치즈 선택"); // 테스트 출력
+					//System.out.println("아메리칸 치즈 선택"); // 테스트 출력
 
 					cCategory[0] = 1;
 					cCategory[2] = 0;
@@ -120,7 +125,7 @@ public class SuperMenu
 				}
 				else if (strtmp.equals(chArray[1]))
 				{
-					System.out.println("슈레드 치즈 선택"); // 테스트 출력
+					//System.out.println("슈레드 치즈 선택"); // 테스트 출력
 
 					cCategory[1] = 1;
 					cCategory[2] = 0;
@@ -129,9 +134,10 @@ public class SuperMenu
 					break;
 				}
 				else
-					System.out.println("치즈 이름을 다시 확인해");
+					System.out.println("치즈 이름을 다시 확인해 확인해 주세요!");
 			} // end while
 		}// end if
+	}
 		// 치즈 배열 값 테스트
 		/*
 		for (int i=0; i<cCategory.length; i++)
@@ -143,19 +149,23 @@ public class SuperMenu
 	//}// end ccSelect() 
 
 	// 야채 커스텀()-------------------------------------------------------------------------------
-/*
 	void vdCustom() throws IOException
 	{
 		//cusKey = 1;
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
+		System.out.print("선택 가능한 야채 종류 [");
 		for (String s : veArray) //→ 재료클래스 변수
 		{
-			System.out.print(s + " "); 
+			
+			System.out.print(s + ", "); 
 		}
+		System.out.println("]");
+		System.out.println("==========================================");
+
 		System.out.println();
-		System.out.print("제거하고 싶은 야채 말해줘 (콤마구분) : "); 
+		System.out.print("빼고 싶은 야채 종류를 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 
 		strTemp = br.readLine();
 		String[] strArr = strTemp.split(","); // 토마토, 양상추, 양파
 
@@ -171,6 +181,21 @@ public class SuperMenu
 				//vegetable[i] = veArray[j]; 
 			}
 		}
+		vegetable = new String [strArr.length];
+		//사용자가 선택한 야채 문자열에 넣기.
+		for (int i=0 ;i<strArr.length ;i++ )
+		{
+			vegetable[i] = strArr[i];
+		}
+		
+		System.out.print("사용자가 제거선택한 야채 : ");
+		//사용자가 제거한 야채 출력하기
+		for (String s:vegetable)
+		{
+			System.out.print(s+", ");
+		}
+		System.out.println();
+
 
 	}//end vdCustom()
 
@@ -179,16 +204,18 @@ public class SuperMenu
 		//int[] scArray = {0, 0, 0, 0, 0}; 
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("선택 가능한 소스 종류 [");
 		for (String s: sauArray ) //→ 재료클래스 변수
 		{
-			System.out.print(s + " "); // 스윗 어니언,스윗 칠리,렌치 드레싱,소스제외
+			System.out.print(s + ", "); // 스윗 어니언,스윗 칠리,렌치 드레싱,소스제외
 		}
-		System.out.println();
+		System.out.println("]");
+		System.out.println("=====================================================");
 		
-		System.out.print("추가하고 싶은 소스 말해줘 (콤마구분):"); 
+		System.out.print("추가하고 싶은 소스 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 
 		strTemp = br.readLine();
 		
-		String[] strArr = strTemp.split(","); // 스윗 어니언,스윗 칠리
+		String[] strArr = strTemp.split(", "); // 스윗 어니언,스윗 칠리
 		//sauce = strArr;
 		
 		for (int i=0; i<strArr.length; i++)  
@@ -201,12 +228,25 @@ public class SuperMenu
 				}
 			}
 		}
+		sauce = new String [strArr.length];
+		for (int i = 0;i<sauce.length;i++)
+		{
+			sauce[i] = strArr[i];
+		}
+		System.out.print("사용자가 선택한 소스 : ");
+		//사용자가 제거한 야채 출력하기
+		for (String s:sauce)
+		{
+			System.out.print(s+", ");
+		}
+		System.out.println();
+
 	}// end scCustom()
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////1
 	// void addCount() // 개수 추가 메소드(); // 매개변수 생각해보기-------------------------------
-	{
+	//{
 		/* 재고수량 변수 아직 정의 안 됨!
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -290,3 +330,5 @@ public class SuperMenu
 	*/
 
 //}
+	
+}
