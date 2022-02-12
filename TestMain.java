@@ -15,6 +15,11 @@ public class TestMain
 		DefaultMenu dm = new DefaultMenu();
 		dm.dmSelect();
 
+		dm.addMenu();
+		dm.dmprint();
+	}
+}
+
 
 		// 추가주문 → ArrayList 객체 하나씩 살펴보기
 
@@ -32,7 +37,7 @@ public class TestMain
 
 		}
 		*/
-		dm.addMenu();	
+		//dm.addMenu();	
 		/*
 		System.out.println("breadArrayList의 사이즈 : " + dm.breadArrayList.size());
 		for (int i= 0 ; i<dm.breadArrayList.size();i++)
@@ -48,6 +53,7 @@ public class TestMain
 		//dm.addMenu(); //--마지막껄로 옵션 덮어쓰여짐..
 		//System.out.println("첫번째 breadArrayList의 요소 : " + dm.breadArrayList.get(0));
 		//System.out.println("두번째 breadArrayList의 요소 : " + dm.breadArrayList.size()); // 3개까진 선택해야 출력해보겠네.
+		/*
 		System.out.println("지금까지의 정보를 출력해 보자면...");
 		for (int i = 0;i<dm.breadArrayList.size();i++)
 		{
@@ -63,7 +69,6 @@ public class TestMain
 			System.out.print("      선택 치즈 : " + dm.breadArrayList.get(i).cheese);
 		}
 		System.out.println();
-		
-																	
-	}
-}
+		*/
+
+	

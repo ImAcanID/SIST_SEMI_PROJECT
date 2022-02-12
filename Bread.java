@@ -37,11 +37,11 @@ class Bread extends SuperMenu
 
 
 	//생성자.
-	Bread(String strTemp) throws IOException //-- 생성자 매개변수로 에그마요 담아옴.
+	Bread() throws IOException //-- 생성자 매개변수로 에그마요 담아옴.
 	{
 
 		//현재 변수의 값을 확인하자.
-		this.bCategory = strTemp;
+		//this.bCategory = strTemp;
 		
 		//System.out.println("Bread의 생성자 입니다 : "+ bCategory);
 		//String cheese;
@@ -51,13 +51,13 @@ class Bread extends SuperMenu
 		///String[] vegetable;   // 야채들 담기 
 		//String[] sauce;         // 소스 담기 
 		
-
+		
 		bcSelect();   // 빵 종류, 가격 // 에그마요 
 		bdCustom();     // 빵 커스텀() // 화이트, 허니오트, 플랫브래드 (상속)
 		blSelect();     // 빵길이()
 		ccSelect();     // 치즈 커스텀() (상속)
-		vdCustom();     // 야채 커스텀() (상속)
-		scCustom();     // 소스 커스텀() (상속)
+		//vdCustom();     // 야채 커스텀() (상속)
+		//scCustom();     // 소스 커스텀() (상속)
 		
 		//addCount();     // 증가 메소드() (상속)
 		//decrease();     // 감소 메소드() (상속)
@@ -65,8 +65,19 @@ class Bread extends SuperMenu
 						  //                              Bread() 생성자 안에있는 변수들이 마지막에 정한걸로 덮어쓰여지는듯하다!
 			
 	}
-	void bcSelect()
+	void bcSelect() throws IOException
 	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
+		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
+		{
+			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
+			bCategory = br.readLine();
+
+		}
+		while (!bCategory.equals("에그마요")&&!bCategory.equals("이탈리안 비엠티")&&!bCategory.equals("서브웨이클럽"));
+
+
+
 		if (bCategory.equals("에그마요"))
 		{
 			this.bPrice = 4500; //에그마요 가격 변경 예정(샐러드는 여기에 + 1700원)

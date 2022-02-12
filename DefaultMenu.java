@@ -28,18 +28,8 @@ public class DefaultMenu
 
 	void dmSelect() throws IOException
 	{
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도.
+		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
 		Scanner sc = new Scanner(System.in);
-
-		do
-		{
-			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
-			strTemp = br.readLine();
-
-		}
-		while (!strTemp.equals("에그마요")&&!strTemp.equals("이탈리안 비엠티")&&!strTemp.equals("서브웨이클럽"));
-	
-
 
 		System.out.println("※테스트용 빵객체 생성 → 1번");
 		System.out.print("종류를 선택해 주세요(빵, 샐러드, 사이드 메뉴, 현재 주문 옵션 입력) :");
@@ -48,22 +38,60 @@ public class DefaultMenu
 
 		if (nTemp == 1)
 		{
-			breadArrayList.add(new Bread(strTemp)); // 빵객체를 하나 생성해서 자료구조에 담는다.
+			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
 		}
+
+		/*
+		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
+		{
+			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
+			strTemp = br.readLine();
+
+		}
+		while (!strTemp.equals("에그마요")&&!strTemp.equals("이탈리안 비엠티")&&!strTemp.equals("서브웨이클럽"));
+		*/
+
+
+		
 	}
 
 	public void addMenu() throws IOException
 	{	
+		
 		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
 		String userInput1;
-		System.out.print("추가 주문 할거니? (Y/N) 일단 1입력 아니면2 : " );
-		userInput1= br.readLine();
-		if (userInput1.equals("Y") ||userInput1.equals("y")  )
+		do
 		{
-			this.dmSelect();
+			System.out.print("추가 주문 할거니? (Y/N) 일단 1입력 아니면2 : " );
+			userInput1= br.readLine();
+			if (userInput1.equals("Y") ||userInput1.equals("y"))
+			{
+				this.dmSelect();
+			}
+				
 		}
-		else
-		System.out.println("이제 결제 창으로 넘어가세요 ! ");
+		while (userInput1.equals("Y") ||userInput1.equals("y"));
+		return;
+		
+	}
+
+	public void dmprint()  //정보출력하기 , 여기서 선언하는 이유 : 객체 담는 ArrayList가 이곳에서 선언되었기 때문!
+	{
+		System.out.println("지금까지의 정보를 출력해 보자면...");
+		for (int i = 0;i<breadArrayList.size();i++)
+		{
+			System.out.println("======================================================");
+			System.out.print("           메뉴 :  " +breadArrayList.get(i).bCategory);
+			System.out.println();
+			System.out.print("           가격 : " + breadArrayList.get(i).bPrice);
+			System.out.println();
+			System.out.print("        빵 길이 : " + breadArrayList.get(i).bLength);
+			System.out.println();
+			System.out.print("        빵 종류 : " + breadArrayList.get(i).breadkind);
+			System.out.println();
+			System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
+		}
+		System.out.println();
 	}
 
 	/*
