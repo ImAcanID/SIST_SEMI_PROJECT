@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.ListIterator; 
 
 
-
-
 public class DefaultMenu
 {
 //=====================================================================================================================
@@ -81,9 +79,25 @@ public class DefaultMenu
 	public void dmPrint()  //정보출력하기 , 여기서 선언하는 이유 : 객체 담는 ArrayList가 이곳에서 선언되었기 때문!
 	{
 		System.out.println("지금까지의 정보를 출력해 보자면...");
-		for (int i = 0;i<breadArrayList.size();i++)
+
+		//ListIterator<String> li = breadArrayList.listIterator();
+		//for (int i = 0;i<breadArrayList.size();i++)
+		/*
+		while (li.hasNext())
 		{
-			System.out.println("======================================================");
+			for (int i = 0;i<breadArrayList.size();i++ )
+			{
+				Bread br1 = (Bread)li.next();// --bread객체 한개 가져옴.
+				System.out.print("           메뉴 :  " +br1.bCategory);
+				System.out.println();
+			}
+		}
+	}
+}
+*/
+			//System.out.println("======================================================");
+			for (int i = 0;i<breadArrayList.size();i++)
+		{
 			System.out.print("           메뉴 :  " +breadArrayList.get(i).bCategory);
 			System.out.println();
 			System.out.print("           가격 : " + breadArrayList.get(i).bPrice);
@@ -93,9 +107,41 @@ public class DefaultMenu
 			System.out.print("        빵 종류 : " + breadArrayList.get(i).breadkind);
 			System.out.println();
 			System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
+			System.out.println();
+
+
+			//제거선택한 야채 불러오기
+			String strTempx; // 그릇 하나 주세요.
+			System.out.print("   제거 선택 야채 : ");
+			for (String s :breadArrayList.get(i).vegetable)
+			{
+				strTempx = s;
+				System.out.print(s + "제외");
+			}
+			System.out.println();
+		
+			System.out.println();
+
+			//선택한 소스 불러오기
+			/*
+			String strTempy; // 그릇 하나 주세요.
+			System.out.print("      선택 소스 : ");
+			for (String s :breadArrayList.get(i).sauce)
+			{
+				strTempy = s;
+				System.out.print(s + " ");
+			}
+			System.out.println();
+			*/
+			
 		}
-		System.out.println();
 	}
+}
+	
+	//System.out.println();
+	
+//}
+	
 
 	/*
 	void addMenu()
@@ -249,4 +295,3 @@ public class DefaultMenu
 */
 		
 	//}
-}

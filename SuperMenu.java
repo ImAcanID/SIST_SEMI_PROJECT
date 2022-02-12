@@ -164,7 +164,7 @@ public class SuperMenu
 		for (String s : veArray) //→ 재료클래스 변수
 		{
 			
-			System.out.print(s + ", "); 
+			System.out.print(s + " "); 
 		}
 		System.out.println("]");
 		//System.out.println("==========================================");
@@ -172,7 +172,7 @@ public class SuperMenu
 		System.out.println();
 		System.out.print("빼고 싶은 야채 종류를 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 
 		strTemp = br.readLine();
-		String[] strArr = strTemp.split(","); // 토마토, 양상추, 양파
+		String[] strArr = strTemp.split(" "); // 토마토, 양상추, 양파
 
 		for (int i=0; i<strArr.length; i++)	//      0      1      2
 		{                                        // 01234  
@@ -193,13 +193,15 @@ public class SuperMenu
 			vegetable[i] = strArr[i];
 		}
 		
-		System.out.print("사용자가 제거선택한 야채 : ");
+		//System.out.print("사용자가 제거선택한 야채 : ");
 		//사용자가 제거한 야채 출력하기
+		/*
 		for (String s:vegetable)
 		{
 			System.out.print(s+", ");
 		}
 		System.out.println();
+		*/
 
 
 	}//end vdCustom()
@@ -209,20 +211,77 @@ public class SuperMenu
 		//int[] scArray = {0, 0, 0, 0, 0}; 
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.print("선택 가능한 소스 종류 [");
-		for (String s: sauArray ) //→ 재료클래스 변수
-		{
-			System.out.print(s + ", "); // 스윗 어니언,스윗 칠리,렌치 드레싱,소스제외
+		
+
+		//===========================================================================
+		String con = "Y";
+		String strtmp;
+		String [] strArr2;
+		
+		/*
+		System.out.print("소스 추가 하시겠습니까? Y or N : ");
+		con = br.readLine();
+
+		if (con.equals("Y") || con.equals("y"))
+		{	
+			System.out.print("선택 가능한 소스 종류 [");
+			for (int i = 0;i<sauArray.length-1;i++) //→ 재료클래스 변수
+			{
+				System.out.print(sauArray[i] + " "); // 스윗 어니언,스윗 칠리,렌치 드레싱,소스제외
+			}
+			System.out.println("]");
+			//System.out.println("=====================================================");
+			System.out.print("소스 종류를 선택해주세요.(다중 선택 가능,콤마『,』구분) : ");
+			strtmp = br.readLine();
+			strArr2 = strtmp.split(", ");
+			//strArr = strTemp.split(", "); // 스윗 어니언,스윗 칠리
+
+			for (int i=0; i<strArr2.length; i++)  
+			{
+				for (int j=0; j<sauArray.length-1; j++) // 소스 메뉴판에 마지막은 소스제외이다.
+				{
+					if (strArr2[i].equals(sauArray[j]))
+					{
+						scArray[j] = 1; // 추가
+						break;
+					}
+				}
+			}
 		}
-		System.out.println("]");
-		System.out.println("=====================================================");
 		
-		System.out.print("추가하고 싶은 소스 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 
-		strTemp = br.readLine();
 		
-		String[] strArr = strTemp.split(", "); // 스윗 어니언,스윗 칠리
+
+		sauce = new String [strArr2.length];
+		for (int i = 0;i<sauce.length;i++)
+		{
+			sauce[i] = strArr2[i];
+		}
+		*/
+		/*
+		System.out.print("사용자가 선택한 소스 : ");
+		//사용자가 제거한 야채 출력하기
+		for (String s:sauce)
+		{
+			System.out.print(s+", ");
+		}
+		System.out.println();
+		*/
+	}
+}
+
+				
+
+				
+		//===========================================================================
+
+
+		
+		//System.out.print("추가하고 싶은 소스 선택해주세요.(다중 선택 가능,콤마『,』구분) : "); 
+		//strTemp = br.readLine();
+		
+		//String[] strArr = strTemp.split(", "); // 스윗 어니언,스윗 칠리
 		//sauce = strArr;
-		
+		/*
 		for (int i=0; i<strArr.length; i++)  
 		{
 			for (int j=0; j<sauArray.length; j++)
@@ -233,6 +292,8 @@ public class SuperMenu
 				}
 			}
 		}
+		*/
+		/*
 		sauce = new String [strArr.length];
 		for (int i = 0;i<sauce.length;i++)
 		{
@@ -245,8 +306,10 @@ public class SuperMenu
 			System.out.print(s+", ");
 		}
 		System.out.println();
+		*/
 
-	}// end scCustom()
+	//}// end scCustom()
+	
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////1
@@ -336,4 +399,4 @@ public class SuperMenu
 
 //}
 	
-}
+//}

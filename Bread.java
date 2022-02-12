@@ -56,8 +56,8 @@ class Bread extends SuperMenu
 		bdCustom();     // 빵 커스텀() // 화이트, 허니오트, 플랫브래드 (상속)
 		blSelect();     // 빵길이()
 		ccSelect();     // 치즈 커스텀() (상속)
-		//vdCustom();     // 야채 커스텀() (상속)
-		//scCustom();     // 소스 커스텀() (상속)
+		vdCustom();     // 야채 커스텀() (상속)
+		scCustom();     // 소스 커스텀() (상속)
 		
 		//addCount();     // 증가 메소드() (상속)
 		//decrease();     // 감소 메소드() (상속)
@@ -65,6 +65,7 @@ class Bread extends SuperMenu
 						  //                              Bread() 생성자 안에있는 변수들이 마지막에 정한걸로 덮어쓰여지는듯하다!
 			
 	}
+	
 	void bcSelect() throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
@@ -121,9 +122,16 @@ class Bread extends SuperMenu
 	void blSelect() throws IOException
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 		System.out.println("선택 가능한 빵의 길이 [15cm, 30cm]");
+		System.out.println(" ※ 30cm는 5000원 추가입니다.");
 		System.out.print("빵의 길이를 선택해 주세요(15, 30) : ");
 		bLength = Integer.parseInt(br.readLine());
+
+		if (bLength == 30)
+		{
+			bPrice += 5000; // 30cm는 5,000원추가.
+		}
 	}
 	
 }
