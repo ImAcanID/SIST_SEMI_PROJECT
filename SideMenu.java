@@ -1,94 +1,151 @@
-import java.util.Scanner;//--나중에 삭제하셈.
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
-import java.util.ArrayList;
 
-class SideMenu 
+import java.util.Calendar;
+
+
+
+class SideMenu //extends SuperMenu → 할 필요 없을듯?
 {
-//=================================================================
-	/*
-	//String str = "안녕하세요";
+	String smCategory; //-- 사용자가 선택한 사이드 메뉴.
+	int smPrice; //-- 해당 사이드 메뉴의 가격.
+	int smCount;// 사이드메뉴 수량.
+	int totsmPrice;// 수량 * 가격
+
+	//IngredientManagement ig = new IngredientManagement(); // 재료 인스턴스 생성.
+	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+	
 	//생성자
-	SideMenu()
+	SideMenu() throws IOException
 	{
-		this.str = "건태야 사랑해";
-		System.out.println("사이드메뉴 생성자 실행 ... ! " );
-	}
-	*/
-
-//=================================================================	
-/*
-	//smCategory; //-- 전역변수
-	int smPrice;    //-- 전역변수
-
-	//생성자
-	SideMenu()
-	{
-		this.select();//-- 대충 이런 메소드가 있다고 생각하면!
-	}
-
-	public void select()
-	{
-		System.out.println("사이드메뉴 - 생성자 - select() 실행 완료.");
-		smPrice = 5500;
+		
+		sideSelect();
 	}
 	
-*/
-	int smPrice = 0; // -- 사이드메뉴 가격
-	int xx; 
-	//DafaultMenu.x; //-- 상속받는 관계는 아니고 저 변수를 
-				   //   여기 속성에서 쓸거라 이렇게 전역변수로 선언.
-
-	//생성자
-	SideMenu(int x) //--에그마요 BMT 이런거
+	//사이드 메뉴 고르기
+	void sideSelect() throws IOException
 	{
-		this.xx = x; //-- 그래서 나중에 이객체.xx 하면 이객체의 에그마요인지 B
-					//BMT 인지 알수잇음
-		smSelect();// -- 사이드메뉴종류선택하기 메소드 호출
-		addMenu();// -- 추가메뉴메소드 호출 → 다시 DefaultMenu호출하도록
-	}
-
-	public void smSelect()
-	{
-		System.out.println("사이드메뉴종류선택하기 메소드 호출 완료");
-		smPrice = 500;
-	}
-
-	public void addMenu() //--SuperMenu에 정의되어있음!
-						  //--근데 테스트하기 위해서 여기서 만듬.
-	{
-		DefaultMenu2 dm = new DefaultMenu2();
-		dm.dmSelect();
-
-	}
-}
-
-
-class DefaultMenu2
-{
-	static int x; //-- 전역변수, 에그마요, BMT, 써브웨이 클럽
-	static ArrayList<SideMenu> alist = new ArrayList<SideMenu>();
-	void dmSelect()
-	{
-		Scanner sc = new Scanner(System.in);
-		System.out.println("DafaultMenu2 클래스의 dmSelect() 호출..");
-		System.out.println("1,2,3중에 입력 :(에그마요 BMT 이런거)");
-		x = sc.nextInt();
-		if (x == 1)
-		{
-			System.out.println("에그마요");
-		}
-		else if (x == 2)
-		{
-			System.out.println("BMT");
-		}
-		else if (x == 3)
-		{
-			System.out.println("써브웨이 클럽");
-		}
-		System.out.println("if문 왜 안나옴 ㅠ?");
-		SideMenu sd = new SideMenu(x); //--일단 무조건 사이드메뉴 생성
-		alist.add(sd);
-		System.out.println(alist.get(0));
+		boolean xAu = false; // -- 미성년자면 맥주 사는거 불가.
 		
+		System.out.print("선택 가능한 사이드메뉴 [");
+		for (String s : sideArray)
+		{
+			System.out.print(s + " ");
+		}
+		System.out.println("]");
+		System.out.println("※ 맥주는 20살 이상만 가능합니다.");
+
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		do
+		{
+			System.out.print("사이드 메뉴를 선택해 주세요 : " );
+			smCategory = br.readLine();
+		}
+		while (!(smCategory.equals("콜라")||smCategory.equals("커피")||smCategory.equals("쿠키")||smCategory.equals("스프")||smCategory.equals("맥주")));
+		
+		if (smCategory.equals("맥주")) 
+		{
+			xAu = adultCertification();
+			if (xAu == true)
+			{
+			System.out.println("미성년자에게는 맥주를 판매하지 않습니다.");
+			return;
+			}
+		}
+			System.out.print("수량을 입력하세요 : " );
+			smCount = Integer.parseInt(br.readLine());
+
+		switch (smCategory)
+		{
+		case "콜라": smPrice = 1500; break;
+		case "커피": smPrice = 4500; break;
+		case "쿠키": smPrice = 6000; break;
+		case "스프": smPrice = 500; break;
+		case "맥주": smPrice = 5555; break;
+		}
+
+		totsmPrice = smCount * smPrice;
+		
+
+	}//end sideSelect()
+
+
+	boolean adultCertification() throws IOException
+	{
+		int userAge;//--유효한 주민번호 → 해당 주민번호의 현재 날짜의 나이 계산.
+		// 입력받는 주민번호(문자열 형태)
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		// 캘린더 인스턴스 생성.
+		Calendar now = Calendar.getInstance();
+		int yy = now.get(Calendar.YEAR);
+		boolean trueJoo = false; // 명확한 주민번호는 true반환.
+
+		// 입력받는 주민번호 (문자열 형태)
+		String str;
+		
+		// 주민번호의 각 자릿수에 곱하게 될 수 → 배열 형태로 구성    
+		int [] chk = {2, 3, 4, 5, 6, 7, 0, 8, 9, 2, 3, 4, 5};
+
+		// 곱셈 연산 후 누적합 ( 각 곱셈의 결과를 더해 나가라...)
+
+		int tot = 0; //7*2 + 5*3 + .. + 3 * 5 그래서 초기화 0으로
+		
+		do
+		{
+			System.out.print("주민번호입력(XXXXXX - XXXXXXX) : ");
+			str = br.readLine();
+			if (str.length() != 14)
+			{
+			System.out.println("다시 한번 입력을 확인해 주세요.");
+			}
+		}
+		while (str.length() != 14);
+		
+		
+		for (int i =0;i<13 ;i++ )//0 1 2 3 4 5 6 7 8 9 10 11 12
+		{
+			if (i ==6)
+			{
+				continue; // -- 뒷부분 무시하고 계속해라.
+			}
+			tot+= chk[i] * Integer.parseInt(str.substring(i,i+1)); //문자열의 인덱스 마지막 값이 13이라 i+1가능.
+			// 여기가 뒷부분임!
+
+		}
+		                                   
+											 
+
+		int su = 11 - tot % 11;
+
+		su = su % 10;	// su를 %= 10;
+		
+		if (su == Integer.parseInt(str.substring(13)))
+		{
+			trueJoo = true;
+		}
+		else 
+			System.out.println("주민번호가 유효하지 않습니다.");
+			
+		
+		if (trueJoo == true) //유효한 주민번호에서
+		{
+			userAge = yy - Integer.parseInt(str.substring(0,3)) - 1900+1; // 현재나이 계산해서 
+			if (userAge>=20)//20살이상이면.
+				return true;
+			else if (userAge<20)
+				return false;
+		}
+		
+			
 	}
 }
+		
+
+
+	
+
+
+

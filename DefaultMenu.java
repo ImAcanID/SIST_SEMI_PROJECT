@@ -18,6 +18,7 @@ public class DefaultMenu
 	int nTemp; //-- int타입의 빈 그릇
 	
 	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
+	ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
 
 	// 생성자.
 	DefaultMenu() throws IOException
@@ -33,6 +34,7 @@ public class DefaultMenu
 		Scanner sc = new Scanner(System.in);
 
 		System.out.println("※테스트용 빵객체 생성 → 1번");
+		System.out.println("※테스트용 사이드메뉴객체 생성 → 3번");
 		System.out.print("종류를 선택해 주세요(빵, 샐러드, 사이드 메뉴, 현재 주문 옵션 입력) :");
 		//strTemp2 = br.readLine();
 		nTemp = sc.nextInt();
@@ -40,6 +42,10 @@ public class DefaultMenu
 		if (nTemp == 1)
 		{
 			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
+		}
+		else if (nTemp == 3)
+		{
+			sidemenuArrayList.add(new SideMenu());
 		}
 
 		/*
@@ -95,46 +101,64 @@ public class DefaultMenu
 	}
 }
 */
-			//System.out.println("======================================================");
-			for (int i = 0;i<breadArrayList.size();i++)
+		if (!breadArrayList.isEmpty())
 		{
+			for (int i = 0;i<breadArrayList.size();i++)
+			{
 			System.out.print("           메뉴 :  " +breadArrayList.get(i).bCategory);
-			System.out.println();
-			System.out.print("           가격 : " + breadArrayList.get(i).bPrice);
-			System.out.println();
-			System.out.print("        빵 길이 : " + breadArrayList.get(i).bLength);
-			System.out.println();
-			System.out.print("        빵 종류 : " + breadArrayList.get(i).breadkind);
-			System.out.println();
-			System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
-			System.out.println();
+				System.out.println();
+				System.out.print("           가격 : " + breadArrayList.get(i).bPrice);
+				System.out.println();
+				System.out.print("        빵 길이 : " + breadArrayList.get(i).bLength);
+				System.out.println();
+				System.out.print("        빵 종류 : " + breadArrayList.get(i).breadkind);
+				System.out.println();
+				System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
+				System.out.println();
 
 
-			//제거선택한 야채 불러오기
-			String strTempx; // 그릇 하나 주세요.
-			System.out.print("   제거 선택 야채 : ");
-			for (String s :breadArrayList.get(i).vegetable)
-			{
-				strTempx = s;
-				System.out.print(s + "제외");
-			}
-			System.out.println();
-		
-			System.out.println();
-
-			//선택한 소스 불러오기
-			/*
-			String strTempy; // 그릇 하나 주세요.
-			System.out.print("      선택 소스 : ");
-			for (String s :breadArrayList.get(i).sauce)
-			{
-				strTempy = s;
-				System.out.print(s + " ");
-			}
-			System.out.println();
-			*/
+				//제거선택한 야채 불러오기
+				String strTempx; // 그릇 하나 주세요.
+				System.out.print("   제거 선택 야채 : ");
+				for (String s :breadArrayList.get(i).vegetable)
+				{
+					strTempx = s;
+					System.out.print(s + "제외");
+				}
+				System.out.println();
 			
+				System.out.println();
+
+				//선택한 소스 불러오기
+				/*
+				String strTempy; // 그릇 하나 주세요.
+				System.out.print("      선택 소스 : ");
+				for (String s :breadArrayList.get(i).sauce)
+				{
+					strTempy = s;
+					System.out.print(s + " ");
+				}
+				System.out.println();
+				*/
+			}
 		}
+		if (!sidemenuArrayList.isEmpty()) //-- 사이드메뉴가 하나라도 선택이 됐다면...
+		{
+			for (int i = 0;i<sidemenuArrayList.size();i++)
+			{
+				System.out.print("           메뉴 :  " +sidemenuArrayList.get(i).smCategory);
+				System.out.println();
+				System.out.print("      개당 가격 : " + sidemenuArrayList.get(i).smPrice);
+				System.out.println();
+				System.out.print("           수량 : " + sidemenuArrayList.get(i).smCount);
+				System.out.println();
+				System.out.print("        총 가격 : " + sidemenuArrayList.get(i).totsmPrice);
+				System.out.println();
+			}
+			System.out.println();
+		}
+		System.out.println();
+		
 	}
 }
 	
