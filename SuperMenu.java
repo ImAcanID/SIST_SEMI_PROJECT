@@ -57,6 +57,7 @@ public class SuperMenu
 	
 	void bdCustom() throws IOException // 빵 커스텀()----------------------------------------------------------------------
 	{
+		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		while (true)
@@ -90,11 +91,15 @@ public class SuperMenu
 			else
 				System.out.println("빵 이름을 다시 확인해 주세요!");
 		}
+		cusKey = 1;
+		checkCustom();
 	}// end bdCustom()
 
 
 	void ccSelect() throws IOException // 치즈 선택하기() -----------------------------------------
 	{
+		
+		
 		// String [] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
 		// int[] cCategory = {0, 0, 0, 0, 1} // 치즈 카테고리
 		//n = 2
@@ -142,6 +147,10 @@ public class SuperMenu
 		{
 			cheese = "치즈 선택 안함.";
 		}// end if
+		cusKey = 1;
+		checkCustom();
+		cusKey = 2;
+		checkCustom();
 	}
 		// 치즈 배열 값 테스트
 		/*
@@ -156,7 +165,8 @@ public class SuperMenu
 	// 야채 커스텀()-------------------------------------------------------------------------------
 	void vdCustom() throws IOException
 	{
-		//cusKey = 1;
+	
+		
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -203,12 +213,20 @@ public class SuperMenu
 		System.out.println();
 		*/
 
-
+		cusKey = 1;
+		checkCustom();
+		cusKey = 2;
+		checkCustom();
+		cusKey = 3;
+		checkCustom();
 	}//end vdCustom()
 
 	void scCustom() throws IOException // 소스 커스텀()--------------------------------------------
 	{
 		//int[] scArray = {0, 0, 0, 0, 0}; 
+		
+		
+		
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
@@ -266,7 +284,48 @@ public class SuperMenu
 		}
 		System.out.println();
 		*/
+		cusKey = 1;
+		checkCustom();
+		cusKey = 2;
+		checkCustom();
+		cusKey = 3;
+		checkCustom();
+		//cusKey = 4;
+		//checkCustom();
 	}
+
+	void checkCustom()
+	{
+		System.out.println("[현재까지 선택한 옵션]");
+		switch (cusKey)
+		{
+		case 1: System.out.println("선택한 빵 종류: " + breadkind);break;
+		case 2: System.out.println("선택한 치즈 종류: " + cheese);break;
+		case 3: checkVg();break;
+		//case 4: checkSc();break;
+		}
+
+	}
+	void checkVg()// 제거선택한 야채 종류 출력
+	{
+		System.out.print("제거선택한 야채 종류:");
+		for (String s:vegetable)
+		{
+			System.out.print(s+", ");
+		}
+		System.out.println();
+	}
+	/*
+	void checkSc()// 선택한 소스 종류 출력
+	{
+		System.out.print("선택한 소스 종류:");
+		for (String s:sauce)
+		{
+			System.out.print(s+", ");
+		}
+		System.out.println();
+	}
+	*/
 }
 
 				
