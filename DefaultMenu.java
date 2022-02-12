@@ -16,6 +16,7 @@ public class DefaultMenu
 	int nTemp;       //-- int타입의 빈 그릇
 	
 	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
+	ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
 	ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
 
 	// 생성자.
@@ -41,6 +42,10 @@ public class DefaultMenu
 		if (nTemp == 1)
 		{
 			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
+		}
+		else if (nTemp == 2)
+		{
+			saladArrayList.add(new Salad());
 		}
 		else if (nTemp == 3)
 		{
@@ -117,7 +122,7 @@ public class DefaultMenu
 				System.out.print("      선택 치즈 : " + breadArrayList.get(i).cheese);
 				System.out.println();
 				*/
-
+				System.out.println("종류            : 빵");
 				System.out.print("메뉴            : " + breadArrayList.get(i).bCategory);
 				System.out.println();
 				System.out.print("가격            : " + breadArrayList.get(i).bPrice);
@@ -152,13 +157,56 @@ public class DefaultMenu
 					System.out.print(s + " ");
 				}
 				System.out.println();
-				
 			}
+			//System.out.println();
 		}
+		System.out.println();
+
+		if (!saladArrayList.isEmpty())
+		{
+			for (int i = 0;i<saladArrayList.size();i++)
+			{
+				System.out.println("종류            : 샐러드");
+				System.out.print("메뉴            : " + saladArrayList.get(i).sCategory);
+				System.out.println();
+				System.out.print("가격            : " + saladArrayList.get(i).sPrice);
+				System.out.println();
+				System.out.print("선택 치즈       : " + saladArrayList.get(i).cheese);
+				System.out.println();
+
+
+				//제거선택한 야채 불러오기
+				String strTempx; // 그릇 하나 주세요.
+				System.out.print("제거 선택 야채  : ");
+				for (String s :saladArrayList.get(i).vegetable)
+				{
+					strTempx = s;
+					System.out.print(s + " ");
+				}
+				System.out.println();
+			
+				//System.out.println();
+
+				//선택한 소스 불러오기
+				
+				String strTempy; // 그릇 하나 주세요.
+				System.out.print("선택 소스       : ");
+				for (String s :saladArrayList.get(i).sauce)
+				{
+					strTempy = s;
+					System.out.print(s + " ");
+				}
+				System.out.println();
+			}
+			//System.out.println();
+		}
+		System.out.println();
+
 		if (!sidemenuArrayList.isEmpty()) //-- 사이드메뉴가 하나라도 선택이 됐다면...
 		{
 			for (int i = 0;i<sidemenuArrayList.size();i++)
 			{
+				System.out.println("종류            : 사이드 메뉴");
 				System.out.print("메뉴            :  " +sidemenuArrayList.get(i).smCategory);
 				System.out.println();
 				System.out.print("개당 가격       : " + sidemenuArrayList.get(i).smPrice);
@@ -170,8 +218,7 @@ public class DefaultMenu
 			}
 			System.out.println();
 		}
-		System.out.println();
-		
+		System.out.println();	
 	}
 }
 	

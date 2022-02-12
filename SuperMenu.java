@@ -205,7 +205,6 @@ public class SuperMenu
 		else 
 		{
 			vegetable = new String[1];
-			System.out.println("저는 야채 제거 안 해요 다 넣으세요");
 			vegetable[0] = "야채 제거하지 않음";
 		}
 
@@ -270,15 +269,21 @@ public class SuperMenu
 		checkCustom();
 	}
 
-	void checkCustom()
-	{
-		//System.out.println("\n[현재 선택 옵션]");
+	void checkCustom() // 여기 샐러드일 때는 case1 돌면 안 돼 .. 어카지? 
+	{                  // --> switch문 안에 if 중첩 가능. 
+		//System.out.println("\n[현재 선택 옵션]"); // 이거 여러 번 돌아서 메소드 호출 전에 각각 해놨음
 		switch (cusKey)
-		{
-		case 1: System.out.println("빵 종류 : " + breadkind);break;
-		case 2: System.out.println("치즈 종류 : " + cheese);break;
-		case 3: checkVg();break;
-		case 4: checkSc();break;
+		{	
+			case 1: 
+				if (breadkind!=null) // breadkind에 값 있을 때만.
+				{
+					System.out.println("빵 종류 : " + breadkind);break;
+				}
+				else // breadkind 값 없으면 salad.
+					break;
+			case 2: System.out.println("치즈 종류 : " + cheese);break;
+			case 3: checkVg();break;
+			case 4: checkSc();break;
 		}
 
 	}
