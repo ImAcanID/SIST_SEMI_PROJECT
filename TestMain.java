@@ -10,8 +10,6 @@ public class TestMain
 {
 	public static void main(String[] args) throws IOException
 	{
-
-
 		DefaultMenu dm = new DefaultMenu();
 		//dm.dmSelect();
 
@@ -130,7 +128,7 @@ public class TestMain
 
 // 해야 할일 
 //1. 소스 선택은 "소스 제외" 옵션이 있고 다중선택이 가능하다. // 문정 완
-//2. 야채를 안뺀다고 하는 사람에 대해 처리하기
+//2. 야채를 안뺀다고 하는 사람에 대해 처리하기 // 문정 완
 //3. 추가개수메소드 → 이건 고려해보자 일단,,
 //4. 감소메소드 → 이거도 고려해보자 .. 일단..
 //5.나머지 샐러드 사이드 메뉴 해결하기. → 사이드메뉴 거의 다 해결..
