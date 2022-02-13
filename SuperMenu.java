@@ -32,11 +32,16 @@ public class SuperMenu
 //==================================================================================================================================================
 
 	// 재료 클래스에서 받아올 변수.
+	/*
 	String[] breArray = {"화이트","허니오트","플랫브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
 	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
 	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+	*/
+
+	IngredientManagement im = new IngredientManagement();
+	String bremenu = im.breArray[0];
 
 	// 재료수량을 변경하기 위해 배열로 만듬.
 	int[] bdArray = {0, 0, 0}; // 빵

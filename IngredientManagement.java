@@ -10,7 +10,7 @@ class IngredientManagement
 	{
 
 		// 메뉴판
-		String[] breArray = {"화이트","허니오트","플랫브래드"};
+	    String[] breArray = {"화이트","허니오트","플랫브래드"};
 		String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 		String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
 		String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
@@ -73,7 +73,7 @@ class IngredientManagement
 		System.out.print("어떤 항목의 재료를 관리하시겠습니까? : "); // 빵 야채 소스
 		String kinds = sc.next();
 		
-		System.out.print(kinds + " 종류 입력해줘 : "); // 화이트
+		System.out.print(kinds + " 재료의 이름을 입력해 주세요 : "); // 화이트
 		String ingre = sc.next(); 
 		
 		int tmp = 0; // 재료 수량 기록할 임시 변수
@@ -85,7 +85,7 @@ class IngredientManagement
 			case "치즈" : tmp = cheese.get(ingre); break;
 			case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
 		}
-		System.out.printf("%s의 현재 수량은 %d이야.%n", ingre, tmp);
+		System.out.printf("%s의 현재 수량은 %d입니다.%n", ingre, tmp);
 		System.out.print("증가시킬 수량을 입력해 주세요 : ");
 		int su = sc.nextInt();
 		
