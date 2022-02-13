@@ -33,7 +33,7 @@ class Payment
 	
 	Order order;	// 주문내역
 	
-	Payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
+	Payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray) throws IOException
 	{
 		timeDiscount = false;
 		ageDiscount = false;
@@ -48,7 +48,7 @@ class Payment
 	public void print()	throws IOException	// **** 결제 화면 절차
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		System.out.println("할인받으실래요?(Y/N) : ");
+		System.out.print("할인받으실래요?(Y/N) : ");
 		String yesDiscount = br.readLine().toUpperCase(); 
 		
 		if (yesDiscount.equals("Y"))
@@ -56,7 +56,7 @@ class Payment
 			discount();
 		}
 
-		System.out.println("포인트 사용하실래요?(Y/N) : ");
+		System.out.print("포인트 사용하실래요?(Y/N) : ");
 		String yesPoint = br.readLine().toUpperCase();
 		
 		if (yesPoint.equals("Y"))	// 포인트 사용 여부
@@ -74,16 +74,16 @@ class Payment
 
 		main.sales.recordSales(order);	// 판매 내역 기록
 
-		printBill();	// 영수증 출력
+		//printBill();	// 영수증 출력
 	}
-
+/*
 	public void printBill()	// 영수증 출력 메소드
 	{	
 		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership);
 		
 		bill.print();
 	}
-
+*/
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
 		int tot = order.total; 
@@ -145,7 +145,7 @@ class Payment
 			        // 중복할인 안되게..
 		}
 
-		System.out.println("오늘은 나이 끝 자리가 " + randomTime +"살 인 사람 할인 가능. 할인을 받으시겠습니까?(Y/N) : ");
+		System.out.print("오늘은 나이 끝 자리가 " + randomTime +"살 인 사람 할인 가능. 할인을 받으시겠습니까?(Y/N) : ");
 		String yesAgeDiscount = br.readLine().toUpperCase();
 		//char discountObject? = y or n;
 		if (yesAgeDiscount.equals("Y"))
@@ -192,7 +192,7 @@ class Payment
 
 	boolean checkMembership() throws IOException
 	{
-		boolean isMembership;
+		boolean isMembership = false;
 		while(true)
 		{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -364,9 +364,9 @@ class Payment
 	
 	
 
-	public void savePoint() // 포인트 적립 메소드
+	public void savePoint() throws IOException // 포인트 적립 메소드
 	{
-		String promotionMenu; // 프로모션 적용받을 메뉴
+		String promotionMenu = "없음."; // 프로모션 적용받을 메뉴
 		int randomDay = main.time.getDate()[3];
 
 		if(1 <= randomDay && randomDay <= 5) //main.time.day
@@ -393,6 +393,7 @@ class Payment
 					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
 					totalPoint = main.ct[customerNumber].point;
 					System.out.printf("적립 후 현재 포인트는 %d입니다.", totalPoint);
+
 					saveMembership = true;
 				}
 				else

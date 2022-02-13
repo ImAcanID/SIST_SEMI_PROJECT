@@ -102,8 +102,8 @@ public class main
 		if(input == 1)
 			iim.ingPut();
 
-		//else
-		//	sales.print();
+		else
+			sales.print();
 		
 
 	}
