@@ -76,7 +76,7 @@ public class IngredientManagement
 		//--==>>100스윗 어니언 수량
 
 		// 재료 넣기 메소드 → 프로그램 main() 에서 관리자 모드에서 실행.
-	void ingPut()
+	static void ingPut()
 	{
 		
 		Scanner sc = new Scanner(System.in);
