@@ -68,7 +68,7 @@ class Payment
 
 		savePoint();	// 포인트 적립
 
-		System.out.print("현재 가격정보 출력");
+		System.out.print("현재 가격정보 출력\n");
 
 		choosePayment();	// 결제 수단 선택 및 결제
 
@@ -88,7 +88,7 @@ class Payment
 	{
 		int tot = order.total; 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));	
-		System.out.printf("지불해야하실 금액은 %d입니다.", tot);
+		System.out.printf("지불해야하실 금액은 %d입니다.\n", tot);
 		
 		int n;
 		do
@@ -386,7 +386,7 @@ class Payment
 			}
 		}
 		
-		System.out.println("멤버십이 있나?");
+		System.out.println("포인트 적립하실래요?");
 		if(checkMembership()) // checkMembership 메소드 호출하여 true / false 판별
 		{
 			for(Bread b : breadArray) // 빵 객체를 하나씩 받아와서..
