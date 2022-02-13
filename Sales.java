@@ -18,19 +18,26 @@ class Sales		// 판매 내역을 기록하는 클래스
 	int[] saladList;	// 샐러드 종류별 매출	(0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽 / 3: 다 합친 것)
 	int[] sideList;		// 사이드 종류별 매출	(0: 콜라 / 1: 커피 / 2: 쿠키 / 3.스프  /4.맥주 /5: 다 합친 것)
 
+	//Integer[] temp1;
+	//Integer[] temp2;
+	//Integer[] temp3;
+
 		
 	Sales () //생성자.
 	{
 		breadList = new int [4]; //-- 빵 종류별 담고 이 배열의 크기는 변화x 
 		saladList = new int [4];
 		sideList = new int [6]; 
-		
+		breadSales = new ArrayList<>();
+		saladSales = new ArrayList<>();
+		sideSales = new ArrayList<>();
+
 		for(int i=0; i<3; i++)
 		{
 			Integer[] temp1 = {breadPrice[i], 0, 0, 0};// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
 			Integer[] temp2 = {saladPrice[i], 0, 0};// { 개당 가격, 판매 갯수, 시간 할인 횟수 }
 
-			breadSales.add(temp1);
+			breadSales.add(temp1);  //breadSales.get(1)[1]breadSales = new ArrayList<>();
 			saladSales.add(temp2);
 		}
 
@@ -129,6 +136,7 @@ class Sales		// 판매 내역을 기록하는 클래스
 		for(int i=0; i<3; i++)
 		{
 			Integer[] temp = breadSales.get(i);	//breadSales → 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽
+			//temp = {가격, 갯수, 시간할인.. }
 			int sum = temp[0] * temp[1] - (main.TIME_DISCOUNT_MONEY)*temp[2] + (main.LONG_BREAD_MONEY)*temp[3];
 						
 			// breadSales 내부 Integer[] 정보
@@ -171,18 +179,38 @@ class Sales		// 판매 내역을 기록하는 클래스
 
 	void print()
 	{
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리아BMT", "서브웨이클럽", "총");
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 1, 2, 3, 6);
-		System.out.println();
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리아BMT", "서브웨이클럽", "총");
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 3, 2, 1, 6);
-		System.out.println();
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","사이드메뉴","콜라","맥주", "쿠키", "총");
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 2, 2, 2, 6);
-		System.out.println();
+		int totBread =0;
+		int totSalad=0;//saladSales;
+		int totSide=0;//sideSales;
+		int sum = totBread + totSalad + totSide;
+		for (int i = 0 ;i<3 ;i++ )
+		{
+			totBread += breadSales.get(i)[1];
+		}
+		for (int i = 0 ;i<3 ;i++ )
+		{
+			 totSalad += saladSales.get(i)[1];
+		}
+		for (int i = 0 ;i<5 ;i++ )
+		{
+			totSide +=sideSales.get(i)[1];
+		}
 
+		
+		//breadSales.get(0).temp[1]
+		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리아 비엠티", "서브웨이클럽", "총");
+		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수",breadSales.get(0)[1], breadSales.get(1)[1], breadSales.get(2)[1],totBread);
+		System.out.println();
+		System.out.printf("%5s%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리아 비엠티", "서브웨이클럽", "총");
+		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수",saladSales.get(0)[1],saladSales.get(1)[1],saladSales.get(2)[1],totSalad);
+		System.out.println();
+		//콜라/커피/쿠피/스프/맥주
+		System.out.printf("%5s%7s\t%7s\t%8s\t%8s\t%8s\t%5s\n","사이드메뉴","콜라","커피","쿠키","스프","맥주", "총");
+		System.out.printf("%5s\t%8d\t%8d\t%8d\t%8d\t%8d\t%5d\n", "개수",sideSales.get(0)[1],sideSales.get(1)[1],sideSales.get(2)[1],sideSales.get(3)[1],
+			sideSales.get(4)[1],totSide);
+		System.out.println();
 		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n", " ", "빵","샐러드", "사이드메뉴", "총");
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "매출", 3, 2, 1, 6);
+		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "매출",totBread,totSalad,totSide,sum);
 
 	}
 
