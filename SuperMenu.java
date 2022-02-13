@@ -122,10 +122,10 @@ public class SuperMenu
 			while (true)
 			{
 				System.out.print("\n선택 가능한 치즈 종류 [");
-				for (int i=0; i<chArray.length; i++)
+				for (int i=0; i<chArray.length-1; i++)
 				{
 					System.out.print(chArray[i]);
-					if (i+1 != chArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+					if (i+1 != chArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
 					{
 						System.out.print(", ");
 					}
@@ -261,10 +261,10 @@ public class SuperMenu
 		if (con.equals("Y") || con.equals("y"))
 		{
 			System.out.print("\n선택 가능한 소스 종류 [");
-			for (int i=0; i<sauArray.length; i++)
+			for (int i=0; i<sauArray.length-1; i++)
 			{
 				System.out.print(sauArray[i]);
-				if (i+1 != sauArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				if (i+1 != sauArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
 				{
 					System.out.print(", ");
 				}
