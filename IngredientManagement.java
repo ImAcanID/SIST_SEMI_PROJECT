@@ -158,15 +158,23 @@ public class IngredientManagement
 		
 		for (int i = 0;i<breArray.length ;i++ ) // 빵 종류 화이트, 허니오트...
 		{
-			strxxx.equals(breArray);
-			tempABCD = 1;
-			System.out.println("빵 종류 선택해서 tempABCD에 1담음");
+			if (strxxx.equals(breArray[i]))
+			{
+				tempABCD = 1;
+			}
+			break;	
+			
 		}
 		for (int i = 0;i<chArray.length-1 ;i++ ) // 치즈 종류, 슈레드 ,,, 
 		{
-			strxxx.equals(chArray);
-			tempABCD = 2;
+			if (strxxx.equals(chArray[i]))
+			{
+				tempABCD = 2;
+			}
+			
+			break;
 		}
+		System.out.println("tempABCD 값 : " + tempABCD);
 
 		switch (tempABCD) // 화이트, 슈레드 치즈
 		{
@@ -176,10 +184,9 @@ public class IngredientManagement
 				if (breArray[i].equals(strxxx))
 				{
 					wonSu = bread.get(strxxx);
-					System.out.println("원래수량 : "  + wonSu);
 					afterSu = wonSu-count22;//객체 수량
 					bread.put(strxxx,afterSu); // 남은 재고 수량 변경.
-					System.out.println("수정된 수량 : " + afterSu);
+					System.out.println("풋됐나? ");
 					if (afterSu == 0)
 						breArray[i] = "해당 메뉴 품절";
 					break;// 가장 가까운 반복문을 나간다.
@@ -199,15 +206,15 @@ public class IngredientManagement
 				}
 		
 			}; break;
-			default : System.out.println("안됩니다.");
+			default : System.out.println("없음.");
 		}
-		System.out.println("현재 재고 수량 : " +bread.get(strxxx));
+		System.out.println("현재 남은 재고 수량: " + bread.get(strxxx));
 	}
 	// 오버로딩 구간.
 	void decreaseBread(String [] strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
 	{
 		//① 수량 줄이기
-		String userArr="0"; // 유저 요소 하나씩 담기
+		String userArr="없음"; // 유저 요소 하나씩 담기
 		
 
 		int wonSu;// 남아있는 재고 수량.
