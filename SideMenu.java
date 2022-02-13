@@ -13,6 +13,33 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 	int smPrice; //-- 해당 사이드 메뉴의 가격.
 	int smCount;// 사이드메뉴 수량.
 	int totsmPrice;// 수량 * 가격
+	//countSalad =1;
+	/*
+	카운트증가() → 재료클래서
+	{
+		빵 - 에그마요 - 토마토제외 - 똑같은걸
+		객체 생성 하는 ... 해야할지
+		count + +;
+	}
+	*/
+	/*
+	Countadd()→ 재료클래스 .. 
+	{
+		몇개 증가할래? 증가안해, 2개증가해
+		증가안해 → return;
+		2개증가 → count샐러드 +=2;
+		
+		빵개수 +=3; 
+		전체재료들이 소비한 재료들이
+		_ _ _ _ 
+		샐러드 (샐러드 - 에그마요 - 소스없음, 개수=1)
+		샐러드 (샐러드 - 에그마요 - 소스없음, 개수 ++)
+		//재료클래스 재료 뺄때 슈레드 * 개수; 
+
+	ig.Countadd();
+
+	}
+	*/
 
 	//IngredientManagement ig = new IngredientManagement(); // 재료 인스턴스 생성.
 

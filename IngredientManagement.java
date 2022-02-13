@@ -31,7 +31,7 @@ public class IngredientManagement
 	//각 자료구조에 메뉴 요소와 수량 담기.
 	
 	//빵종류
-	void input2()
+	void input2() //초기 재고 수량.
 	{
 		for(String s:breArray)
 		{
@@ -71,7 +71,7 @@ public class IngredientManagement
 		//System.out.println(sauce.get("스윗 어니언") + "스윗 어니언 수량");
 		//--==>>100스윗 어니언 수량
 
-		// 재료 넣기 메소드
+		// 재료 넣기 메소드 → 프로그램 main() 에서 관리자 모드에서 실행.
 	void ingPut()
 	{
 		
@@ -116,15 +116,16 @@ public class IngredientManagement
 		}
 		System.out.printf("%s의 증가 후 수량은 %d입니다.%n", ingre, tmp);
 	}
+	void addCount() //객체 수량 늘리기
+	{
+		System.out.print("이거랑 똑같은 커스텀을 한 음식의 개수를 늘릴거니? (Y/N)
+	}
 
-		/*
-		String [] menuPan(String str)
-		{
-			
+	void decrease() //재고 수량 줄이기
+	{
+	}
 
-			return String[]
-		}
-	*/
+		
 	
 
 }
