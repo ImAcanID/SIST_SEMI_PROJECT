@@ -15,7 +15,12 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 	int totsmPrice;// 수량 * 가격
 
 	//IngredientManagement ig = new IngredientManagement(); // 재료 인스턴스 생성.
-	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+
+	//String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+	IngredientManagement ig = new IngredientManagement();
+	//String[] sideArray2 = ig.munuPan(sideArray[]);
+	//--==>> 
+
 	
 	//생성자
 	SideMenu() throws IOException
@@ -37,10 +42,10 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 		*/
 		
 		System.out.print("\n선택 가능한 사이드 메뉴 [");
-		for (int i=0; i<sideArray.length; i++)
+		for (int i=0; i< ig.sideArray.length; i++)
 		{
-			System.out.print(sideArray[i]);
-			if (i+1 != sideArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+			System.out.print( ig.sideArray[i]);
+			if (i+1 !=  ig.sideArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
 			{
 				System.out.print(", ");
 			}
