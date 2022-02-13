@@ -74,16 +74,16 @@ class Payment
 
 		main.sales.recordSales(order);	// 판매 내역 기록
 
-		//printBill();	// 영수증 출력
+		printBill();	// 영수증 출력
 	}
-/*
+
 	public void printBill()	// 영수증 출력 메소드
 	{	
 		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership);
 		
 		bill.print();
 	}
-*/
+
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
 		int tot = order.total; 
@@ -209,10 +209,12 @@ class Payment
 			{
 				isMembership = (memberNum == main.ct[i].memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
 																	   // 일치하면 isMembership = true
-				if(isMembership)
+				if(isMembership) 
+				{
 					System.out.println("멤버쉽이 확인되었습니다");
-
-				customerNumber = i;
+					customerNumber = i;
+					break;
+				}
 			}
 
 			if(!isMembership)
