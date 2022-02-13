@@ -41,6 +41,7 @@ public class SuperMenu
 	*/
 
 	IngredientManagement ig = new IngredientManagement();
+	ig.input2();
 	
 	// 재료수량을 변경하기 위해 배열로 만듬.
 	int[] bdArray = {0, 0, 0}; // 빵

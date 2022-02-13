@@ -30,7 +30,7 @@ public class IngredientManagement
 	//생성자
 	IngredientManagement()
 	{
-		input2();
+		//input2();
 	}
 	//각 자료구조에 메뉴 요소와 수량 담기.
 	
