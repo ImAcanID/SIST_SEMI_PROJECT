@@ -24,8 +24,8 @@ class Payment
 	int customerNumber; // 현재 더미 고객 인덱스
 
 
-	String[] promotionSandwich = { "에그마요", "이탈리아 비엠티", "서브웨이클럽",
-		"에그마요", "이탈리아 비엠티", "서브웨이클럽", "에그마요"}; // 요일에 따라 프로모션 할인을 받는 메뉴 목록
+	String[] promotionSandwich = { "에그마요", "이탈리안 비엠티", "서브웨이 클럽",
+		"에그마요", "이탈리안 비엠티", "서브웨이 클럽", "에그마요"}; // 요일에 따라 프로모션 할인을 받는 메뉴 목록
 	
 	ArrayList<Bread> breadArray;  // 빵 객체 
 	ArrayList<Salad> saladArray;  // 샐러드 객체
@@ -55,6 +55,7 @@ class Payment
 		{
 			discount();
 		}
+		System.out.println();
 
 		System.out.print("포인트 사용하실래요?(Y/N) : ");
 		String yesPoint = br.readLine().toUpperCase();
@@ -63,10 +64,12 @@ class Payment
 		{
 			usePoint();
 		}
+		System.out.println();
 
 		calTotal();	// 총합 계산
 
 		savePoint();	// 포인트 적립
+		System.out.println();
 
 		System.out.print("현재 가격정보 출력\n");
 
@@ -79,7 +82,7 @@ class Payment
 
 	public void printBill()	// 영수증 출력 메소드
 	{	
-		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership);
+		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership, saveMembership);
 		
 		bill.print();
 	}
@@ -130,6 +133,7 @@ class Payment
 			change = cash - tot; // change는 거스름돈
 			System.out.println("거스름돈은 " + change + "원 입니다.");
 		}
+		System.out.println();
 	}
 	
 	public void discount() throws IOException //  할인받을지 말지 검사
@@ -165,7 +169,7 @@ class Payment
 			int point = main.ct[customerNumber].point;
 			
 			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
-			System.out.println("고객님의 잔여 포인트는 : " + point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			System.out.println("고객님의 잔여 포인트는 \"" + point + "\" 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
 			
 			if(point > 1000)   
 			{
@@ -180,6 +184,7 @@ class Payment
 				usedPoint = wantToPoint;
 			
 				main.ct[customerNumber].point -= usedPoint;
+				totalPoint -= usedPoint;
 
 				useMembership = true;
 			}
@@ -194,18 +199,42 @@ class Payment
 	boolean checkMembership() throws IOException
 	{
 		boolean isMembership = false;
-		while(true)
-		{
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			//멤버십 번호를 입력받고나서 있는지 없는지 검사
-			//(main에 있을 더미데이터 이용)
-			System.out.print("멤버쉽 번호를 입력하세요 : ");
-			int memberNum = Integer.parseInt(br.readLine());
 
-			// memberNum이 Customer에 있으면,
-			
-			
-			//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//멤버십 번호를 입력받고나서 있는지 없는지 검사
+		//(main에 있는 더미 이용)
+		
+		System.out.print("멤버쉽 번호를 입력하세요 : ");
+		int memberNum = Integer.parseInt(br.readLine());
+		
+		//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
+		for (int i=0; i<main.ct.length; i++ ) // main안에 Customer ct를 하나씩 불러오면서 검사
+		{
+			isMembership = (memberNum == main.ct[i].memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
+																   // 일치하면 isMembership = true
+			if(isMembership) 
+			{
+				System.out.println("멤버쉽이 확인되었습니다\n");
+				customerNumber = i;
+				totalPoint = main.ct[i].point;
+				return true;
+			}
+		}
+		
+		String temp;
+		
+		
+		do
+		{
+			System.out.println();
+			System.out.print("멤버쉽 번호를 다시 입력하려면 Y를 입력하세요. : ");
+			temp = br.readLine().toUpperCase();
+		
+			if(!temp.equals("Y"))
+				return false;
+
+			System.out.print("멤버쉽 번호를 입력하세요 : ");
+			memberNum = Integer.parseInt(br.readLine());
 			for (int i=0; i<main.ct.length; i++ ) // main안에 Customer ct를 하나씩 불러오면서 검사
 			{
 				isMembership = (memberNum == main.ct[i].memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
@@ -214,19 +243,12 @@ class Payment
 				{
 					System.out.println("멤버쉽이 확인되었습니다");
 					customerNumber = i;
-					break;
-
+					return true;
 				}
 			}
-
-			if(!isMembership)
-			{
-				return false;
-			}
-			// while true기 때문에 멤버십 있든 없든 일단 나와야해서 break;
-			break;
 		}
-		return isMembership;
+		while (!isMembership);
+		return false; // 올 일 없지만 형식 상
 	}
 	
 	public void calTotal()	// 총합 계산
@@ -255,68 +277,6 @@ class Payment
 		
 		
 		order.waitingTime = waitingTime;
-
-		/*
-		int tmpTotal = 0;			// 계산용 임시변수tmpTotal.       할인적용된 총합
-		int tmpBeforeTotal = 0;		// 계산용 임시변수tmpBeforeTotal. 할인 적용 전 총합
-
-		
-
-		for (Bread b : breadArray)  // 빵1 불러옴
-		{
-					
-			int tmp = 0;			// 계산용 임시 변수
-			tmp += b.bPrice;
-			
-			if(b.bLength == 30)
-				tmp += b.bLength;
-			
-			calWatingTime(b);  // 빵 b
-
-						  //현재 1개가격  * n개
-			tmpBeforeTotal += (tmp  *  s.갯수 );
-			
-			if(timeDiscount)
-			{
-				tmp -= 500;	
-			}
-			tmpTotal += (tmp * s.갯수)		
-		}
-
-		for (Salad s : SaladArray)  
-		{
-			int tmp = 0;
-			tmp += s.bPrice;
-			
-			tmpBeforeTotal += (tmp * s.갯수);
-			
-			calWatingTime(s); // 샐러드 s
-			
-			if(timeDiscount)
-			{
-				tmp -= 500;	
-			}
-			
-			tmpTotal += (tmp*s.갯수)
-		}
-
-		for (Side sd : SideArray)
-		{
-			int tmp  = 0;
-			tmp += sd.bPrice;
-			
-			tmpBeforeTotal += (tmp*s.갯수);
-			tmpTotal += (tmp*s.갯수);
-		}
-
-		if(ageDiscount)     //ageDiscount
-		{
-			tmpTotal - 500;
-		}
-
-		total = tmpTotal//(여기서 계산한거);
-		beforeTotal = tmpBeforeTotal//(여기서 계산한거);
-		*/
 		
 	}
 
@@ -334,7 +294,7 @@ class Payment
 			{
 				case "에그마요": earlyTime +=5; break;
 				case "이탈리안 비엠티" : earlyTime +=2; break;
-				case "서브웨이클럽":earlyTime +=10; break;
+				case "서브웨이 클럽":earlyTime +=10; break;
 			}
 		}
 		else
@@ -344,23 +304,11 @@ class Payment
 			{
 				case "에그마요": earlyTime +=15; break;
 				case "이탈리안 비엠티" : earlyTime +=12; break;
-				case "서브웨이클럽":earlyTime +=20; break;
+				case "서브웨이 클럽":earlyTime +=20; break;
 			}
 		}
 	
-			
-		/*
-		switch (디폴트 메뉴가 뭔지)
-		{
-			case bmt : earlyTime++;
-					break;
-			case 에그마요: earlyTime+=2;
-					break;
-			default: break;
-		} 
-		*/
-
-		earlyTime = earlyTime *  1/*s.갯수*/; 
+		earlyTime = earlyTime *  1; 
 
 		
 		waitingTime += earlyTime;	
@@ -370,7 +318,7 @@ class Payment
 
 	public void savePoint() throws IOException // 포인트 적립 메소드
 	{
-		String promotionMenu = "없음."; // 프로모션 적용받을 메뉴
+		String promotionMenu = "없음"; // 프로모션 적용받을 메뉴
 		int randomDay = main.time.getDate()[3];
 
 		if(1 <= randomDay && randomDay <= 5) //main.time.day
@@ -378,38 +326,61 @@ class Payment
 			
 			switch (randomDay)
 			{
-				case 1: promotionMenu = promotionSandwich[randomDay-1]; break; 
-				case 2:	promotionMenu = promotionSandwich[randomDay-2]; break;
-				case 3: promotionMenu = promotionSandwich[randomDay-3]; break;
-				case 4: promotionMenu = promotionSandwich[randomDay-4]; break;
-				case 5: promotionMenu = promotionSandwich[randomDay-5]; break;
+				case 1: promotionMenu = promotionSandwich[randomDay]; break; 
+				case 2:	promotionMenu = promotionSandwich[randomDay]; break;
+				case 3: promotionMenu = promotionSandwich[randomDay]; break;
+				case 4: promotionMenu = promotionSandwich[randomDay]; break;
+				case 5: promotionMenu = promotionSandwich[randomDay]; break;
+				default: promotionMenu = "없음";
 			}
 		}
+		System.out.println(promotionMenu+ " " + randomDay);
 		
-		System.out.println("포인트 적립하실래요?");
-		if(checkMembership()) // checkMembership 메소드 호출하여 true / false 판별
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("포인트 적립하실래요?(Y/N) : ");
+		String yesOrNo = br.readLine().toUpperCase();
+		
+		if (yesOrNo.equals("Y"))	// 포인트 적립 여부
 		{
-			for(Bread b : breadArray) // 빵 객체를 하나씩 받아와서..
+			if (useMembership)
 			{
-				boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
-				if(cond)
+				for(Bread b : breadArray) // 빵 객체를 하나씩 받아와서..
 				{
-					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
-					totalPoint = main.ct[customerNumber].point;
-					System.out.printf("적립 후 현재 포인트는 %d입니다.", totalPoint);
+					boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
+					if(cond)
+					{
+						main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+						totalPoint = main.ct[customerNumber].point;
+						
+						saveMembership = true;
+					}
+				}
+			}
+			else
+			{
+				if(checkMembership()) // checkMembership 메소드 호출하여 true / false 판별
+				{
+					for(Bread b : breadArray) // 빵 객체를 하나씩 받아와서..
+					{
+						boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
+						if(cond)
+						{
+							main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+							totalPoint = main.ct[customerNumber].point;
 
-					saveMembership = true;
+							saveMembership = true;
+						}
+					}					
 				}
 				else
 				{
-					System.out.println("적립 가능한 메뉴가 아닙니다.");
+					return;
 				}
-			}		
-			
-		}
-		else
-		{
-			return;
+			}
+			if(saveMembership)
+					System.out.printf("적립 후 현재 포인트는 %d입니다.\n", totalPoint);
+			else
+				System.out.println("적립 가능한 메뉴가 없습니다.");
 		}
 	}
 	

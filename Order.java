@@ -48,10 +48,14 @@ class Order
 		// 빵 길이 추가 여부
 		if (b.bLength == 30)
 			temp[4] = 1;
+		else
+			temp[4] = 0;
 		
 		// 시간 할인 적용 여부
 		if(timeDiscount)
 			temp[3] = 1;
+		else
+			temp[3] = 0;
 
 		// 갯수
 		temp[1] = b.bCount;
@@ -89,6 +93,8 @@ class Order
 		// 시간 할인 적용 여부
 		if(timeDiscount)
 			temp[3] = 1;
+		else
+			temp[3] = 0;
 
 		// 갯수
 		temp[1] = s.sCount;
@@ -145,8 +151,8 @@ class Order
 
 	void recordAgeDiscount(boolean ageDiscount)
 	{
-		ageDiscount = true;
-		total -= main.AGE_DISCOUNT_MONEY;
+		if(ageDiscount)
+			total -= main.AGE_DISCOUNT_MONEY;
 	}
 
 	void recordPoint(int point)
