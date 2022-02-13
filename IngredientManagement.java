@@ -12,7 +12,7 @@ public class IngredientManagement
 	//{
 	
 	// 메뉴판
-	String[] breArray = {"화이트","허니오트","플랫브래드"};
+	String[] breArray = {"화이트","허니오트","플랫 브레드"};
 	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
 	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
 	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
@@ -20,17 +20,17 @@ public class IngredientManagement
 
 
 	// 야채,소스,치즈,빵,사이드메뉴 수량 담을 자료구조 생성
-	Map<String, Integer> bread = new HashMap<String, Integer>();
-	Map<String, Integer> vegetable = new HashMap<String, Integer>();
-	Map<String, Integer> sauce = new HashMap<String, Integer>();
-	Map<String, Integer> cheese = new HashMap<String, Integer>();
-	Map<String, Integer> sidemenu = new HashMap<String, Integer>();
+	static Map<String, Integer> bread = new HashMap<String, Integer>();
+	static Map<String, Integer> vegetable = new HashMap<String, Integer>();
+	static Map<String, Integer> sauce = new HashMap<String, Integer>();
+	static Map<String, Integer> cheese = new HashMap<String, Integer>();
+	static Map<String, Integer> sidemenu = new HashMap<String, Integer>();
 				
 	
 	//생성자
 	IngredientManagement()
 	{
-		//input2();
+		input2();
 	}
 	//각 자료구조에 메뉴 요소와 수량 담기.
 	
@@ -41,12 +41,14 @@ public class IngredientManagement
 		{
 			bread.put(s, 100);
 		}
+		bread.put("화이트", 0);
 
 		//야채종류
 		for(String s:veArray)
 		{
 			vegetable.put(s, 100);
 		}
+		vegetable.put("토마토", 0);
 
 		//시연용. 토마토 재료 수량 0 → 관리자모드에서 수량 증가 보여주기.
 		vegetable.put("토마토",0);
@@ -56,12 +58,14 @@ public class IngredientManagement
 		{
 			sauce.put(s, 100);
 		}
+		sauce.put("스윗 어니언", 0);
 		
 		//치즈종류
 		for(String s:chArray)
 		{
 			cheese.put(s, 100);
 		}
+		cheese.put("아메리칸 치즈", 0);
 
 		//사이드메뉴종류	
 		for(String s:sideArray)
@@ -77,8 +81,7 @@ public class IngredientManagement
 
 		// 재료 넣기 메소드 → 프로그램 main() 에서 관리자 모드에서 실행.
 	static void ingPut()
-	{
-		
+	{	
 		Scanner sc = new Scanner(System.in);
 		System.out.println("[빵, 치즈, 야채, 소스, 사이드]");
 		System.out.print("어떤 항목의 재료를 관리하시겠습니까? : "); // 빵 야채 소스
@@ -148,47 +151,53 @@ public class IngredientManagement
 		}
 		
 	}
-	void decreaseBread(String strxxx, int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
+	void decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
+		SuperMenu sm = new SuperMenu();
+
 		//① 수량 줄이기
 		int wonSu;// 남아있는 재고 수량.
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
 		int afterSu=0;// 원래 수량 - 유저 수량
 		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
 		
-		for (int i = 0;i<breArray.length ;i++ ) // 빵 종류 화이트, 허니오트...
-		{
+		for (int i=0; i<breArray.length; i++) // 빵 종류 화이트, 허니오트...
+		{             
 			if (strxxx.equals(breArray[i]))
 			{
+				//System.out.println("i는 여기까지 왔다" + i);
+				//System.out.println("받아온 커스텀 메뉴 정보 : " + strxxx);
+				//System.out.println("받아온 커스텀 메뉴가 배열 정보와 같다.");
 				tempABCD = 1;
 			}
-			break;	
-			
+			// break; // 얘 있으니까 반복문 나가버려서 i가 0이야 ㅋㅋㅋㅋ
 		}
-		for (int i = 0;i<chArray.length-1 ;i++ ) // 치즈 종류, 슈레드 ,,, 
+		for (int i=0; i<chArray.length-1; i++) // 치즈 종류, 슈레드 ,,, 
 		{
 			if (strxxx.equals(chArray[i]))
 			{
 				tempABCD = 2;
 			}
-			
-			break;
 		}
-		System.out.println("tempABCD 값 : " + tempABCD);
+		//System.out.println("tempABCD 값 : " + tempABCD);
 
-		switch (tempABCD) // 화이트, 슈레드 치즈
+		switch (tempABCD) // 빵 종류 
 		{
 			//case 0 : System.out.println("안됨");
-			case 1:for (int i = 0;i<breArray.length ;i++ )
+			case 1:for (int i=0; i<breArray.length; i++)
 			{
 				if (breArray[i].equals(strxxx))
 				{
 					wonSu = bread.get(strxxx);
 					afterSu = wonSu-count22;//객체 수량
 					bread.put(strxxx,afterSu); // 남은 재고 수량 변경.
-					System.out.println("풋됐나? ");
-					if (afterSu == 0)
+					//System.out.println("풋됐나? "); // 테스트 출력
+					if (afterSu < 0)
+					{
 						breArray[i] = "해당 메뉴 품절";
+						System.out.println("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.");
+						sm.bdCustom();
+					}
 					break;// 가장 가까운 반복문을 나간다.
 				}
 		
@@ -208,7 +217,7 @@ public class IngredientManagement
 			}; break;
 			default : System.out.println("없음.");
 		}
-		System.out.println("현재 남은 재고 수량: " + bread.get(strxxx));
+		//System.out.println("현재 남은 재고 수량 : " + bread.get(strxxx));
 	}
 	// 오버로딩 구간.
 	void decreaseBread(String [] strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
@@ -240,7 +249,7 @@ public class IngredientManagement
 			}
 			break;
 		}
-		switch (tempABCD) // 화이트, 슈레드 치즈
+		switch (tempABCD)
 		{
 			/*case 3:for (int i = 0;i<veArray ;i++ )
 			{

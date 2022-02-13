@@ -41,7 +41,8 @@ public class SuperMenu
 	*/
 
 	IngredientManagement ig = new IngredientManagement();
-	ig.input2();
+
+	// ig.input2(); // 여기서 호출 안 돼
 	
 	// 재료수량을 변경하기 위해 배열로 만듬.
 	int[] bdArray = {0, 0, 0}; // 빵
@@ -103,7 +104,7 @@ public class SuperMenu
 			else
 				System.out.println("빵 종류를 다시 확인해 주세요");
 		}
-		ig.decreaseBread(breadkind,Bread.bCount);
+		ig.decreaseBread(breadkind, Bread.bCount);
 		//decrease();
 		System.out.println("\n[현재 선택 옵션]");
 		cusKey = 1;
