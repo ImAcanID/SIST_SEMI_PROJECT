@@ -11,6 +11,7 @@ public class main
 	// static Sales sales;
 	//static Ingredient ingred;
 	static EventTime time;		// 시간 정보, 이벤트 대상 나이, 이벤트 대상 요일 담고 있음.
+	static IngredientManagement iim;
 	
 	public static void main(String[] args) throws IOException
 	{
@@ -19,6 +20,10 @@ public class main
 		time = new EventTime();	// 시간, 이벤트 관련 시간 객체 생성
 				
 		ct = new Customer[4]; // 사람 더미 데이터.
+
+		iim = new IngredientManagement();
+
+		ct = new Customer[4];  // 사람 더미 데이터.
 		ct[0] = new Customer("김영빈", 12234, 1500);  // 이름, 멤버쉽번호, 잔여포인트
 		ct[1] = new Customer("유미란", 12352, 1000);
 		ct[2] = new Customer("최서준", 15773, 500);
@@ -27,6 +32,8 @@ public class main
 	
 		//System.out.println(a);
 		//sales = new Sales();
+
+
 
 		while(true)
 		{
@@ -41,7 +48,7 @@ public class main
 			DefaultMenu dm = new DefaultMenu(); //음식
 			
 			// 음식선택();
-			DefaultMenu dm = new DefaultMenu();
+			//DefaultMenu dm = new DefaultMenu();
 			//Payment payment = new Payment(dm.breadArrayList);	//  구현 필요
 			
 			
@@ -75,9 +82,10 @@ public class main
 		int input = 0;
 		
 		
+		
 		while (input!= 1 && input!= 2)
 		{
-			//IngredientManagement.ingPut(); //음식
+			
 			try
 			{
 				System.out.println("① 수량 변경");
@@ -95,12 +103,14 @@ public class main
 				continue;
 			}
 		}	
-		/*
+		
 		if(input == 1)
-			ingred.수량변경();
-		else
-			sales.print();
-		*/
+			iim.ingPut();
+
+		//else
+		//	sales.print();
+		
+
 	}
 
 	static boolean printFirst()
