@@ -6,6 +6,9 @@ import java.util.Scanner;
 import java.util.Random;
 
 
+import java.util.ArrayList;
+
+
 class Payment
 {
 	int total;			// 할인 적용 금액
@@ -36,7 +39,7 @@ class Payment
 		ageDiscount = false;
 
 		this.breadArray = breadArray;
-		this.salasArray = saladArray;
+		this.saladArray = saladArray;
 		this.sideArray = sideArray;
 		order = new Order();
 
@@ -69,14 +72,16 @@ class Payment
 
 		choosePayment();	// 결제 수단 선택 및 결제
 
-		sales.recordSales(order);	// 판매 내역 기록
+		main.sales.recordSales(order);	// 판매 내역 기록
 
 		printBill();	// 영수증 출력
 	}
 	public void printBill()
-	{
+	{	
+		// *** 여기 생성자 수가 맞지 않는듯!! ***
 		Bill abc = new Bill(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, waitingTime, totalPoint, usedPoint);
 		//abc.setter(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, watingTime, totalPoint, usedPoint); //setter는 넘기는거
+		// Bill class print() 정의 되면 될 듯 !! ***
 		abc.print();
 	}
 
@@ -157,9 +162,9 @@ class Payment
 		if (checkMembership())	// 멤버쉽 메소드 호출. (멤버쉽 있나 없나 체크)
 		{
 			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
-			System.out.println("고객님의 잔여 포인트는 : " + ct.point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			System.out.println("고객님의 잔여 포인트는 : " + main.ct.point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
 			
-			if(main.ct.point > 1000)
+			if(main.ct.point > 1000)   //*** ct 들은 main에서 ... main 파일은 컴파일 에러 해당 없음.
 			{
 				System.out.print("포인트를 얼마나 사용하시겠습니까? : ");
 				int wantToPoint = Integer.parseInt(br.readLine());				
@@ -175,6 +180,7 @@ class Payment
 
 	boolean checkMembership() throws IOException
 	{
+		boolean isMembership;
 		while(true)
 		{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -184,12 +190,12 @@ class Payment
 			int memberNum = Integer.parseInt(br.readLine());
 
 			// memberNum이 Customer에 있으면,
-			boolean isMembership;
+			
 			
 			//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
-			for(Customer c : ct) // main.ct → main안에 Customer ct를 하나씩 불러오면서 검사
+			for(Customer c : main.ct) // main.ct → main안에 Customer ct를 하나씩 불러오면서 검사
 			{
-				isMembership = (memberNum == ct.memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
+				isMembership = (memberNum == c.memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
 				                                             // 일치하면 isMembership = true
 				if(isMembership)
 					System.out.println("멤버쉽이 확인되었습니다");
@@ -219,7 +225,7 @@ class Payment
 			calWatingTime(s);	// 샐러드 제작 대기 시간 계산
 		}
 
-		for (Side sd: sideArray)
+		for (SideMenu sd: sideArray)
 		{
 			order.recordOrder(sd);
 		}
@@ -294,15 +300,33 @@ class Payment
 	}
 
 	
-	public void calWatingTime(음식 s)	// 대기시간 계산
+	public void calWatingTime(Object s)	// 대기시간 계산
 	{
 		int earlyTime = 0; // 초기 대기시간을 0으로 초기화
-		if(빵인지 샐러드인지 판별)
-			//빵이면
-			earlyTime = 3;
-		else
-			earlyTime = 4;
 
+		if(s.getClass().getName().equals("Bread"))//빵이면
+		{
+			earlyTime = 3;
+			switch (s.bCategory)
+			{
+				case "에그마요": earlyTime +=5; break;
+				case "이탈리안 비엠티" : earlyTime +=2; break;
+				case "서브웨이클럽":earlyTime +=10; break;
+			}
+		}
+		else
+		{
+			earlyTime = 4;
+			switch (s.sCategory)
+			{
+				case "에그마요": earlyTime +=15; break;
+				case "이탈리안 비엠티" : earlyTime +=12; break;
+				case "서브웨이클럽":earlyTime +=20; break;
+			}
+		}
+	
+			
+		/*
 		switch (디폴트 메뉴가 뭔지)
 		{
 			case bmt : earlyTime++;
@@ -311,8 +335,9 @@ class Payment
 					break;
 			default: break;
 		} 
+		*/
 
-		earlyTime = earlyTime *  1/*s.갯수*/;
+		earlyTime = earlyTime *  1/*s.갯수*/; 
 
 		
 		waitingTime += earlyTime;	
