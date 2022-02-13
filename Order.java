@@ -111,7 +111,7 @@ class Order
 	// 1: 偎熱 ⊥ 偎熱
 	// 2: 陛問* 偎熱 ⊥  陛問* 偎熱
 	
-	void recordOrder(Side s)
+	void recordOrder(SideMenu s)
 	{
 		Integer[] temp = new Integer[3];
 		

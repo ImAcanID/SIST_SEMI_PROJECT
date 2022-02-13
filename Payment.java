@@ -2,13 +2,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 import java.util.Random;
-
-import java.util.HashMap;
-import java.util.Map;
 
 
 class Payment
@@ -23,17 +18,19 @@ class Payment
 	int waitingTime;		// 대기 시간
 	int totalPoint;		// 적립된 포인트
 	int usedPoint;		// 사용한 포인트 
-	String[] promotionSandwich = { "bmt", "에그마요", "서브웨이클럽", "bmt", "에그마요", " 서브웨이클럽", "폴드포크 바비큐"}; // 요일에 따라 프로모션 할인을 받는 메뉴 목록
-	
+
+	int customerNumber;
+
+	String[] promotionSandwich = { "에그마요", "이탈리아 비엠티", "서브웨이클럽",
+		"에그마요", "이탈리아 비엠티", "서브웨이클럽", "에그마요"}; // 요일에 따라 프로모션 할인을 받는 메뉴 목록
 	
 	ArrayList<Bread> breadArray;  // 빵 객체 
-	// ArrayList<Salad> saladArray;  // 샐러드 객체
-	// ArrayList<Side> sideArray;  // 사이드메뉴 객체
+	ArrayList<Salad> saladArray;  // 샐러드 객체
+	ArrayList<SideMenu> sideArray;  // 사이드메뉴 객체
 	
-	Order order;
-
+	Order order;	// 주문내역
 	
-	public void payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<Side> sideArray)
+	public void payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
 	{
 		timeDiscount = false;
 		ageDiscount = false;
@@ -134,7 +131,7 @@ class Payment
 	public void discount() throws IOException //  할인받을지 말지 검사
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int randomTime = main.time.oClock;
+		int randomTime = time.getTime()[0];	// 현재 '시' 뽑아옴
 
 		//시간 유효성검사
 		if (12<=randomTime && randomTime<=14)
@@ -160,7 +157,7 @@ class Payment
 		if (checkMembership())	// 멤버쉽 메소드 호출. (멤버쉽 있나 없나 체크)
 		{
 			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
-			System.out.println("고객님의 잔여 포인트는 : " + main.ct.point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			System.out.println("고객님의 잔여 포인트는 : " + ct.point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
 			
 			if(main.ct.point > 1000)
 			{
@@ -190,19 +187,17 @@ class Payment
 			boolean isMembership;
 			
 			//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
-			for(Customer c : main.ct) // main.ct → main안에 ct를 하나씩 불러오면서 검사
+			for(Customer c : ct) // main.ct → main안에 Customer ct를 하나씩 불러오면서 검사
 			{
-				isMembership = memberNum == main.ct.memberNumber; // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
+				isMembership = (memberNum == ct.memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
 				                                             // 일치하면 isMembership = true
 				if(isMembership)
-				{
 					System.out.println("멤버쉽이 확인되었습니다");
-				}
 			}
 
 			if(!isMembership)
 			{
-				return;
+				return false;
 			}
 			// while true기 때문에 멤버십 있든 없든 일단 나와야해서 break;
 			break;
@@ -371,18 +366,13 @@ class Payment
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Random rd = new Random();
 		int birthNum;  // 태어난 년도 입력받는 변수 
-		int randomAge = rd.nextInt(10); // 0 ~ 9 까지의 무작위 난수 발생
-		//randomAge <<<-- 나이 마지막자리 랜덤으로 가져온것
-		
-
+		int randomAge = time.getEventAge(); // 0 ~ 9 까지의 무작위 난수 발생. 이벤트로 사용할 나이 끝  자리.		
 
 		System.out.print("태어난 년도를 입력하세요(예시:1993) : ");
 		birthNum = Integer.parseInt(br.readLine());
 	
 		//올해 연도 받아오기
-		Calendar cal = Calendar.getInstance(); //캘린더 객체 인스턴스생성
-
-		int y = cal.get(Calendar.YEAR); // 올해 연도 받아왔음
+		int y = time.getDate()[0]; // 올해 연도 받아왔음
 
 		int userAge = y - brithNum; // 사용자의 만 나이 알아냄
 		userAge += 1; // 사용자의 한국식 나이..
@@ -391,7 +381,6 @@ class Payment
 		if (randomAge == lastAge) // 
 		{
 			ageDiscount = true;
-			
 			order.ageDiscount = true; // 주문 내역에도 저장
 		}
 		else
