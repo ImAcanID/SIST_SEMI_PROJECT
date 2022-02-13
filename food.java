@@ -291,12 +291,20 @@ class OrderRecord
 		}
 		setSalad();
 		setSidemenu();
+
+		// 주문 정보
+		// 디폴트 메뉴 정보
+		// 빵인지 샐러드인지
+		// 커스텀 정보 (치즈, 야채, 소스) + 길이
+		// 사이드 정보
+		// 갯수
+		// 추가 주문 정보
 }
 
 
 }
 
-class Manager extends Ingredient
+class Manager extends Ingredient //이거 관리자 클래스 main()에서 하기러함!
 {
 	//얼마증가할래? 토마토 100
 	ingPut ();

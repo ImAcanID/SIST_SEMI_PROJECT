@@ -6,8 +6,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class Food2
+public class Food4
 {
+
 	public static void main(String[] args) throws IOException
 	{
 		//메뉴판 static final로 선언.
@@ -39,9 +40,9 @@ public class Food2
 			No  → new 결제 클래스(); // 이렇게 옮기는게 맞나 싶다 ! 
 		}
 		*/
-//===============================================================================================================
 		//void vdCustom(???)//야채 커스텀();
 		//{
+			/*
 			cusKey = 1;
 			//숫자 공백 구분
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -54,36 +55,18 @@ public class Food2
 
 			strTemp = br.readLine();
 			String [] strArr = strTemp.split(","); // 토마토, 양상추, 양파
-
-
-			//테스트! strArr 내용 확인하기.
-			/*
-			for (String n: strArr)
+			for (int n : vbArray)
 			{
-	
-				System.out.printf("%s ",n);
+				System.out.println("토마토 양상추 오이 양파 올리브");
+				System.out.printf("%5d\n",n);
 			}
-			System.out.println();
-			*/
-			/*
-			토마토 양상추 오이 양파 올리브
-			제거하고 싶은 야채 말해줘 (콤마구분):오이,양파,토마토,올리브
-			오이 양파 토마토 올리브
-			*/
-			/*
-			//메뉴판 static final로 선언.
-			static final String [] breArray = {"화이트","허니오트","플랫브래드"};
-			static final String [] veArray = {"토마토","양상추","오이","양파","올리브"};
-			static final String [] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
-			static final String [] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
-			static final String [] sideArray = {"콜라","커피","쿠키","스프","맥주"};
-			*/
+			
 
-			for (int i = 0;i <strArr.length ;i++ )//오이								양파	토마토		올리브
+			for (int i = 0;i <strArr.length ;i++ )//i  0			1
 			{
-				for (int j =0;j<veArray.length ;j++ )//토마토 양상추 오이 양파 올리브
+				for (int j =0;j<veArray.length ;j++ )//0			0 1 2 3
 				{
-					if (strArr[i].equals(veArray[j]))
+					if (strArr[i] == veArray[j])
 					{
 						vbArray[j] =0; // 0면 추가안해.
 					}
@@ -92,28 +75,56 @@ public class Food2
 			
 			
 			//야채커스텀 배열 출력 테스트
-			System.out.println("토마토 양상추 오이 양파 올리브");
 			for (int n : vbArray)
 			{
-				System.out.printf("%6d",n);
+				System.out.println("토마토 양상추 오이 양파 올리브");
+				System.out.printf("%5d\n",n);
 			}
-			System.out.println();
 
-//===============================================================================================================
 			
 			// strTemp = 토마토;
-/*
+
 			vdArray = 
 			커스텀옵션확인()
 			pritn(야채)
 		}
-		scCustom()//소스 커스텀();		★수민
+		*/
+
+		//void scCustom() //소스 커스텀();
+		//int [] scArray = {0, 0, 0, 0, 0}; 
+		/*
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		for (String s: sauArray ) //→ 재료클래스 변수
 		{
-				커스텀옵션확인(n)
-				print(야채,소스)
-				decrease()
+			System.out.print(s + " "); // 스윗 어니언,스윗 칠리,렌치 드레싱,소스제외
 		}
-		ccSelect()//치즈여부선택하기();	★문정
+		System.out.println();
+		
+		System.out.print("추가하고 싶은 소스 말해줘 (콤마구분):"); 
+		strTemp = br.readLine();
+		
+		String [] strArr = strTemp.split(","); // 스윗 어니언,스윗 칠리
+		
+		for (int i = 0; i<strArr.length; i++ )  
+		{
+			for (int j =0; j<sauArray.length ; j++)
+			{
+				if (strArr[i].equals(sauArray[j]))
+				{
+					scArray[j] = 1; // 추가
+				}
+			}
+		}
+		
+		//소스커스텀 배열 출력 테스트
+		for (int n : scArray)
+		{
+			System.out.printf("%5d\n",n);
+		}
+
+		
+		/*
+		ccSelect()//치즈여부선택하기();
 		{ 
 			n = 2
 
@@ -126,64 +137,83 @@ public class Food2
 		양상추 o
 		양파   x
 		치즈   슈레드
+		*/
 			
 
+	
+		//addCount();//개수추가메소드();
+		//int count = 1;
+		/*
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		System.out.print("개수 몇개 추가하실건가요? : ");
+		int num = Integer.parseInt(br.readLine());
+		count += num;
+		System.out.println(count);	
 		
-		addCount();//개수추가메소드();	★
-		{
-				개수 몇개 추가할래? : 3개
-				n = 3;
-				count += n;
-				야채 
-				소스
-				치즈
-				
-				커스텀옵션확인(
-				~~~~~ , 에그마요빵 4개)
-				decrease()
-		}
+		decrease();
 
-		decrease() //감소메소드	★
+		*/
+
+		//addCount();//개수추가메소드(); // 매개변수 생각해보기
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		if (재고수량 != 0)
+		{	
+			System.out.printf("\n현재 :%d개 있습니다\n", count); 
+			System.out.print("개수 몇개 추가시킬건가요? : ");
+			int num = Integer.parseInt(br.readLine());
+			if (num < 재고수량)
+			{
+				count += num;
+				System.out.println("커스텀 총 개수 :" + count);
+			}
+		}
+		else // 근데 이것도 문제 객체 생성될 때부터 말해줘야 함... 
 		{
-			재료 변수 - 커스텀변수 <0 // 재료가 없음
+			System.out.println("재료가 품절되어 추가할 수 없습니다.");
+		}
+		
+		
+		//decrease() //감소메소드
+		/*
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		if (count > 0)
+		{	
+			System.out.printf("\n현재 :%d개 있습니다\n", count); 
+			System.out.print("개수 몇개 감소시킬건가요? : ");
+			int num = Integer.parseInt(br.readLine());
+
+			if (count-num >= 0)
+			{   
+				count -= num;
+				System.out.println("현재개수 :" + count);
+			}
+			else
+			{
+				System.out.println("감소수량을 초과하였습니다.");
+			}
+		}
+		else 
+		{
+			System.out.println("감소할 수량이 없습니다.");
+		}
+		*/
+
+	
+
+		
+
+	
+
+		/*
+		System.out.println(count);	
+		재료 변수 - 커스텀변수 <0 // 재료가 없음
 			→ 구매불가. 재료품절.
 				매번 커스텀을 할 때마다 감소메소드() 호출
 		}
 
-		checkCustom(int n)	★
-
+		checkCustom(int n)
 		{
-*/
-//==============================================================================================================
-/*
-									if (vdArray[i] == 1)//선택을 했다면
-									{
-										veArray[i]
 
-									}
-									vdArray[0] == 1; → veArray[0]을 출력해라!
-									vdArray[1] == 0; → veArray[0]을 출력해라!
-									// 이부분은 메소드로 바꾸자.
-									//void checkCustom(int cusKey) → 출력만
-									//cusKey == 1 이면
-									//야채추가 : 야채[0] 야채[1] ... 여기서 break쓰면 안대 왜냐면
-									// cusKey ==2 이면 이게 치즈인가 하는데 그러면 위에서 이미 야채추가에 대한
-									// 정보를 누적해서 보여줘야해서!
-									
-*/
-			System.out.println("==========================================");
-			System.out.println("		[현재주문옵션]");
-			for (int n = 0; n<vbArray.length;n++)
-			{
-				if (vbArray[n] == 1)// 1이면 사용자가 해당 야채를 선택한 것!
-				{
-					System.out.print(veArray[n]+" ");
-				}
-			}
-			System.out.println();
-			System.out.println("==========================================");
-//==============================================================================================================
-			/*
 			int [] customArray= { 디폴트메뉴,빵길이,야채[0], 야채[1], 야채[2], 소스[0], ~~~ };
 			for (int ;i <cusKey ;i++ )
 			{	
@@ -191,33 +221,11 @@ public class Food2
 				print(커스텀용[i]);
 				커스텀옵션 정보 담기 배열 ? 
 			}
-			*/
+		}
 
-			//디폴트메뉴, 종류 → 디폴트 메뉴 변수들!!!!!
-			//그러면 우선 이 파일에서 출력할 수 있는 야채, 치즈, 소스만 가져오세요.
-			/*
-			
-			==========================================
-						[현재주문옵션]
-			메뉴 : 에그마요							샌드위치, 샐러드만 출력
-			종류 : 샌드위치							샌드위치, 샐러드만 출력
-			길이 : 15cm								샌드위치만 출력
-			선택 빵종류: 화이트						샌드위치만 출력
-			선택 야채  : 토마토, 올리브				샌드위치, 샐러드만 출력
-			선택 치즈  : 슈레드 치즈				샌드위치, 샐러드만 출력
-			선택 소스  : 소스제외					샌드위치, 샐러드만 출력
-			==========================================
-			→ 사이드메뉴 class에서는 이걸 상속받아도 사용하지 않음.
-			→ 샌드위치에만 출력되야하는 옵션이 있음.
-			→ 그러므로 샐러드용으로 출력을 하고
-			   샌드위치에서는 Overriding 해서 사용.
+*/
 
-			*/
-		//}
-
-
-
-
+		/*
 
 		// 야채,소스,치즈,빵,사이드메뉴 수량 담을 자료구조 생성
 		Map<String, Integer> bread = new HashMap<String, Integer>();
@@ -312,6 +320,7 @@ public class Food2
 			}
 			System.out.printf("%s의 증가 후 수량은 %d이야.%n", ingre, tmp);	
 		//}
+		*/
 
 	}
 }

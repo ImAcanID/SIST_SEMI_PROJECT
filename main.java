@@ -30,6 +30,7 @@ public class main
 
 		while(true)
 		{
+
 			checkManager = printFirst();	// 테이크아웃할지 안 할지
 			
 			if(checkManager)				// 관리자모드에 갔다왔을 경우 다시 초기화
@@ -37,6 +38,7 @@ public class main
 				ManagerMode();
 				continue;
 			}
+			DefaultMenu dm = new DefaultMenu(); //음식
 			
 			// 음식선택();
 			DefaultMenu dm = new DefaultMenu();
@@ -75,6 +77,7 @@ public class main
 		
 		while (input!= 1 && input!= 2)
 		{
+			//IngredientManagement.ingPut(); //음식
 			try
 			{
 				System.out.println("① 수량 변경");
