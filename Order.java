@@ -9,9 +9,9 @@ class Order
 
 	boolean ageDiscount;  // 나이 할인 적용 여부
 	
-	int total;			// 할인 적용 금액 (포인트 미적용)
+	int beforePoint;	// 할인 적용 금액 (포인트 미적용)
 	int beforeTotal;	// 할인 미적용 금액
-	int totalMinusPoint;// 할인 적용 금액 ( 포인트 적용)
+	int total;			// 할인 적용 금액 ( 포인트 적용)
 	int usedPoint;		// 사용한 포인트 
 
 	int waitingTime;	// 예상 대기 시간
@@ -152,6 +152,7 @@ class Order
 	void recordPoint(int point)
 	{
 		usedPoint = point;
-		totalMinusPoint = total - point;
+		beforePoint = total;
+		total -= point;
 	}
 }

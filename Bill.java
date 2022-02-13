@@ -1,8 +1,8 @@
 class Bill
-{
+{	
 	int beforeTotal;	// 할인 미적용 금액
-	int total;			// 할인 적용 금액 (포인트 미적용)
-	int totalMinusPoint;// 할인 적용 금액 (포인트 적용)
+	int beforePoint;	// 할인 적용 금액 (포인트 미적용)
+	int total;			// 할인 적용 금액 (포인트 적용)
 	int change;			// 거스름돈
 	int cash;			// 현금 지불 금액
 	boolean cashOrCard; // 현금지불할지 카드지불할지 카드면 true
@@ -10,24 +10,33 @@ class Bill
 	int watingTime;		// 대기 시간
 	int totalPoint;		// 적립된 포인트
 	int usedPoint;		// 사용한 포인트 
+	boolean useMembership; // 포인트 사용 여부
 	
-	EventTime time;
+	EventTime time;		// 미리 생성해놓은 시간 객체
 
-	Order order;
+	Order order;		// 주문내역
+
+	final String[] defaultName = {"에그마요", "이탈리안 비엠티", "서브웨이클럽"};		
+	final String[] sideName = {"콜라", "커피", "쿠키", "스프", "맥주"};
 	
-	Bill(Order order, int change, int cash, boolean cashOrCard, int watingTime, int totalPoint, int usedPoint)
+	Bill(Order order, int change, int cash, boolean cashOrCard, int watingTime, int totalPoint, int usedPoint, boolean useMembership)
 	{
 		this.order = order;
 		this.change = change;
 		this.cash = cash;
 		this.cashOrCard = cashOrCard;
 		this.watingTime = watingTime;
-		this.totalPoint = totalPoint;
-		this.usedPoint = usedPoint;
-		
+
+		if(useMembership)
+		{
+			this.totalPoint = totalPoint;
+			this.usedPoint = usedPoint;
+		}
+				
+		this.ageDiscount = this.order.ageDiscount;
 		this.beforeTotal = this.order.beforeTotal;
 		this.total = this.order.total;
-		this.totalMinusPoint = this.order.totalMinusPoint;
+		this.beforePoint = this.order.beforePoint;
 		
 		this.time = main.time;
 	}	
@@ -36,21 +45,65 @@ class Bill
 	{
 		
 		// 대충 영수증 양식따라서 출력함. 저거 위에 변수 다 출력
-		System.out.println("영수증 출력");
+		System.out.println("              영수증 출력");
+		System.out.println("===============주문 내역===============\n");
 		
-		System.out.println("주문 내역");
-		for(int i=0; i<order.breadOrder.size(); i++)
+		if(order.breadOrder.size() != 0)
 		{
-			System.out.print
+			System.out.println("================샌드위치===============");
+			for(int i=0; i<order.breadOrder.size(); i++)
+			{
+				Integer[] temp = order.breadOrder.get(i);
+				System.out.printf("%s - %d\t- %d\n", defaultName[temp[0]], temp[1], temp[2]);
+				if(temp[3] == 1)
+					System.out.println("런치 할인 적용");
+				if(temp[4] == 1)
+					System.out.println("빵 길이 추가 적용");
+			}
+			System.out.println();
 		}
+		
+		if(order.saladOrder.size() != 0)
+		{
+			System.out.println("================샐러드=================");
+			for(int i=0; i<order.saladOrder.size(); i++)
+			{
+				Integer[] temp = order.saladOrder.get(i);
+				System.out.printf("%s - %d\t- %d\n", defaultName[temp[0]], temp[1], temp[2]);
+				if(temp[3] == 1)
+					System.out.println("런치 할인 적용");
+			}
+			System.out.println();
+		}
+		
+		if(order.sideOrder.size() != 0)
+		{
+			System.out.println("==============사이드 메뉴==============");
+			for(int i=0; i<order.sideOrder.size(); i++)
+			{
+				Integer[] temp = order.sideOrder.get(i);
+				System.out.printf("%s - %d\t- %d\n", sideName[temp[0]], temp[1], temp[2]);
+			}
+		}
+		System.out.println();		
 
+		System.out.printf("할인 전 금액 - %d\n", beforeTotal);
+		if(ageDiscount)
+			System.out.println("나이 할인 적용");
+		if(useMembership)
+		{
+			System.out.printf("포인트 사용 - %d\n", usedPoint);
+			System.out.printf("누적 포인트 - %d\n", totalPoint);
+		}
+		System.out.printf("총 금액 - %d\n", total);
+		System.out.printf("지불수단 - %s\n", cashOrCard ? "카드" : "현금");
+		if(!cashOrCard)
+		{
+			System.out.printf("지불 금액 - %d\n", cash);
+			System.out.printf("거스름돈 - %d\n", change);
+		}
+		
+		System.out.printf("예상 대기 시간 - %d분", watingTime);			
 	}
-	
-	// { 디폴트메뉴 종류, 갯수, 가격*갯수, 시간 할인 적용, 길이 추가 여부 }
-	// 0: 디폴트메뉴 종류 → 0: BMT / 1: 에그마요 / 2: 클럽
-	// 1: 갯수 → 갯수
-	// 2: 가격* 갯수 → { 가격-(500*(시간 할인 적용 0 or 1)) + 길이 추가 요금 } * 갯수
-	// 3: 시간 할인 적용 → 0: 미적용 / 1: 적용
-	// 4: 길이 추가 여부 → 0: 15cm / 1: 30cm
 
 }

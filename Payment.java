@@ -16,10 +16,13 @@ class Payment
 	boolean timeDiscount; // 시간 할인 적용 여부
 	boolean ageDiscount;  // 나이 할인 적용 여부
 	int waitingTime;		// 대기 시간
-	int totalPoint;		// 적립된 포인트
-	int usedPoint;		// 사용한 포인트 
+	
+	int totalPoint = 0;		// 적립된 포인트
+	int usedPoint = 0;		// 사용한 포인트
+	boolean useMembership;	// 포인트 사용 여부
+	boolean saveMembership;	// 포인트 적립 여부
+	int customerNumber; // 현재 더미 고객 인덱스
 
-	int customerNumber;
 
 	String[] promotionSandwich = { "에그마요", "이탈리아 비엠티", "서브웨이클럽",
 		"에그마요", "이탈리아 비엠티", "서브웨이클럽", "에그마요"}; // 요일에 따라 프로모션 할인을 받는 메뉴 목록
@@ -76,14 +79,14 @@ class Payment
 
 	public void printBill()	// 영수증 출력 메소드
 	{	
-		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint);
+		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership);
 		
-		//bill.print();
+		bill.print();
 	}
 
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
-		int tot = order.totalMinusPoint; 
+		int tot = order.total; 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));	
 		System.out.printf("지불해야하실 금액은 %d입니다.", tot);
 		
@@ -157,21 +160,13 @@ class Payment
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (checkMembership())	// 멤버쉽 메소드 호출. (멤버쉽 있나 없나 체크)
 		{
-<<<<<<< HEAD
-			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
-			System.out.println("고객님의 잔여 포인트는 : " + main.ct[customerNumber].point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
-			
-			if(main.ct[customerNumber].point > 1000)   //*** ct 들은 main에서 ... main 파일은 컴파일 에러 해당 없음.
-=======
-			int point = main.ct[customerNumber].point
+
+			int point = main.ct[customerNumber].point;
 			
 			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
 			System.out.println("고객님의 잔여 포인트는 : " + point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
 			
-		
-
 			if(point > 1000)   
->>>>>>> e0ccbfa8e821e0deb52e295193fb4f0d484ef03f
 			{
 				int wantToPoint;
 				do
@@ -184,6 +179,8 @@ class Payment
 				usedPoint = wantToPoint;
 			
 				main.ct[customerNumber].point -= usedPoint;
+
+				useMembership = true;
 			}
 			else
 			{
@@ -248,7 +245,10 @@ class Payment
 		}
 
 		order.recordAgeDiscount(ageDiscount);
-		order.recordPoint(usedPoint);
+
+		if (useMembership)
+			order.recordPoint(usedPoint);
+		
 		
 		order.waitingTime = waitingTime;
 
@@ -390,14 +390,10 @@ class Payment
 				boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
 				if(cond)
 				{
-<<<<<<< HEAD
-					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 고객.잔여포인트ㅇ 주문한 (개ㅇ*가격*5%ㅇ 적립
-					System.out.printf("적립 후 현재 포인트는 %d입니다.", main.ct[customerNumber].point);
-=======
 					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
 					totalPoint = main.ct[customerNumber].point;
 					System.out.printf("적립 후 현재 포인트는 %d입니다.", totalPoint);
->>>>>>> e0ccbfa8e821e0deb52e295193fb4f0d484ef03f
+					saveMembership = true;
 				}
 				else
 				{
