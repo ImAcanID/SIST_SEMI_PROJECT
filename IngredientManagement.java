@@ -2,6 +2,10 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
+
 public class IngredientManagement
 {
 	//public static void main(String [] args)
@@ -116,14 +120,58 @@ public class IngredientManagement
 		}
 		System.out.printf("%s의 증가 후 수량은 %d입니다.%n", ingre, tmp);
 	}
-	void addCount() //객체 수량 늘리기
-	{
-		System.out.print("이거랑 똑같은 커스텀을 한 음식의 개수를 늘릴거니? (Y/N)
+
+	void addCount() throws IOException//객체 수량 늘리기
+	{	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String strTemp;
+		int intTemp=0;
+		
+		//DefaultMenu dm = new DefaultMenu(); // 이러면 디폴트메뉴 생성자 때문에 안 됨
+
+		System.out.print("\n현재 옵션과 같은 메뉴를 추가하시겠습니까? (Y/N) : ");
+		strTemp = br.readLine();
+		
+		if(strTemp.equals("Y") || strTemp.equals("y"))
+		{
+			System.out.print("몇 개 추가하시겠습니까? : ");
+			intTemp = Integer.parseInt(br.readLine());
+		}
+		
+		if(!DefaultMenu.breadArrayList.isEmpty()) // 빵 객체 생성한 거면
+		{
+			Bread.bCount = intTemp; 
+		}
+		else if (!DefaultMenu.saladArrayList.isEmpty())
+		{	
+			Salad.sCount = intTemp;
+		}
+		
 	}
 
+	/*
+	Countadd()→ 재료클래스 .. 
+	{
+		몇개 증가할래? 증가안해, 2개증가해
+		증가안해 → return;
+		2개증가 → count샐러드 +=2;
+		
+		빵개수 +=3; 
+		전체재료들이 소비한 재료들이
+		_ _ _ _ 
+		샐러드 (샐러드 - 에그마요 - 소스없음, 개수=1)
+		샐러드 (샐러드 - 에그마요 - 소스없음, 개수 ++)
+		//재료클래스 재료 뺄때 슈레드 * 개수; 
+
+	ig.Countadd();
+
+	}
+	*/
+	/*
 	void decrease() //재고 수량 줄이기
 	{
 	}
+	*/
 
 		
 	

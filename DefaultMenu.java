@@ -15,9 +15,9 @@ public class DefaultMenu
 	String strTemp2; //-- 빵, 샐러드, 사이드메뉴, 현재주문확인하기..
 	int nTemp;       //-- int타입의 빈 그릇
 	
-	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
-	ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
-	ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
+	static ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
+	static ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
+	static ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
 
 	// 생성자.
 	DefaultMenu() throws IOException
@@ -51,6 +51,10 @@ public class DefaultMenu
 		{
 			sidemenuArrayList.add(new SideMenu());
 		}
+		else if (nTemp == 4)
+		{
+			dmPrint();
+		}
 
 		/*
 		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
@@ -68,8 +72,7 @@ public class DefaultMenu
 
 	public void addMenu() throws IOException
 	{	
-		
-		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String userInput1;
 		do
 		{
@@ -158,7 +161,7 @@ public class DefaultMenu
 				}
 				System.out.println();
 			}
-			//System.out.println();
+			System.out.println();
 		}
 		//System.out.println();
 
@@ -198,7 +201,7 @@ public class DefaultMenu
 				}
 				System.out.println();
 			}
-			//System.out.println();
+			System.out.println();
 		}
 		//System.out.println();
 

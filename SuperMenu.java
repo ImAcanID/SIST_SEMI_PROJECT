@@ -40,9 +40,8 @@ public class SuperMenu
 	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
 	*/
 
-	IngredientManagement im = new IngredientManagement();
-	String bremenu = im.breArray[0];
-
+	IngredientManagement ig = new IngredientManagement();
+	
 	// 재료수량을 변경하기 위해 배열로 만듬.
 	int[] bdArray = {0, 0, 0}; // 빵
 	int[] cCategory = {0, 0, 1}; // 치즈 카테고리
@@ -66,10 +65,10 @@ public class SuperMenu
 		while (true)
 		{
 			System.out.print("\n선택 가능한 빵 종류 [");
-			for (int i=0; i<breArray.length; i++)
+			for (int i=0; i<ig.breArray.length; i++)
 			{
-				System.out.print(breArray[i]);
-				if (i+1 != breArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				System.out.print(ig.breArray[i]);
+				if (i+1 != ig.breArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
 				{
 					System.out.print(", ");
 				}
@@ -79,21 +78,21 @@ public class SuperMenu
 			System.out.print("빵 종류를 입력해 주세요 : ");
 			strTemp = br.readLine();
 
-			if (strTemp.equals(breArray[0]))
+			if (strTemp.equals(ig.breArray[0]))
 			{
 				//System.out.println("화이트 선택"); // 테스트 출력
 				bdArray[0] = 1;
 				breadkind = "화이트";
 				break;
 			}
-			else if (strTemp.equals(breArray[1]))
+			else if (strTemp.equals(ig.breArray[1]))
 			{
 				//System.out.println("허니오트 선택"); // 테스트 출력
 				bdArray[1] = 1;
 				breadkind = "허니오트";
 				break;
 			}
-			else if (strTemp.equals(breArray[2]))
+			else if (strTemp.equals(ig.breArray[2]))
 			{
 				//System.out.println("플랫 브레드 선택"); // 테스트 출력
 				bdArray[2] = 1;
@@ -127,10 +126,10 @@ public class SuperMenu
 			while (true)
 			{
 				System.out.print("\n선택 가능한 치즈 종류 [");
-				for (int i=0; i<chArray.length-1; i++)
+				for (int i=0; i<ig.chArray.length-1; i++)
 				{
-					System.out.print(chArray[i]);
-					if (i+1 != chArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
+					System.out.print(ig.chArray[i]);
+					if (i+1 != ig.chArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
 					{
 						System.out.print(", ");
 					}
@@ -140,7 +139,7 @@ public class SuperMenu
 				System.out.print("치즈 종류를 입력해 주세요 : ");
 				strtmp = br.readLine();
 
-				if (strtmp.equals(chArray[0]))
+				if (strtmp.equals(ig.chArray[0]))
 				{
 					//System.out.println("아메리칸 치즈 선택"); // 테스트 출력
 
@@ -150,7 +149,7 @@ public class SuperMenu
 				
 					break;
 				}
-				else if (strtmp.equals(chArray[1]))
+				else if (strtmp.equals(ig.chArray[1]))
 				{
 					//System.out.println("슈레드 치즈 선택"); // 테스트 출력
 
@@ -204,10 +203,10 @@ public class SuperMenu
 		if (con.equals("Y") || con.equals("y"))
 		{
 			System.out.print("\n선택 가능한 야채 종류 [");
-			for (int i=0; i<veArray.length; i++)
+			for (int i=0; i<ig.veArray.length; i++)
 			{
-				System.out.print(veArray[i]);
-				if (i+1 != veArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				System.out.print(ig.veArray[i]);
+				if (i+1 != ig.veArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
 				{
 					System.out.print(", ");
 				}
@@ -220,9 +219,9 @@ public class SuperMenu
 
 			for (int i=0; i<strArr.length; i++)	//      0      1      2
 			{                                        // 01234  
-				for (int j=0; j<veArray.length; j++) // 토마토 양상추 오이 양파 올리브
+				for (int j=0; j<ig.veArray.length; j++) // 토마토 양상추 오이 양파 올리브
 				{
-					if (strArr[i].equals(veArray[j]))
+					if (strArr[i].equals(ig.veArray[j]))
 					{
 						vbArray[j] = 0; // 0면 추가안해.
 					}
@@ -266,10 +265,10 @@ public class SuperMenu
 		if (con.equals("Y") || con.equals("y"))
 		{
 			System.out.print("\n선택 가능한 소스 종류 [");
-			for (int i=0; i<sauArray.length-1; i++)
+			for (int i=0; i<ig.sauArray.length-1; i++)
 			{
-				System.out.print(sauArray[i]);
-				if (i+1 != sauArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
+				System.out.print(ig.sauArray[i]);
+				if (i+1 != ig.sauArray.length-1) // 젤 마지막 거 아닐 때만 콤마 붙임
 				{
 					System.out.print(", ");
 				}
