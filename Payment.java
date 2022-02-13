@@ -172,9 +172,9 @@ class Payment
 			}
 		}
 	}
-
 	boolean checkMembership() throws IOException
 	{
+		boolean isMembership;
 		while(true)
 		{
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -184,15 +184,16 @@ class Payment
 			int memberNum = Integer.parseInt(br.readLine());
 
 			// memberNum이 Customer에 있으면,
-			boolean isMembership;
 			
 			//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
-			for(Customer c : ct) // main.ct → main안에 Customer ct를 하나씩 불러오면서 검사
+			for (int i=0; i<main.ct.length; i++ ) // main안에 Customer ct를 하나씩 불러오면서 검사
 			{
-				isMembership = (memberNum == ct.memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
-				                                             // 일치하면 isMembership = true
+				isMembership = (memberNum == main.ct[i].memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
+																	   // 일치하면 isMembership = true
 				if(isMembership)
 					System.out.println("멤버쉽이 확인되었습니다");
+
+				customerNumber = i;
 			}
 
 			if(!isMembership)
@@ -204,6 +205,7 @@ class Payment
 		}
 		return isMembership;
 	}
+	
 	
 	public void calTotal()	// 총합 계산
 	{	
