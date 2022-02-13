@@ -173,7 +173,6 @@ class Sales		// 판매 내역을 기록하는 클래스
 	{
 		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리아BMT", "서브웨이클럽", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 1, 2, 3, 6);
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 1, 2, 3, 6);
 		System.out.println();
 		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리아BMT", "서브웨이클럽", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 3, 2, 1, 6);
@@ -182,7 +181,7 @@ class Sales		// 판매 내역을 기록하는 클래스
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 2, 2, 2, 6);
 		System.out.println();
 
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n"," ","빵","샐러드", "사이드메뉴", "총");
+		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n", " ", "빵","샐러드", "사이드메뉴", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "매출", 3, 2, 1, 6);
 
 	}

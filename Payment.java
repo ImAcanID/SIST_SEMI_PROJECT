@@ -5,14 +5,11 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.Random;
 
-
 import java.util.ArrayList;
 
 
 class Payment
 {
-	int total;			// 할인 적용 금액
-	int beforeTotal;	// 할인 미적용 금액
 	int change;			// 거스름돈
 	int cash;			// 현금 지불 금액
 	boolean cashOrCard; // 현금지불할지 카드지불할지 카드면 true
@@ -33,7 +30,7 @@ class Payment
 	
 	Order order;	// 주문내역
 	
-	public void payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
+	Payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
 	{
 		timeDiscount = false;
 		ageDiscount = false;
@@ -76,18 +73,17 @@ class Payment
 
 		printBill();	// 영수증 출력
 	}
-	public void printBill()
+
+	public void printBill()	// 영수증 출력 메소드
 	{	
-		// *** 여기 생성자 수가 맞지 않는듯!! ***
-		Bill abc = new Bill(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, waitingTime, totalPoint, usedPoint);
-		//abc.setter(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, watingTime, totalPoint, usedPoint); //setter는 넘기는거
-		// Bill class print() 정의 되면 될 듯 !! ***
-		abc.print();
+		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint);
+		
+		//bill.print();
 	}
 
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
-		int tot = order.total; 
+		int tot = order.totalMinusPoint; 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));	
 		System.out.printf("지불해야하실 금액은 %d입니다.", tot);
 		
@@ -136,7 +132,7 @@ class Payment
 	public void discount() throws IOException //  할인받을지 말지 검사
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int randomTime = time.getTime()[0];	// 현재 '시' 뽑아옴
+		int randomTime = main.time.getTime()[0];	// 현재 '시' 뽑아옴
 
 		//시간 유효성검사
 		if (12<=randomTime && randomTime<=14)
@@ -161,22 +157,35 @@ class Payment
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (checkMembership())	// 멤버쉽 메소드 호출. (멤버쉽 있나 없나 체크)
 		{
-			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
-			System.out.println("고객님의 잔여 포인트는 : " + main.ct.point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			int point = main.ct[customerNumber].point
 			
-			if(main.ct.point > 1000)   //*** ct 들은 main에서 ... main 파일은 컴파일 에러 해당 없음.
+			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
+			System.out.println("고객님의 잔여 포인트는 : " + point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			
+		
+
+			if(point > 1000)   
 			{
-				System.out.print("포인트를 얼마나 사용하시겠습니까? : ");
-				int wantToPoint = Integer.parseInt(br.readLine());				
+				int wantToPoint;
+				do
+				{
+					System.out.print("포인트를 얼마나 사용하시겠습니까? : ");
+					wantToPoint = Integer.parseInt(br.readLine());
+				}
+				while (wantToPoint>point);
+								
 				usedPoint = wantToPoint;
+			
+				main.ct[customerNumber].point -= usedPoint;
 			}
 			else
 			{
-				System.out.println("포인트가 부족합니다.");
+				System.out.println("포인트 1000원 이하라 사용 불가");
 				return;
 			}
 		}
 	}
+
 	boolean checkMembership() throws IOException
 	{
 		boolean isMembership;
@@ -189,6 +198,7 @@ class Payment
 			int memberNum = Integer.parseInt(br.readLine());
 
 			// memberNum이 Customer에 있으면,
+			
 			
 			//멤버십번호 입력 >>> 4명의 멤버십 번호와 다 일치하는지 검사.
 			for (int i=0; i<main.ct.length; i++ ) // main안에 Customer ct를 하나씩 불러오면서 검사
@@ -210,7 +220,6 @@ class Payment
 		}
 		return isMembership;
 	}
-	
 	
 	public void calTotal()	// 총합 계산
 	{	
@@ -305,10 +314,12 @@ class Payment
 	{
 		int earlyTime = 0; // 초기 대기시간을 0으로 초기화
 
+
 		if(s.getClass().getName().equals("Bread"))//빵이면
 		{
 			earlyTime = 3;
-			switch (s.bCategory)
+			
+			switch (((Bread)s).bCategory) //다운캐스팅 안해서 .. 에러.. 
 			{
 				case "에그마요": earlyTime +=5; break;
 				case "이탈리안 비엠티" : earlyTime +=2; break;
@@ -318,7 +329,7 @@ class Payment
 		else
 		{
 			earlyTime = 4;
-			switch (s.sCategory)
+			switch (((Salad)s).sCategory)
 			{
 				case "에그마요": earlyTime +=15; break;
 				case "이탈리안 비엠티" : earlyTime +=12; break;
@@ -348,11 +359,12 @@ class Payment
 
 	public void savePoint() // 포인트 적립 메소드
 	{
-		int randomDay = main.time.getDate[3];
+		String promotionMenu; // 프로모션 적용받을 메뉴
+		int randomDay = main.time.getDate()[3];
 
 		if(1 <= randomDay && randomDay <= 5) //main.time.day
 		{
-			String promotionMenu; // 프로모션 적용받을 메뉴
+			
 			switch (randomDay)
 			{
 				case 1: promotionMenu = promotionSandwich[randomDay-1]; break; 
@@ -371,8 +383,9 @@ class Payment
 				boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
 				if(cond)
 				{
-					main.ct.point += (int)(b.bPrice * b.갯수 * 0.05); // 고객.잔여포인트ㅇ 주문한 (개ㅇ*가격*5%ㅇ 적립
-					System.out.printf("적립 후 현재 포인트는 %d입니다.", main.ct.point);
+					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+					totalPoint = main.ct[customerNumber].point;
+					System.out.printf("적립 후 현재 포인트는 %d입니다.", totalPoint);
 				}
 				else
 				{
@@ -392,15 +405,15 @@ class Payment
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Random rd = new Random();
 		int birthNum;  // 태어난 년도 입력받는 변수 
-		int randomAge = time.getEventAge(); // 0 ~ 9 까지의 무작위 난수 발생. 이벤트로 사용할 나이 끝  자리.		
+		int randomAge = main.time.getEventAge(); // 0 ~ 9 까지의 무작위 난수 발생. 이벤트로 사용할 나이 끝  자리.		
 
 		System.out.print("태어난 년도를 입력하세요(예시:1993) : ");
 		birthNum = Integer.parseInt(br.readLine());
 	
 		//올해 연도 받아오기
-		int y = time.getDate()[0]; // 올해 연도 받아왔음
+		int y = main.time.getDate()[0]; // 올해 연도 받아왔음
 
-		int userAge = y - brithNum; // 사용자의 만 나이 알아냄
+		int userAge = y - birthNum; // 사용자의 만 나이 알아냄
 		userAge += 1; // 사용자의 한국식 나이..
 		int lastAge = userAge % 10; // 나이 뒷자리 숫자 구하기
 
