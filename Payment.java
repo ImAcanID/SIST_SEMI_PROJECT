@@ -215,7 +215,8 @@ class Payment
 					System.out.println("멤버쉽이 확인되었습니다");
 					customerNumber = i;
 					break;
-				}				
+
+				}
 			}
 
 			if(!isMembership)

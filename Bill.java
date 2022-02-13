@@ -103,7 +103,7 @@ class Bill
 			System.out.printf("거스름돈 - %d\n", change);
 		}
 		
-		System.out.printf("예상 대기 시간 - %d분", watingTime);			
+		System.out.printf("예상 대기 시간 - %d분\n\n", watingTime);			
 	}
 
 }
