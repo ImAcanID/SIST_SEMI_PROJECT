@@ -7,7 +7,7 @@ class Bread extends SuperMenu
 	String bCategory; // 빵 종류; 빵.bCategory == "에그마요" 수 ++;
     int bPrice;       // 빵 가격;
 	int bLength;      // 빵 길이;
-	static int bCount;       // 같은 옵션의 빵 개수 추가
+	static int bCount=1;       // 같은 옵션의 빵 개수 추가
 	//String cheeseBread;
 	
 	/* 상속해옴.

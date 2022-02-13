@@ -28,7 +28,7 @@ public class TestMain
 		for (int i= 0 ; i<dm.breadArrayList.size();i++)
 		{
 			System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).bCategory);
-			//String strN = dm.breadArrayList.get(i).vegetable[0];
+			//String strN = dm.breadArrayList.get(i)2.vegetable[0];
 			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + strN); //야채 - 양상추 빼면 이값이 0으로 출력.
 			
 			//System.out.println("첫번째 breadArrayList의 디폴트메뉴. : " + dm.breadArrayList.get(i).cheese);

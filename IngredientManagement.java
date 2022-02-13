@@ -148,20 +148,21 @@ public class IngredientManagement
 		}
 		
 	}
-	void decreaseBread(String strxxx, count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
+	void decreaseBread(String strxxx, int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
 		//① 수량 줄이기
 		int wonSu;// 남아있는 재고 수량.
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
-		int afterSu;// 원래 수량 - 유저 수량
-		int tempABCD;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		int afterSu=0;// 원래 수량 - 유저 수량
+		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
 		
-		for (int i = 0;i<breArray ;i++ ) // 빵 종류 화이트, 허니오트...
+		for (int i = 0;i<breArray.length ;i++ ) // 빵 종류 화이트, 허니오트...
 		{
 			strxxx.equals(breArray);
 			tempABCD = 1;
+			System.out.println("빵 종류 선택해서 tempABCD에 1담음");
 		}
-		for (int i = 0;i<chArray-1 ;i++ ) // 치즈 종류, 슈레드 ,,, 
+		for (int i = 0;i<chArray.length-1 ;i++ ) // 치즈 종류, 슈레드 ,,, 
 		{
 			strxxx.equals(chArray);
 			tempABCD = 2;
@@ -169,57 +170,62 @@ public class IngredientManagement
 
 		switch (tempABCD) // 화이트, 슈레드 치즈
 		{
-			case 1:for (int i = 0;i<breArray ;i++ )
+			//case 0 : System.out.println("안됨");
+			case 1:for (int i = 0;i<breArray.length ;i++ )
 			{
-				if breArray[i].equals(strxxx))
+				if (breArray[i].equals(strxxx))
 				{
-					wonSu = bread.get(cheese);
-					afterSu = wonSu-count;//객체 수량
+					wonSu = bread.get(strxxx);
+					System.out.println("원래수량 : "  + wonSu);
+					afterSu = wonSu-count22;//객체 수량
 					bread.put(strxxx,afterSu); // 남은 재고 수량 변경.
+					System.out.println("수정된 수량 : " + afterSu);
 					if (afterSu == 0)
 						breArray[i] = "해당 메뉴 품절";
 					break;// 가장 가까운 반복문을 나간다.
 				}
 		
 			}; break;
-			case 2:for (int i = 0;i<chArray-1 ;i++ )
+			case 2:for (int i = 0;i<chArray.length-1 ;i++ )
 			{
 				if (chArray[i].equals(strxxx))
 				{
-					wonSu = this.cheese.get(cheese);
-					afterSu = wonSu-count;//객체 수량
-					cheese.put(cheese,afterSu); // 남은 재고 수량 변경.
+					wonSu = this.cheese.get(strxxx);
+					afterSu = wonSu-count22;//객체 수량
+					cheese.put(strxxx,afterSu); // 남은 재고 수량 변경.
 					if (afterSu == 0)
 						chArray[i] = "해당 메뉴 품절";
 					break;// 가장 가까운 반복문을 나간다.
 				}
 		
-			}; break;	
+			}; break;
+			default : System.out.println("안됩니다.");
 		}
+		System.out.println("현재 재고 수량 : " +bread.get(strxxx));
 	}
 	// 오버로딩 구간.
-	void decreaseBread(String [] strxxx, count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
+	void decreaseBread(String [] strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
 	{
 		//① 수량 줄이기
-		String userArr; // 유저 요소 하나씩 담기
+		String userArr="0"; // 유저 요소 하나씩 담기
 		
 
 		int wonSu;// 남아있는 재고 수량.
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
 		int afterSu;// 원래 수량 - 유저 수량
-		int tempABCD;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
 		String vdTemp;// 야채 하나씩 담자 ... 얜 제거해야 돼서 ...
 
 		for (String s:strxxx)
 		{
 			userArr = s; 
-			for (int i = 0;i<veArray ;i++ ) // 제거한 야채 ... 
+			for (int i = 0;i<veArray.length ;i++ ) // 제거한 야채 ... 
 			{
 				userArr.equals(veArray);
 				tempABCD = 3;
 				break;
 			}
-			for (int i = 0;i< sauArray-1 ;i++ ) // 선택 소스..
+			for (int i = 0;i< sauArray.length-1 ;i++ ) // 선택 소스..
 			{
 				userArr.equals(sauArray);
 				tempABCD = 4;
@@ -246,11 +252,11 @@ public class IngredientManagement
 			{
 				for (int i = 0;i<veArray.length ;i++ )
 				{
-					if (!s.equals(veArray[i])
+					if (!s.equals(veArray[i]))
 					{
 						vdTemp = veArray[i]; // 제거한 야채 빼고 담아짐.
 						wonSu = vegetable.get(vdTemp);
-						afterSu = wonSu-count;//객체 수량
+						afterSu = wonSu-count22;//객체 수량
 						vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
 						if (afterSu == 0)
 							veArray[i] = "해당 메뉴 품절";
@@ -260,24 +266,26 @@ public class IngredientManagement
 				}break;
 				
 			}
-			case 4:for (int i = 0;i<sauArray-1 ;i++ )
+			case 4:for (int i = 0;i<sauArray.length-1 ;i++ )
 			{
 				if (sauArray[i].equals(userArr))
 				{
 					wonSu = this.sauce.get(cheese);
-					afterSu = wonSu-count;//객체 수량
+					afterSu = wonSu-count22;//객체 수량
 					sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
 					if (afterSu == 0)
 						sauArray[i] = "해당 메뉴 품절";
 					break;// 가장 가까운 반복문을 나간다.
 				}
 		
-			}; break;		
+			}; break;	
+		}
 
 	}
+	
 
-
-	void decreaseSalad(String strxxx, count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
+/*
+	void decreaseSalad(String strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
 		//① 수량 줄이기
 		int wonSu;// 남아있는 재고 수량.
@@ -294,7 +302,7 @@ public class IngredientManagement
 			if (chArray[i].equals(strxxx))
 			{
 				wonSu = this.cheese.get(cheese);
-				afterSu = wonSu-count;//객체 수량
+				afterSu = wonSu-count22;//객체 수량
 				cheese.put(cheese,afterSu); // 남은 재고 수량 변경.
 				if (afterSu == 0)
 					chArray[i] = "해당 메뉴 품절";
@@ -302,8 +310,9 @@ public class IngredientManagement
 			}	
 		}
 	}
+	
 	// 오버로딩 구간.
-	void decreaseSalad(String [] strxxx, count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
+	void decreaseSalad(String [] strxxx,int count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
 	{
 		//① 수량 줄이기
 		String userArr; // 유저 요소 하나씩 담기
@@ -337,11 +346,11 @@ public class IngredientManagement
 			{
 				for (int i = 0;i<veArray.length ;i++ )
 				{
-					if (!s.equals(veArray[i])
+					if (!s.equals(veArray[i]))
 					{
 						vdTemp = veArray[i]; // 제거한 야채 빼고 담아짐.
 						wonSu = vegetable.get(vdTemp);
-						afterSu = wonSu-count;//객체 수량
+						afterSu = wonSu-count22;//객체 수량
 						vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
 						if (afterSu == 0)
 							veArray[i] = "해당 메뉴 품절";
@@ -356,7 +365,7 @@ public class IngredientManagement
 				if (sauArray[i].equals(userArr))
 				{
 					wonSu = this.sauce.get(cheese);
-					afterSu = wonSu-count;//객체 수량
+					afterSu = wonSu-count22;//객체 수량
 					sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
 					if (afterSu == 0)
 						sauArray[i] = "해당 메뉴 품절";
@@ -369,13 +378,13 @@ public class IngredientManagement
 	}
 	
 
-	void decreaseSideMenu(String smCategory)
+	void decreaseSideMenu(String smCategory,int count22)
 	{
 		for (int i = 0;i<sideArray;i++ )
 		{
 			smCategory.equals(sideArray[i]);
 			wonSu = sidemenu.get(cheese);
-			afterSu = wonSu-count;//객체 수량
+			afterSu = wonSu-count22;//객체 수량
 			sidemenu.put(smCategory,afterSu); // 남은 재고 수량 변경.
 			if (afterSu == 0)
 				sideArray[i] = "해당 메뉴 품절";
@@ -403,7 +412,7 @@ public class IngredientManagement
 				}
 			}
 			*/
-		}
+	//	}
 
 	/*
 	Countadd()→ 재료클래스 .. 

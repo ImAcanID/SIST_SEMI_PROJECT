@@ -102,6 +102,7 @@ public class SuperMenu
 			else
 				System.out.println("빵 종류를 다시 확인해 주세요");
 		}
+		ig.decreaseBread(breadkind,Bread.bCount);
 		//decrease();
 		System.out.println("\n[현재 선택 옵션]");
 		cusKey = 1;
