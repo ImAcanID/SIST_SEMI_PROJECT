@@ -141,13 +141,17 @@ public class IngredientManagement
 			intTemp = Integer.parseInt(br.readLine());
 		}
 		
-		if(!DefaultMenu.breadArrayList.isEmpty()) // »§ °´Ã¼ »ý¼ºÇÑ °Å¸é
-		{
-			Bread.bCount = intTemp; 
+		if(Bread.bbbb==1) // »§ °´Ã¼ »ý¼ºÇÑ °Å¸é
+		{ 
+			//System.out.println("»§ÀÌ´Ï±î °³¼ö ´Ã¸±°Ô");
+			Bread.bCount += intTemp; 
+			//System.out.println("intTemp: " + intTemp);
+			//System.out.println("Bread.bCount: " + Bread.bCount);
 		}
-		else if (!DefaultMenu.saladArrayList.isEmpty())
+		else if (Salad.cccc==2)
 		{	
-			Salad.sCount = intTemp;
+			//System.out.println("»ø·¯µå´Ï±î °³¼ö ´Ã¸±°Ô");
+			Salad.sCount += intTemp;
 		}
 		
 	}

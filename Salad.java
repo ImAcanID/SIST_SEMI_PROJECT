@@ -7,6 +7,7 @@ class Salad extends SuperMenu
 	String sCategory;     // 디폴트 메뉴 담기
 	int sPrice;           // 샐러드가격 담기;
 	static int sCount = 1;
+	static int cccc = 2;
 
 	
 	/* 담기
