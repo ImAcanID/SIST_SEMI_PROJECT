@@ -74,16 +74,16 @@ class Payment
 
 		main.sales.recordSales(order);	// 판매 내역 기록
 
-		//printBill();	// 영수증 출력
+		printBill();	// 영수증 출력
 	}
-/*
+
 	public void printBill()	// 영수증 출력 메소드
 	{	
 		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint, useMembership);
 		
 		bill.print();
 	}
-*/
+
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
 		int tot = order.total; 
@@ -136,6 +136,7 @@ class Payment
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int randomTime = main.time.getTime()[0];	// 현재 '시' 뽑아옴
+		int eventAge = main.time.getEventAge();
 
 		//시간 유효성검사
 		if (12<=randomTime && randomTime<=14)
@@ -145,7 +146,7 @@ class Payment
 			        // 중복할인 안되게..
 		}
 
-		System.out.print("오늘은 나이 끝 자리가 " + randomTime +"살 인 사람 할인 가능. 할인을 받으시겠습니까?(Y/N) : ");
+		System.out.print("오늘은 나이 끝 자리가 " + eventAge +"살 인 사람 할인 가능. 할인을 받으시겠습니까?(Y/N) : ");
 		String yesAgeDiscount = br.readLine().toUpperCase();
 		//char discountObject? = y or n;
 		if (yesAgeDiscount.equals("Y"))
@@ -209,10 +210,12 @@ class Payment
 			{
 				isMembership = (memberNum == main.ct[i].memberNumber); // 입력받은 멤버쉽 번호와 더미데이터의 멤버쉽번호가 일치하는지 확인.
 																	   // 일치하면 isMembership = true
-				if(isMembership)
+				if(isMembership) 
+				{
 					System.out.println("멤버쉽이 확인되었습니다");
-
-				customerNumber = i;
+					customerNumber = i;
+					break;
+				}				
 			}
 
 			if(!isMembership)
