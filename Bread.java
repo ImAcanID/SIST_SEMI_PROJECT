@@ -78,6 +78,7 @@ class Bread extends SuperMenu
 
 		}
 		while (!bCategory.equals("에그마요")&&!bCategory.equals("이탈리안 비엠티")&&!bCategory.equals("서브웨이 클럽"));
+		
 
 		if (bCategory.equals("에그마요"))
 		{
@@ -94,6 +95,7 @@ class Bread extends SuperMenu
 			this.bPrice = 5900;
 		}
 		
+		
 	} //end bcSelect()
 		
 	void blSelect() throws IOException
@@ -105,11 +107,14 @@ class Bread extends SuperMenu
 		System.out.print("빵의 길이를 입력해 주세요(15, 30) : ");
 
 		bLength = Integer.parseInt(br.readLine());
-
+	
+		/*
 		if (bLength == 30)
 		{
-			bPrice += 5000; // 30cm는 5,000원추가.
+
+			//bPrice += 5000; // 30cm는 5,000원추가.
 		}
+		*/
 	}
 	
 }

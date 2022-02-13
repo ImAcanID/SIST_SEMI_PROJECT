@@ -42,7 +42,7 @@ class Sales
 		}
 	}
 
-	void recordSales(Order order)
+	public void recordSales(Order order)
 	{
 		recordBread(order.breadOrder);//ArrayList<Integer[]> breadOrder;
 		recordSalad(order.saladOrder);

@@ -148,7 +148,7 @@ class IngredientManagement
 			//System.out.println("intTemp: " + intTemp);
 			//System.out.println("Bread.bCount: " + Bread.bCount);
 		}
-		else if (Salad.cccc==2)
+		else if (Salad.bbbb==2)
 		{	
 			//System.out.println("»ø·¯µå´Ï±î °³¼ö ´Ã¸±°Ô");
 			Salad.sCount += intTemp;
