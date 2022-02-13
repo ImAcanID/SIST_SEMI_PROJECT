@@ -16,26 +16,35 @@ class Sales
 	int total;	// 총 매출
 	int[] breadList;	// 빵 종류별 매출		(0: BMT / 1: 에그마요 / 2: 클럽 / 3: 다 합친 것) 
 	int[] saladList;	// 샐러드 종류별 매출	(0: BMT / 1: 에그마요 / 2: 클럽 / 3: 다 합친 것)
-	int[] sideList;		// 사이드 종류별 매출	(0: 콜라 / 1: 맥주 / 2: 쿠키 / 3: 다 합친 것)
-	
+	int[] sideList;		// 사이드 종류별 매출	(0: 콜라 / 1: 커피 / 2: 쿠키 / 3.스프  /4.맥주 /5: 다 합친 것)
+
 		
-	Sales ()
+	Sales () //생성자.
 	{
+		breadList = new int [4]; //-- 빵 종류별 담고 이 배열의 크기는 변화x 
+		saladList = new int [4];
+		sideList = new int [6]; 
+
 		for(int i=0; i<3; i++)
 		{
-			Integer[] temp1 = {breadPrice[i], 0, 0, 0};
-			Integer[] temp2 = {saladPrice[i], 0, 0};
-			Integer[] temp3 = {sidePrice[i], 0};
+			Integer[] temp1 = {breadPrice[i], 0, 0, 0};// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
+			Integer[] temp2 = {saladPrice[i], 0, 0};// { 개당 가격, 판매 갯수, 시간 할인 횟수 }
 
 			breadSales.add(temp1);
 			saladSales.add(temp2);
+		}
+
+		for (int i = 0;i<5 ;i++ )
+		{
+			Integer[] temp3 = {sidePrice[i], 0}; // { 개당 가격, 판매 갯수 }
+
 			sideSales.add(temp3);
 		}
 	}
 
 	void recordSales(Order order)
 	{
-		recordBread(order.breadOrder);
+		recordBread(order.breadOrder);//ArrayList<Integer[]> breadOrder;
 		recordSalad(order.saladOrder);
 		recordSide(order.sideOrder);
 		recordAgeDiscount(order.ageDiscount);
@@ -49,7 +58,7 @@ class Sales
 	// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
 
 	
-	void recordBread(ArrayList<Integer> arr)
+	void recordBread(ArrayList<Integer []> arr)
 	{
 		for(Integer[] custom : arr)
 		{
@@ -121,7 +130,7 @@ class Sales
 		for(int i=0; i<3; i++)
 		{
 			Integer[] temp = breadSales.get(i);	// breadSales →0: BMT / 1: 에그마요 / 2: 서브웨이클럽   // 디폴트 메뉴
-			int sum = temp[0] * temp[1] - (TIME_DISCOUNT_MONEY)*temp[2] + (LONG_BREAD_MONEY)*temp[3];
+			int sum = temp[0] * temp[1] - (main.TIME_DISCOUNT_MONEY)*temp[2] + (main.LONG_BREAD_MONEY)*temp[3];
 						
 			// breadSales 내부 Integer[] 정보
 			// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
@@ -133,17 +142,17 @@ class Sales
 		// 샐러드 계산
 		for(int i=0; i<3; i++)
 		{
-			Integer temp = saladSales.get(i);
-			int sum = temp[0] * temp[1] - (TIME_DISCOUNT_MONEY)*temp[2];
+			Integer [] temp = saladSales.get(i);
+			int sum = temp[0] * temp[1] - (main.TIME_DISCOUNT_MONEY)*temp[2];
 						
 			saladList[i] += sum;
 			saladTotal += sum;
 		}
 
 		// 사이드 계산
-		for(int i=0; i<3; i++)
+		for(int i=0; i<5; i++)
 		{
-			Integer temp = sideSales.get(i);
+			Integer [] temp = sideSales.get(i); // //{1000,0} ,{1000,0} , {1000,0} , {2900,0}, {4000,0}
 			int sum = temp[0] * temp[1];
 						
 			sideList[i] += sum;
@@ -155,7 +164,7 @@ class Sales
 		sideList[sideList.length-1] += sideTotal;			// 사이드메뉴 총 판매량
 
 		total = breadList[breadList.length-1] + saladList[saladList.length-1] + sideList[sideList.length-1]
-			- (AGE_DISCOUNT_MONEY)*numOfAgeDiscount - usedPoint;
+			- (main.AGE_DISCOUNT_MONEY)*numOfAgeDiscount - usedPoint;
 	}
 	
 
