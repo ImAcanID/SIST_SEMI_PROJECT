@@ -153,8 +153,6 @@ public class IngredientManagement
 	}
 	void decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
-		SuperMenu sm = new SuperMenu();
-
 		//① 수량 줄이기
 		int wonSu;// 남아있는 재고 수량.
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
@@ -196,7 +194,7 @@ public class IngredientManagement
 					{
 						breArray[i] = "해당 메뉴 품절";
 						System.out.println("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.");
-						sm.bdCustom();
+						//bd.bdCustom();
 					}
 					break;// 가장 가까운 반복문을 나간다.
 				}
