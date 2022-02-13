@@ -1,21 +1,21 @@
 import java.util.ArrayList;
 
-class Sales
+class Sales		// 판매 내역을 기록하는 클래스
 {
-	final int[] breadPrice = {4300, 5400, 5900};
-	final int[] saladPrice = {6000, 7100, 7000};
-	final int[] sidePrice = {1000,1000,1000,2900,4000};
+	final int[] breadPrice = {4300, 5400, 5900};		// 메뉴 가격: 에그마요/이탈리안 비엠티/서브웨이클럽
+	final int[] saladPrice = {6000, 7100, 7000};		// 메뉴 가격: 에그마요/이탈리안 비엠티/서브웨이클럽
+	final int[] sidePrice = {1000,1000,1000,2900,4000}; // 메뉴 가격: 콜라/커피/쿠피/스프/맥주
 
-	int numOfAgeDiscount;
-	int usedPoint;
+	int numOfAgeDiscount;	// 나이 할인 적용 횟수	
+	int usedPoint;			// 사람들이 사용한 포인트
 													
-	ArrayList<Integer[]> breadSales;    
-	ArrayList<Integer[]> saladSales;
-	ArrayList<Integer[]> sideSales;		
+	ArrayList<Integer[]> breadSales; // 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽 정보를 담고 있음.
+	ArrayList<Integer[]> saladSales; // 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽 정보를 담고 있음.
+	ArrayList<Integer[]> sideSales;	 //	0: 콜라 / 1: 커피 / 2: 쿠키 / 3.스프  /4.맥주 정보를 담고 있음.
 
 	int total;	// 총 매출
-	int[] breadList;	// 빵 종류별 매출		(0: BMT / 1: 에그마요 / 2: 클럽 / 3: 다 합친 것) 
-	int[] saladList;	// 샐러드 종류별 매출	(0: BMT / 1: 에그마요 / 2: 클럽 / 3: 다 합친 것)
+	int[] breadList;	// 빵 종류별 매출		(0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽 / 3: 다 합친 것) 
+	int[] saladList;	// 샐러드 종류별 매출	(0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽 / 3: 다 합친 것)
 	int[] sideList;		// 사이드 종류별 매출	(0: 콜라 / 1: 커피 / 2: 쿠키 / 3.스프  /4.맥주 /5: 다 합친 것)
 
 		
@@ -24,7 +24,7 @@ class Sales
 		breadList = new int [4]; //-- 빵 종류별 담고 이 배열의 크기는 변화x 
 		saladList = new int [4];
 		sideList = new int [6]; 
-
+		
 		for(int i=0; i<3; i++)
 		{
 			Integer[] temp1 = {breadPrice[i], 0, 0, 0};// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
@@ -44,7 +44,7 @@ class Sales
 
 	public void recordSales(Order order)
 	{
-		recordBread(order.breadOrder);//ArrayList<Integer[]> breadOrder;
+		recordBread(order.breadOrder);
 		recordSalad(order.saladOrder);
 		recordSide(order.sideOrder);
 		recordAgeDiscount(order.ageDiscount);
@@ -53,11 +53,10 @@ class Sales
 		calculateTotal();
 	}
 				
-	// breadSales →0: BMT / 1: 에그마요 / 2: 클럽   // 디폴트 메뉴
+	// breadSales → 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽   // 디폴트 메뉴
 	// breadSales 내부 Integer[] 정보
 	// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
 
-	
 	void recordBread(ArrayList<Integer []> arr)
 	{
 		for(Integer[] custom : arr)
@@ -75,7 +74,7 @@ class Sales
 		}
 	}
 
-	// saladSales →0: BMT / 1: 에그마요 / 2: 클럽   // 디폴트 메뉴
+	// saladSales → 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽   // 디폴트 메뉴
 	// saladSales 내부 Integer[] 정보
 	// { 개당 가격, 판매 갯수, 시간 할인 횟수 }
 	void recordSalad(ArrayList<Integer[]> arr)
@@ -92,7 +91,7 @@ class Sales
 		}
 	}
 
-	// sideSales →0: 콜라 / 1: 맥주 / 2: 쿠키  
+	// sideSales →0: 콜라 / 1: 커피 / 2: 쿠키 / 3.스프  / 4.맥주 
 	// sideSales 내부 Integer[] 정보
 	// { 개당 가격, 판매 갯수 }
 	void recordSide(ArrayList<Integer[]> arr)
@@ -122,14 +121,14 @@ class Sales
 	// 판매 내역 업데이트. 얼마나 팔렸나 계산하는 메소드
 	void calculateTotal()
 	{
-		int breadTotal = 0;	// 디폴트메뉴별 매출을 다 합친 것을 담는 변수
-		int saladTotal = 0;
-		int sideTotal = 0;
+		int breadTotal = 0;	// 빵 디폴트 메뉴 별 매출을 다 합친 것을 담는 변수
+		int saladTotal = 0;	// 샐러드 디폴트 메뉴 별 매출을 다 합친 것을 담는 변수
+		int sideTotal = 0;	// 사이드 메뉴 별 매출을 다 합친 것을 담는 변수
 
 		// 빵 계산
 		for(int i=0; i<3; i++)
 		{
-			Integer[] temp = breadSales.get(i);	// breadSales →0: BMT / 1: 에그마요 / 2: 서브웨이클럽   // 디폴트 메뉴
+			Integer[] temp = breadSales.get(i);	//breadSales → 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽
 			int sum = temp[0] * temp[1] - (main.TIME_DISCOUNT_MONEY)*temp[2] + (main.LONG_BREAD_MONEY)*temp[3];
 						
 			// breadSales 내부 Integer[] 정보
@@ -142,7 +141,7 @@ class Sales
 		// 샐러드 계산
 		for(int i=0; i<3; i++)
 		{
-			Integer [] temp = saladSales.get(i);
+			Integer [] temp = saladSales.get(i); //saladSales → 0: 에그마요 / 1: 이탈리안 비엠티 / 2: 서브웨이클럽
 			int sum = temp[0] * temp[1] - (main.TIME_DISCOUNT_MONEY)*temp[2];
 						
 			saladList[i] += sum;
@@ -164,7 +163,8 @@ class Sales
 		sideList[sideList.length-1] += sideTotal;			// 사이드메뉴 총 판매량
 
 		total = breadList[breadList.length-1] + saladList[saladList.length-1] + sideList[sideList.length-1]
-			- (main.AGE_DISCOUNT_MONEY)*numOfAgeDiscount - usedPoint;
+			- (main.AGE_DISCOUNT_MONEY)*numOfAgeDiscount - usedPoint;	
+		// 총 판매량 - 나이할인 적용 빼기 - 사용한 포인트
 	}
 	
 
@@ -172,7 +172,6 @@ class Sales
 	void print()
 	{
 		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리아BMT", "서브웨이클럽", "총");
-		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 1, 2, 3, 6);
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 1, 2, 3, 6);
 		System.out.println();
 		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리아BMT", "서브웨이클럽", "총");
@@ -182,7 +181,7 @@ class Sales
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수", 2, 2, 2, 6);
 		System.out.println();
 
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n"," ","빵","샐러드", "사이드메뉴", "총");
+		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n", " ", "빵","샐러드", "사이드메뉴", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "매출", 3, 2, 1, 6);
 
 	}

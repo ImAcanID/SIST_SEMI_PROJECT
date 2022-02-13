@@ -57,10 +57,10 @@ class Order
 		temp[1] = b.bCount;
 						
 		// 가격*갯수
-		temp[2] = ( breadPrice[temp[0]] - (500*temp[3]) + 500*temp[4] ) * temp[1];
+		temp[2] = ( breadPrice[temp[0]] - (main.TIME_DISCOUNT_MONEY*temp[3]) + main.LONG_BREAD_MONEY*temp[4] ) * temp[1];
 
 		// 할인 적용 전 가격 더하기
-		beforeTotal += ((breadPrice[temp[0]] + 500*temp[4]) * temp[1]);
+		beforeTotal += ((breadPrice[temp[0]] + main.LONG_BREAD_MONEY*temp[4]) * temp[1]);
 
 		// 할인 적용 후 가격 더하기
 		total += temp[2];
@@ -94,7 +94,7 @@ class Order
 		temp[1] = s.sCount;
 						
 		// 가격*갯수
-		temp[2] = ( saladPrice[temp[0]] - (500*temp[3]) ) * temp[1];
+		temp[2] = ( saladPrice[temp[0]] - (main.TIME_DISCOUNT_MONEY*temp[3]) ) * temp[1];
 
 		// 할인 적용 전 가격 더하기
 		beforeTotal += ( (saladPrice[temp[0]]) * temp[1]);
@@ -128,7 +128,7 @@ class Order
 			temp[0] = 4;
 		
 		// 갯수
-		temp[1] = s.count;
+		temp[1] = s.smCount;
 						
 		// 가격*갯수
 		temp[2] = sidePrice[temp[0]] * temp[1];
@@ -146,7 +146,7 @@ class Order
 	void recordAgeDiscount(boolean ageDiscount)
 	{
 		ageDiscount = true;
-		total -= 500;
+		total -= main.AGE_DISCOUNT_MONEY;
 	}
 
 	void recordPoint(int point)

@@ -5,14 +5,11 @@ import java.io.InputStreamReader;
 import java.util.Scanner;
 import java.util.Random;
 
-
 import java.util.ArrayList;
 
 
 class Payment
 {
-	int total;			// 할인 적용 금액
-	int beforeTotal;	// 할인 미적용 금액
 	int change;			// 거스름돈
 	int cash;			// 현금 지불 금액
 	boolean cashOrCard; // 현금지불할지 카드지불할지 카드면 true
@@ -33,7 +30,7 @@ class Payment
 	
 	Order order;	// 주문내역
 	
-	public void payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
+	Payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<SideMenu> sideArray)
 	{
 		timeDiscount = false;
 		ageDiscount = false;
@@ -76,18 +73,17 @@ class Payment
 
 		printBill();	// 영수증 출력
 	}
-	public void printBill()
+
+	public void printBill()	// 영수증 출력 메소드
 	{	
-		// *** 여기 생성자 수가 맞지 않는듯!! ***
-		Bill abc = new Bill(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, waitingTime, totalPoint, usedPoint);
-		//abc.setter(total, beforeTotal, change, cash, cashOrCard, timeDiscount, ageDiscount, watingTime, totalPoint, usedPoint); //setter는 넘기는거
-		// Bill class print() 정의 되면 될 듯 !! ***
-		abc.print();
+		Bill bill = new Bill(order, change, cash, cashOrCard, waitingTime, totalPoint, usedPoint);
+		
+		//bill.print();
 	}
 
 	public void choosePayment() throws IOException	// 결제 수단 선택
 	{
-		int tot = order.total; 
+		int tot = order.totalMinusPoint; 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));	
 		System.out.printf("지불해야하실 금액은 %d입니다.", tot);
 		
@@ -161,18 +157,37 @@ class Payment
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		if (checkMembership())	// 멤버쉽 메소드 호출. (멤버쉽 있나 없나 체크)
 		{
+<<<<<<< HEAD
 			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
 			System.out.println("고객님의 잔여 포인트는 : " + main.ct[customerNumber].point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
 			
 			if(main.ct[customerNumber].point > 1000)   //*** ct 들은 main에서 ... main 파일은 컴파일 에러 해당 없음.
+=======
+			int point = main.ct[customerNumber].point
+			
+			System.out.println("포인트는 1000원 이상부터 사용 가능합니다.");
+			System.out.println("고객님의 잔여 포인트는 : " + point + " 입니다"); // point(잔여포인트).. 고객의 잔여포인트가 얼마나 남았는지 보여줌
+			
+		
+
+			if(point > 1000)   
+>>>>>>> e0ccbfa8e821e0deb52e295193fb4f0d484ef03f
 			{
-				System.out.print("포인트를 얼마나 사용하시겠습니까? : ");
-				int wantToPoint = Integer.parseInt(br.readLine());				
+				int wantToPoint;
+				do
+				{
+					System.out.print("포인트를 얼마나 사용하시겠습니까? : ");
+					wantToPoint = Integer.parseInt(br.readLine());
+				}
+				while (wantToPoint>point);
+								
 				usedPoint = wantToPoint;
+			
+				main.ct[customerNumber].point -= usedPoint;
 			}
 			else
 			{
-				System.out.println("포인트가 부족합니다.");
+				System.out.println("포인트 1000원 이하라 사용 불가");
 				return;
 			}
 		}
@@ -375,8 +390,14 @@ class Payment
 				boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
 				if(cond)
 				{
+<<<<<<< HEAD
 					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 고객.잔여포인트ㅇ 주문한 (개ㅇ*가격*5%ㅇ 적립
 					System.out.printf("적립 후 현재 포인트는 %d입니다.", main.ct[customerNumber].point);
+=======
+					main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+					totalPoint = main.ct[customerNumber].point;
+					System.out.printf("적립 후 현재 포인트는 %d입니다.", totalPoint);
+>>>>>>> e0ccbfa8e821e0deb52e295193fb4f0d484ef03f
 				}
 				else
 				{
