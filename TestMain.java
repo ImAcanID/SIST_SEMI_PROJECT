@@ -11,6 +11,7 @@ public class TestMain
 	public static void main(String[] args) throws IOException
 	{
 		DefaultMenu dm = new DefaultMenu();
+		//System.out.println("내가원하는거:"+dm.breadArrayList.get(0).getClass().getName());
 		//dm.dmSelect();
 
 		//dm.addMenu();
