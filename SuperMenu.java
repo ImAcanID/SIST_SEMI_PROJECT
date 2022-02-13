@@ -60,7 +60,17 @@ public class SuperMenu
 
 		while (true)
 		{
-			System.out.println("\n선택 가능한 빵 종류 [화이트, 허니오트, 플랫 브레드]");
+			System.out.print("\n선택 가능한 빵 종류 [");
+			for (int i=0; i<breArray.length; i++)
+			{
+				System.out.print(breArray[i]);
+				if (i+1 != breArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				{
+					System.out.print(", ");
+				}
+				else
+					System.out.println("]");
+			}
 			System.out.print("빵 종류를 입력해 주세요 : ");
 			strTemp = br.readLine();
 
@@ -110,8 +120,18 @@ public class SuperMenu
 		if (con.equals("Y") || con.equals("y"))
 		{	
 			while (true)
-			{	
-				System.out.println("\n선택 가능한 치즈 종류 [아메리칸 치즈, 슈레드 치즈]");
+			{
+				System.out.print("\n선택 가능한 치즈 종류 [");
+				for (int i=0; i<chArray.length; i++)
+				{
+					System.out.print(chArray[i]);
+					if (i+1 != chArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+					{
+						System.out.print(", ");
+					}
+					else
+						System.out.println("]");
+				}
 				System.out.print("치즈 종류를 입력해 주세요 : ");
 				strtmp = br.readLine();
 
@@ -178,7 +198,17 @@ public class SuperMenu
 		con = br.readLine();
 		if (con.equals("Y") || con.equals("y"))
 		{
-			System.out.println("\n선택 가능한 야채 종류 [토마토, 양상추, 오이, 양파, 올리브]");
+			System.out.print("\n선택 가능한 야채 종류 [");
+			for (int i=0; i<veArray.length; i++)
+			{
+				System.out.print(veArray[i]);
+				if (i+1 != veArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				{
+					System.out.print(", ");
+				}
+				else
+					System.out.println("]");
+			}
 			System.out.print("빼고 싶은 야채 종류를 선택해주세요(다중 선택 가능, 콤마『,』구분) : "); 
 			strTemp = br.readLine();
 			String[] strArr = strTemp.split(", "); // 토마토, 양상추, 양파
@@ -230,7 +260,17 @@ public class SuperMenu
 		con = br.readLine();
 		if (con.equals("Y") || con.equals("y"))
 		{
-			System.out.println("\n선택 가능한 소스 종류 [스윗 어니언, 스윗 칠리, 렌치 드레싱]");
+			System.out.print("\n선택 가능한 소스 종류 [");
+			for (int i=0; i<sauArray.length; i++)
+			{
+				System.out.print(sauArray[i]);
+				if (i+1 != sauArray.length) // 젤 마지막 거 아닐 때만 콤마 붙임
+				{
+					System.out.print(", ");
+				}
+				else
+					System.out.println("]");
+			}
 			System.out.print("소스 종류를 선택해주세요(다중 선택 가능, 콤마『,』구분) : "); 
 			strtmp = br.readLine();
 			strArr2 = strtmp.split(", "); 
