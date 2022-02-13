@@ -33,14 +33,14 @@ class Payment
 	Order order;
 
 	
-	public void payment(ArrayList<Bread> breadArray/*ArrayList<Salad> saladArrayList, ArrayList<Side> sideArrayList*/)
+	public void payment(ArrayList<Bread> breadArray, ArrayList<Salad> saladArray, ArrayList<Side> sideArray)
 	{
 		timeDiscount = false;
 		ageDiscount = false;
 
-		this.breadArray = breadArrayList;
-		//this.salasArray = saladArrayList;
-		//this.sideArray = sideArrayList;
+		this.breadArray = breadArray;
+		this.salasArray = saladArray;
+		this.sideArray = sideArray;
 		order = new Order();
 
 		print();

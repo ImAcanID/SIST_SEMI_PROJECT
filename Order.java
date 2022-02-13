@@ -3,9 +3,9 @@ import java.util.ArrayList;
 // 주문 내역 클래스.
 class Order
 {
-	final int[] breadPrice = {4500, 5500, 6000};
-	final int[] saladPrice = {5500, 6500, 7000};
-	final int[] sidePrice = {1000, 2000, 2500};
+	final int[] breadPrice = {4300, 5400, 5900};
+	final int[] saladPrice = {6000, 7100, 7000};
+	final int[] sidePrice = {1000,1000,1000,2900,4000};
 
 	boolean ageDiscount;  // 나이 할인 적용 여부
 	
@@ -28,7 +28,7 @@ class Order
 	}
 	
 	// { 디폴트메뉴 종류, 갯수, 가격*갯수, 시간 할인 적용, 길이 추가 여부 }
-	// 0: 디폴트메뉴 종류 → 0: BMT / 1: 에그마요 / 2: 클럽
+	// 0: 디폴트메뉴 종류 → 0: 에그마요 / 1: 이탈리아 비엠티 / 2: 서브웨이클럽
 	// 1: 갯수 → 갯수
 	// 2: 가격* 갯수 → { 가격-(500*(시간 할인 적용 0 or 1)) + 길이 추가 요금 } * 갯수
 	// 3: 시간 할인 적용 → 0: 미적용 / 1: 적용
@@ -38,9 +38,9 @@ class Order
 		Integer[] temp = new Integer[5];
 		
 		// 디폴트 메뉴 설정
-		if (b.bCategory.equals("BMT"))
+		if (b.bCategory.equals("에그마요"))
 			temp[0] = 0;
-		else if (b.bCategory.equals("에그마요"))
+		else if (b.bCategory.equals("이탈리아 비엠티"))
 			temp[0] = 1;
 		else
 			temp[0] = 2;
@@ -54,7 +54,7 @@ class Order
 			temp[3] = 1;
 
 		// 갯수
-		temp[1] = b.count;
+		temp[1] = b.bCount;
 						
 		// 가격*갯수
 		temp[2] = ( breadPrice[temp[0]] - (500*temp[3]) + 500*temp[4] ) * temp[1];
@@ -70,7 +70,7 @@ class Order
 	}
 	
 	// { 디폴트메뉴 종류, 갯수, 가격*갯수, 시간 할인 적용, 길이 추가 여부 }
-	// 0: 디폴트메뉴 종류 → 0: BMT / 1: 에그마요 / 2: 클럽
+	// 0: 디폴트메뉴 종류 → 0: 에그마요 / 1: 이탈리아 비엠티 / 2: 서브웨이클럽
 	// 1: 갯수 → 갯수
 	// 2: 가격* 갯수 → { 가격-(500*(시간 할인 적용 0 or 1)) + 길이 추가 요금 } * 갯수
 	// 3: 시간 할인 적용 → 0: 미적용 / 1: 적용
@@ -79,9 +79,9 @@ class Order
 		Integer[] temp = new Integer[4];
 		
 		// 디폴트 메뉴 설정
-		if (s.sCategory.equals("BMT"))
+		if (s.sCategory.equals("에그마요"))
 			temp[0] = 0;
-		else if (s.sCategory.equals("에그마요"))
+		else if (s.sCategory.equals("이탈리아 비엠티"))
 			temp[0] = 1;
 		else
 			temp[0] = 2;
@@ -91,7 +91,7 @@ class Order
 			temp[3] = 1;
 
 		// 갯수
-		temp[1] = s.count;
+		temp[1] = s.sCount;
 						
 		// 가격*갯수
 		temp[2] = ( saladPrice[temp[0]] - (500*temp[3]) ) * temp[1];
@@ -107,7 +107,7 @@ class Order
 	}
 	
 	// { 디폴트메뉴 종류, 갯수, 가격*갯수, 시간 할인 적용, 길이 추가 여부 }
-	// 0: 디폴트메뉴 종류 → 0: 콜라 / 1: 맥주 / 2: 쿠키
+	// 0: 디폴트메뉴 종류 → 0: 콜라 / 1: 커피 / 2: 쿠키 / 3: 스프 / 4: 맥주 
 	// 1: 갯수 → 갯수
 	// 2: 가격* 갯수 →  가격* 갯수
 	
@@ -116,12 +116,16 @@ class Order
 		Integer[] temp = new Integer[3];
 		
 		// 디폴트 메뉴 설정
-		if (s.sCategory.equals("콜라"))
+		if (s.smCategory.equals("콜라"))
 			temp[0] = 0;
-		else if (s.sCategory.equals("맥주"))
+		else if (s.smCategory.equals("커피"))
 			temp[0] = 1;
-		else
+		else if (s.smCategory.equals("쿠키"))
 			temp[0] = 2;
+		else if (s.smCategory.equals("스프"))
+			temp[0] = 3;
+		else
+			temp[0] = 4;
 		
 		// 갯수
 		temp[1] = s.count;

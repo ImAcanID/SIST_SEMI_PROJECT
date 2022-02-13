@@ -6,10 +6,14 @@ import java.util.ArrayList;
 
 public class main
 {
+	static final int TIME_DISCOUNT_MONEY = 1000;
+	static final int AGE_DISCOUNT_MONEY = 500;
+	static final int LONG_BREAD_MONEY= 4900;
+
 	static Customer[] ct;		// 손님 정보 더미
 	static boolean isTakeOut;	// 테이크아웃 여부
-	// static Sales sales;
-	//static Ingredient ingred;
+	static Sales sales;
+	
 	static EventTime time;		// 시간 정보, 이벤트 대상 나이, 이벤트 대상 요일 담고 있음.
 	static IngredientManagement iim;
 	
@@ -18,23 +22,17 @@ public class main
 		boolean checkManager;	// 관리자인지 체크하는 용도
 		
 		time = new EventTime();	// 시간, 이벤트 관련 시간 객체 생성
+		sales = new Sales();	// 판매내역 
+		iim = new IngredientManagement();	// 재료 관리
 				
 		ct = new Customer[4]; // 사람 더미 데이터.
-
-		iim = new IngredientManagement();
 
 		ct = new Customer[4];  // 사람 더미 데이터.
 		ct[0] = new Customer("김영빈", 12234, 1500);  // 이름, 멤버쉽번호, 잔여포인트
 		ct[1] = new Customer("유미란", 12352, 1000);
 		ct[2] = new Customer("최서준", 15773, 500);
 		ct[3] = new Customer("소인수", 33214, 200);
-		
-	
-		//System.out.println(a);
-		//sales = new Sales();
-
-
-
+			
 		while(true)
 		{
 
@@ -45,13 +43,10 @@ public class main
 				ManagerMode();
 				continue;
 			}
-			DefaultMenu dm = new DefaultMenu(); //음식
+			DefaultMenu dm = new DefaultMenu(); //음식 선택
 			
-			// 음식선택();
-			//DefaultMenu dm = new DefaultMenu();
-			//Payment payment = new Payment(dm.breadArrayList);	//  구현 필요
-			
-			
+			Payment payment = new Payment(dm.breadArrayList, dm.saladArrayList, dm.sidemenuArrayList);
+						
 			//System.out.println("첫번째 breadArrayList의 요소 : " + dm.breadArrayList.get(0));
 			//System.out.println("두번째 breadArrayList의 요소 : " + dm.breadArrayList.size()); // 3개까진 선택해야 출력해보겠네.
 			/*

@@ -1,12 +1,10 @@
-import java.util.HashMap;
-import java.util.Map;
 import java.util.ArrayList;
 
 class Sales
 {
-	final int[] breadPrice = {4500, 5500, 6000};
-	final int[] saladPrice = {5500, 6500, 7000};
-	final int[] sidePrice = {1000, 2000, 2500};
+	final int[] breadPrice = {4300, 5400, 5900};
+	final int[] saladPrice = {6000, 7100, 7000};
+	final int[] sidePrice = {1000,1000,1000,2900,4000};
 
 	int numOfAgeDiscount;
 	int usedPoint;
@@ -123,7 +121,7 @@ class Sales
 		for(int i=0; i<3; i++)
 		{
 			Integer[] temp = breadSales.get(i);	// breadSales →0: BMT / 1: 에그마요 / 2: 서브웨이클럽   // 디폴트 메뉴
-			int sum = temp[0] * temp[1] - (시간 할인 가격)*temp[2] + (길이 추가 가격)*temp[3];
+			int sum = temp[0] * temp[1] - (TIME_DISCOUNT_MONEY)*temp[2] + (LONG_BREAD_MONEY)*temp[3];
 						
 			// breadSales 내부 Integer[] 정보
 			// { 개당 가격, 판매 갯수, 시간 할인 횟수, 길이 추가 횟수 }
@@ -136,7 +134,7 @@ class Sales
 		for(int i=0; i<3; i++)
 		{
 			Integer temp = saladSales.get(i);
-			int sum = temp[0] * temp[1] - (시간 할인 가격)*temp[2];
+			int sum = temp[0] * temp[1] - (TIME_DISCOUNT_MONEY)*temp[2];
 						
 			saladList[i] += sum;
 			saladTotal += sum;
@@ -157,7 +155,7 @@ class Sales
 		sideList[sideList.length-1] += sideTotal;			// 사이드메뉴 총 판매량
 
 		total = breadList[breadList.length-1] + saladList[saladList.length-1] + sideList[sideList.length-1]
-			- (나이 할인 금액)*numOfAgeDiscount - usedPoint;
+			- (AGE_DISCOUNT_MONEY)*numOfAgeDiscount - usedPoint;
 	}
 	
 
