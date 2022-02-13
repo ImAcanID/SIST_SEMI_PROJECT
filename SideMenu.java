@@ -104,6 +104,7 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 		}
 			System.out.print("수량을 입력해 주세요 : " );
 			smCount = Integer.parseInt(br.readLine());
+			smCategory = ig.decreaseSideMenu(smCategory,smCount);
 
 		switch (smCategory)
 		{

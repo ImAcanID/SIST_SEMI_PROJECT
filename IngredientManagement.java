@@ -39,38 +39,38 @@ public class IngredientManagement
 	{
 		for(String s:breArray)
 		{
-			bread.put(s, 100);
+			bread.put(s, 4);
 		}
-		bread.put("화이트", 0);
+		//bread.put("화이트", 0);
 
 		//야채종류
 		for(String s:veArray)
 		{
 			vegetable.put(s, 100);
 		}
-		vegetable.put("토마토", 0);
+		//vegetable.put("토마토", 0);
 
 		//시연용. 토마토 재료 수량 0 → 관리자모드에서 수량 증가 보여주기.
-		vegetable.put("토마토",0);
+		//vegetable.put("토마토",0);
 		
 		//소스종류
 		for(String s:sauArray)
 		{
 			sauce.put(s, 100);
 		}
-		sauce.put("스윗 어니언", 0);
+		//sauce.put("스윗 어니언", 0);
 		
 		//치즈종류
 		for(String s:chArray)
 		{
-			cheese.put(s, 100);
+			cheese.put(s, 1);
 		}
-		cheese.put("아메리칸 치즈", 0);
+		//cheese.put("아메리칸 치즈", 0);
 
 		//사이드메뉴종류	
 		for(String s:sideArray)
 		{
-			sidemenu.put(s, 100);
+			sidemenu.put(s, 2);
 		}
 	}
 		
@@ -151,13 +151,15 @@ public class IngredientManagement
 		}
 		
 	}
-	void decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
+	String decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		//① 수량 줄이기
 		int wonSu;// 남아있는 재고 수량.
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
 		int afterSu=0;// 원래 수량 - 유저 수량
 		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		String reStr = strxxx;//넘겨줄 문자열.
 		
 		for (int i=0; i<breArray.length; i++) // 빵 종류 화이트, 허니오트...
 		{             
@@ -193,8 +195,9 @@ public class IngredientManagement
 					if (afterSu < 0)
 					{
 						breArray[i] = "해당 메뉴 품절";
-						System.out.println("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.");
+						System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
 						//bd.bdCustom();
+						reStr = br.readLine();
 					}
 					break;// 가장 가까운 반복문을 나간다.
 				}
@@ -207,19 +210,172 @@ public class IngredientManagement
 					wonSu = this.cheese.get(strxxx);
 					afterSu = wonSu-count22;//객체 수량
 					cheese.put(strxxx,afterSu); // 남은 재고 수량 변경.
-					if (afterSu == 0)
+					if (afterSu < 0)
+					{
 						chArray[i] = "해당 메뉴 품절";
+						System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+						reStr = br.readLine();
+					}
 					break;// 가장 가까운 반복문을 나간다.
 				}
 		
 			}; break;
-			default : System.out.println("없음.");
+			//default : System.out.println("난가?.");
 		}
 		//System.out.println("현재 남은 재고 수량 : " + bread.get(strxxx));
+		return reStr;
 	}
+
+
 	// 오버로딩 구간.
-	void decreaseBread(String [] strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
+/*	
+	String [] decreaseBread(String [] strxxx,int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
 	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+		//① 수량 줄이기
+		String [] userArr;// 유저 요소 하나씩 담기
+		
+
+		int wonSu;// 남아있는 재고 수량.
+		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
+		int afterSu;// 원래 수량 - 유저 수량
+		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		String vdTemp;// 야채 하나씩 담자 ... 얜 제거해야 돼서 ...
+		String ssTemp; // 소스 하나씩 담자..
+		String reStr = "없음꺄하하";//return 할 문자열.
+		String userArr123;
+
+		for (String s:strxxx)
+		{
+			userArr = s; // 토마토, 오이
+			for (int i = 0;i<veArray.length ;i++ ) // 제거한 야채 ... 
+			{
+				userArr.equals(veArray);
+				tempABCD = 3; //토마토
+				break;
+			}
+			for (int i = 0;i< sauArray.length-1 ;i++ ) // 선택 소스..
+			{
+				userArr.equals(sauArray);
+				tempABCD = 4;
+				break;
+			}
+			break;
+		}
+
+
+		switch (tempABCD)
+		{
+			/*case 3:for (int i = 0;i<veArray ;i++ )
+			{
+				if veArray[i].equals(userArr))
+				{
+					wonSu = vegetable.get(cheese);
+					afterSu = wonSu-count;//객체 수량
+					vegetable.put(userArrx,afterSu); // 남은 재고 수량 변경.
+					if (afterSu == 0)
+						veArray[i] = "해당 메뉴 품절";
+					break;// 가장 가까운 반복문을 나간다.
+				}
+		
+			}; break;*/ // 토마토, 오이, 올리브
+			/*
+			case 3:for (int i = 0;i<veArray.length ;i++ )
+			{
+				if (!userArr.equals(veArray[i]))
+				{
+					vdTemp = veArray[i]; // 제거한 야채 빼고 담아짐.
+					wonSu = vegetable.get(vdTemp);
+					afterSu = wonSu-count22;//객체 수량
+					vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
+					if (veArray[i].equals(strxxx))
+					{
+						wonSu = vegetable.get(strxxx);
+						afterSu = wonSu-count22;//객체 수량
+						vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
+						if (afterSu < 0)
+						{
+							veArray[i] = "해당 메뉴 품절";
+							System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+							reStr = br.readLine();
+							//userArr123= reStr.split(",");
+
+						}
+
+					}
+				};break;
+			}
+				
+			case 4:for (int i = 0;i<sauArray.length ;i++ )
+			{
+				if (userArr.equals(sauArray[i]))
+				{
+					wonSu = sauce.get(userArr);
+					afterSu = wonSu-count22;//객체 수량
+					sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
+					if (sauArray[i].equals(strxxx))
+					{
+						wonSu = sauce.get(strxxx);
+						afterSu = wonSu-count22;//객체 수량
+						sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
+						if (afterSu < 0)
+						{
+							sauArray[i] = "해당 메뉴 품절";
+							System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+							reStr = br.readLine();
+							userArr123= reStr.split(",");
+						}
+
+					}
+				};break;
+			}
+		}
+		return userArr123;
+	}
+
+				
+
+
+
+	String decreaseSalad(String strxxx,int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		//① 수량 줄이기
+		int wonSu;// 남아있는 재고 수량.
+		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
+		int afterSu;// 원래 수량 - 유저 수량
+		//int tempABCD;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		String reStr = strxxx;//넘겨줄 문자열.
+		
+		strxxx.equals(chArray);
+
+		
+		for (int i = 0;i<chArray.length-1 ;i++ )
+		{
+			if (chArray[i].equals(strxxx))
+			{
+				wonSu = this.cheese.get(strxxx);
+				afterSu = wonSu-count22;//객체 수량
+				cheese.put(strxxx,afterSu); // 남은 재고 수량 변경.
+				if (afterSu == 0)
+				{
+					chArray[i] = "해당 메뉴 품절";
+					System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+					reStr = br.readLine();
+				}
+					
+				break;// 가장 가까운 반복문을 나간다.
+			}	
+		}
+		return reStr;
+	}
+
+	// 오버로딩 구간.
+	String decreaseSalad(String [] strxxx,int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
+	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 		//① 수량 줄이기
 		String userArr="없음"; // 유저 요소 하나씩 담기
 		
@@ -229,6 +385,8 @@ public class IngredientManagement
 		int afterSu;// 원래 수량 - 유저 수량
 		int tempABCD=0;// 치즈배열인지 야채배열인지 빵종류 배열인지..
 		String vdTemp;// 야채 하나씩 담자 ... 얜 제거해야 돼서 ...
+		String ssTemp; // 소스 하나씩 담자..
+		String reStr = "없음";//return 할 문자열.
 
 		for (String s:strxxx)
 		{
@@ -247,6 +405,8 @@ public class IngredientManagement
 			}
 			break;
 		}
+
+
 		switch (tempABCD)
 		{
 			/*case 3:for (int i = 0;i<veArray ;i++ )
@@ -262,72 +422,58 @@ public class IngredientManagement
 				}
 		
 			}; break;*/
-			case 3: for (String s:veArray)
+			/*
+			case 3:for (int i = 0;i<veArray.length ;i++ )
 			{
-				for (int i = 0;i<veArray.length ;i++ )
+				if (!userArr.equals(veArray[i]))
 				{
-					if (!s.equals(veArray[i]))
+					vdTemp = veArray[i]; // 제거한 야채 빼고 담아짐.
+					wonSu = vegetable.get(vdTemp);
+					afterSu = wonSu-count22;//객체 수량
+					vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
+					if (veArray[i].equals(strxxx))
 					{
-						vdTemp = veArray[i]; // 제거한 야채 빼고 담아짐.
-						wonSu = vegetable.get(vdTemp);
+						wonSu = vegetable.get(strxxx);
 						afterSu = wonSu-count22;//객체 수량
 						vegetable.put(vdTemp,afterSu); // 남은 재고 수량 변경.
-						if (afterSu == 0)
+						if (afterSu < 0)
+						{
 							veArray[i] = "해당 메뉴 품절";
-						break;// 가장 가까운 반복문을 나간다.
+							System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+							reStr = br.readLine();
+						}
 
 					}
-				}break;
-				
+				};break;
 			}
-			case 4:for (int i = 0;i<sauArray.length-1 ;i++ )
+				
+			case 4:for (int i = 0;i<sauArray.length ;i++ )
 			{
-				if (sauArray[i].equals(userArr))
+				if (userArr.equals(sauArray[i]))
 				{
-					wonSu = this.sauce.get(cheese);
+					wonSu = sauce.get(userArr);
 					afterSu = wonSu-count22;//객체 수량
 					sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
-					if (afterSu == 0)
-						sauArray[i] = "해당 메뉴 품절";
-					break;// 가장 가까운 반복문을 나간다.
-				}
-		
-			}; break;	
+					if (sauArray[i].equals(strxxx))
+					{
+						wonSu = sauce.get(strxxx);
+						afterSu = wonSu-count22;//객체 수량
+						sauce.put(userArr,afterSu); // 남은 재고 수량 변경.
+						if (afterSu < 0)
+						{
+							sauArray[i] = "해당 메뉴 품절";
+							System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+							reStr = br.readLine();
+						}
+
+					}
+				};break;
+			}
 		}
-
+		return reStr;
 	}
-	
-
-/*
-	void decreaseSalad(String strxxx,int count22)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
-	{
-		//① 수량 줄이기
-		int wonSu;// 남아있는 재고 수량.
-		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
-		int afterSu;// 원래 수량 - 유저 수량
-		//int tempABCD;// 치즈배열인지 야채배열인지 빵종류 배열인지..
-		
-		strxxx.equals(chArray);
-		tempABCD = 2;
-
-		
-		for (int i = 0;i<chArray-1 ;i++ )
-		{
-			if (chArray[i].equals(strxxx))
-			{
-				wonSu = this.cheese.get(cheese);
-				afterSu = wonSu-count22;//객체 수량
-				cheese.put(cheese,afterSu); // 남은 재고 수량 변경.
-				if (afterSu == 0)
-					chArray[i] = "해당 메뉴 품절";
-				break;// 가장 가까운 반복문을 나간다.
-			}	
-		}
-	}
-	
-	// 오버로딩 구간.
-	void decreaseSalad(String [] strxxx,int count)//해당 커스텀의 변수, 객체의 카운트 변수 받아오기(야채, 소스)
-	{
+		/*
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		//① 수량 줄이기
 		String userArr; // 유저 요소 하나씩 담기
 		
@@ -336,17 +482,18 @@ public class IngredientManagement
 		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
 		int afterSu;// 원래 수량 - 유저 수량
 		int tempABCD;// 치즈배열인지 야채배열인지 빵종류 배열인지..
+		String reStr = strxxx;//넘겨줄 문자열.
 
 		for (String s:strxxx)
 		{
 			userArr = s; 
-			for (int i = 0;i<veArray ;i++ ) // 제거한 야채 ... 
+			for (int i = 0;i<veArray.length ;i++ ) // 제거한 야채 ... 
 			{
 				userArr.equals(veArray);
 				tempABCD = 3;
 				break;
 			}
-			for (int i = 0;i< sauArray-1 ;i++ ) // 선택 소스..
+			for (int i = 0;i< sauArray.length-1 ;i++ ) // 선택 소스..
 			{
 				userArr.equals(sauArray);
 				tempABCD = 4;
@@ -390,20 +537,31 @@ public class IngredientManagement
 		}
 
 	}
+	*/
 	
 
-	void decreaseSideMenu(String smCategory,int count22)
+	String decreaseSideMenu(String smCategory,int count22) throws IOException
 	{
-		for (int i = 0;i<sideArray;i++ )
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String reStr = "없음";
+		int wonSu;// 남아있는 재고 수량.
+		int userSu; // 유저가 선택한 수량. (ex. 소스*객체의 Count)
+		int afterSu;// 원래 수량 - 유저 수량
+		for (int i = 0;i<sideArray.length;i++ )
 		{
 			smCategory.equals(sideArray[i]);
-			wonSu = sidemenu.get(cheese);
+			wonSu = sidemenu.get(smCategory);
 			afterSu = wonSu-count22;//객체 수량
 			sidemenu.put(smCategory,afterSu); // 남은 재고 수량 변경.
 			if (afterSu == 0)
+			{
 				sideArray[i] = "해당 메뉴 품절";
+				System.out.print("해당 메뉴는 품절되었습니다. 다시 선택해 주세요.:");
+				reStr = br.readLine();
+			}
 			break;// 가장 가까운 반복문을 나간다.
 		}
+		return reStr;
 	}
 
 

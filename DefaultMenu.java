@@ -128,14 +128,13 @@ public class DefaultMenu
 				System.out.println("종류            : 빵");
 				System.out.print("메뉴            : " + breadArrayList.get(i).bCategory);
 				System.out.println();
-				System.out.print("가격            : " + breadArrayList.get(i).bPrice);
-				System.out.println();
 				System.out.print("빵 길이         : " + breadArrayList.get(i).bLength);
 				System.out.println();
 				System.out.print("빵 종류         : " + breadArrayList.get(i).breadkind);
 				System.out.println();
 				System.out.print("선택 치즈       : " + breadArrayList.get(i).cheese);
 				System.out.println();
+				
 
 
 				//제거선택한 야채 불러오기
@@ -160,6 +159,12 @@ public class DefaultMenu
 					System.out.print(s + " ");
 				}
 				System.out.println();
+				System.out.print("가격            : " + breadArrayList.get(i).bPrice);
+				System.out.println();
+				System.out.print("총 개수         : " + breadArrayList.get(i).bCount);
+				System.out.println();
+				System.out.print("총 가격         : " + breadArrayList.get(i).bCount*breadArrayList.get(i).bPrice);
+				System.out.println();
 			}
 			System.out.println();
 		}
@@ -171,8 +176,6 @@ public class DefaultMenu
 			{
 				System.out.println("종류            : 샐러드");
 				System.out.print("메뉴            : " + saladArrayList.get(i).sCategory);
-				System.out.println();
-				System.out.print("가격            : " + saladArrayList.get(i).sPrice);
 				System.out.println();
 				System.out.print("선택 치즈       : " + saladArrayList.get(i).cheese);
 				System.out.println();
@@ -199,6 +202,12 @@ public class DefaultMenu
 					strTempy = s;
 					System.out.print(s + " ");
 				}
+				System.out.println();
+				System.out.print("가격            : " + saladArrayList.get(i).sPrice);
+				System.out.println();
+				System.out.print("총 개수         : " + saladArrayList.get(i).sCount);
+				System.out.println();
+				System.out.print("총 가격         : " + saladArrayList.get(i).sCount*saladArrayList.get(i).sPrice);
 				System.out.println();
 			}
 			System.out.println();

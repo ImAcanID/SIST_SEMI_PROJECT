@@ -59,9 +59,12 @@ public class SuperMenu
 	String cheese;        // 치즈 담기
 	String[] vegetable;   // 야채들 담기 
 	String[] sauce;         // 소스 담기 
+
+	int moon = 0;
 	
 	void bdCustom() throws IOException // 빵 커스텀()----------------------------------------------------------------------
 	{
+		moon = 1; // 빵이라는 뜻.
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		while (true)
@@ -107,7 +110,7 @@ public class SuperMenu
 		System.out.println("\n[현재 선택 옵션]");
 		cusKey = 1;
 		checkCustom();
-		ig.decreaseBread(breadkind, Bread.bCount);
+		breadkind = ig.decreaseBread(breadkind, Bread.bCount);
 		//decrease();
 		
 		
@@ -177,6 +180,16 @@ public class SuperMenu
 		checkCustom();
 		cusKey = 2;
 		checkCustom();
+		if (moon == 1)
+		{
+			cheese = ig.decreaseBread(cheese, Bread.bCount);
+		}
+		else if (moon == 0)
+		{
+			cheese = ig.decreaseBread(cheese, Salad.sCount);
+		}
+		
+		
 	}
 		// 치즈 배열 값 테스트
 		/*
@@ -254,6 +267,13 @@ public class SuperMenu
 		checkCustom();
 		cusKey = 3;
 		checkCustom();
+		/*
+		for (int i = 0 ;i<vegetable.length ;i++ )
+		{
+			vegetable[i] = ig.decreaseBread(vegetable, Bread.bCount); //여기 확인!!!
+		}
+		*/
+		
 	}//end vdCustom()
 
 	void scCustom() throws IOException // 소스 커스텀()--------------------------------------------
@@ -316,6 +336,13 @@ public class SuperMenu
 		checkCustom();
 		cusKey = 4;
 		checkCustom();
+		//sauce[i] = ig.decreaseBread(sauce, Bread.bCount);
+		/*
+		for (int i = 0 ;i<sauce.length ;i++ )
+		{
+			sauce[i] = ig.decreaseBread(sauce, Bread.bCount); //여기 확인!!!
+		}
+		*/
 	}
 
 	void checkCustom() // 여기 샐러드일 때는 case1 돌면 안 돼 .. 어카지? 
