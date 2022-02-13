@@ -6,7 +6,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class IngredientManagement
+class IngredientManagement
 {
 	//public static void main(String [] args)
 	//{
@@ -20,11 +20,11 @@ public class IngredientManagement
 
 
 	// 야채,소스,치즈,빵,사이드메뉴 수량 담을 자료구조 생성
-	static Map<String, Integer> bread = new HashMap<String, Integer>();
-	static Map<String, Integer> vegetable = new HashMap<String, Integer>();
-	static Map<String, Integer> sauce = new HashMap<String, Integer>();
-	static Map<String, Integer> cheese = new HashMap<String, Integer>();
-	static Map<String, Integer> sidemenu = new HashMap<String, Integer>();
+	Map<String, Integer> bread = new HashMap<String, Integer>();
+	Map<String, Integer> vegetable = new HashMap<String, Integer>();
+	Map<String, Integer> sauce = new HashMap<String, Integer>();
+	Map<String, Integer> cheese = new HashMap<String, Integer>();
+	Map<String, Integer> sidemenu = new HashMap<String, Integer>();
 				
 	
 	//생성자
@@ -80,7 +80,7 @@ public class IngredientManagement
 		//--==>>100스윗 어니언 수량
 
 		// 재료 넣기 메소드 → 프로그램 main() 에서 관리자 모드에서 실행.
-	static void ingPut()
+	void ingPut()
 	{	
 		Scanner sc = new Scanner(System.in);
 		System.out.println("[빵, 치즈, 야채, 소스, 사이드]");
