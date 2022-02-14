@@ -7,7 +7,7 @@ class Bread extends SuperMenu
 	String bCategory; // 빵 종류; 빵.bCategory == "에그마요" 수 ++;
     int bPrice;       // 빵 가격;
 	int bLength;      // 빵 길이;
-	static int bCount=1;       // 같은 옵션의 빵 개수 추가
+	int bCount=1;       // 같은 옵션의 빵 개수 추가
 
 	static int bbbb = 1;
 	//String cheeseBread;
@@ -59,13 +59,14 @@ class Bread extends SuperMenu
 		ccSelect();     // 치즈 커스텀() (상속)
 		vdCustom();     // 야채 커스텀() (상속)
 		scCustom();     // 소스 커스텀() (상속)
-		ig.addCount();
+		//ig.addCount();
 		
 		//addCount();     // 증가 메소드() (상속)
 		//decrease();     // 감소 메소드() (상속)
 		//addMenu();      // 추가 메뉴 메소드() (상속) → 이게 여기 있어서 객체 생성이 덜 된 상태로 add 가 되니까
 						  //                              Bread() 생성자 안에있는 변수들이 마지막에 정한걸로 덮어쓰여지는듯하다!
 	}
+
 	
 	void bcSelect() throws IOException
 	{

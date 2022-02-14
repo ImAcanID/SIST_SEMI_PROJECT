@@ -123,7 +123,7 @@ class IngredientManagement
 		}
 		System.out.printf("%s의 증가 후 수량은 %d입니다.%n", ingre, tmp);
 	}
-
+/*
 	void addCount() throws IOException//객체 수량 늘리기
 	{	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -140,21 +140,47 @@ class IngredientManagement
 			System.out.print("몇 개 추가하시겠습니까? : ");
 			intTemp = Integer.parseInt(br.readLine());
 		}
-		
+		/*
 		if(Bread.bbbb==1) // 빵 객체 생성한 거면
 		{ 
 			//System.out.println("빵이니까 개수 늘릴게");
-			Bread.bCount += intTemp; 
+			//Bread.bCount += intTemp; 
+			breadArrayList.get
 			//System.out.println("intTemp: " + intTemp);
 			//System.out.println("Bread.bCount: " + Bread.bCount);
 		}
 		if (Salad.cccc==2)
 		{	
-			System.out.println("샐러드니까 개수 늘릴게");
+			//System.out.println("샐러드니까 개수 늘릴게");
 			Salad.sCount += intTemp;
 		}
+		*/
+		/*
+		if (!breadArrayList.isEnpty())
+		{
+			for (int i = 0;i<breadArrayList.size() ;i++ )
+			{
+				breadArrayList.get(i).bCount += inTemp;
+			}
+		}
+		if (!saladArrayList.isEnpty())
+		{
+			for (int i = 0;i<saladArrayList.size() ;i++ )
+			{
+				saladArrayList.get(i).bCount += inTemp;
+			}
+		}
+		if (!sidemenuArrayList.isEnpty())
+		{
+			for (int i = 0;i<sidemenuArrayList.size() ;i++ )
+			{
+				sidemenuArrayList.get(i).bCount += inTemp;
+			}
+		}
+
 		
 	}
+	*/
 	String decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

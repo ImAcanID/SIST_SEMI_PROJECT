@@ -14,6 +14,8 @@ public class DefaultMenu
 	String strTemp;  //-- 문자열 타입의 빈 그릇.(에그마요,BMT...)
 	String strTemp2; //-- 빵, 샐러드, 사이드메뉴, 현재주문확인하기..
 	int nTemp;       //-- int타입의 빈 그릇
+
+	int inTemp; //-- 추가메뉴 그릇
 	
 	static ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
 	static ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
@@ -42,14 +44,42 @@ public class DefaultMenu
 		if (nTemp == 1)
 		{
 			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
+			if (!breadArrayList.isEmpty())
+			{
+				addCount();
+
+				for (int i = 0;i<breadArrayList.size() ;i++ )
+				{
+					breadArrayList.get(i).bCount += inTemp;
+				}
+			}
 		}
+
 		else if (nTemp == 2)
 		{
 			saladArrayList.add(new Salad());
+			if (!saladArrayList.isEmpty())
+			{
+				addCount();
+				for (int i = 0;i<saladArrayList.size() ;i++ )
+				{
+					saladArrayList.get(i).sCount += inTemp;
+				}
+			}
+			
 		}
 		else if (nTemp == 3)
 		{
 			sidemenuArrayList.add(new SideMenu());
+			if (!sidemenuArrayList.isEmpty())
+			{
+				addCount();
+				for (int i = 0;i<sidemenuArrayList.size() ;i++ )
+				{
+					sidemenuArrayList.get(i).smCount += inTemp;
+				}
+			}
+			
 		}
 		else if (nTemp == 4)
 		{
@@ -167,6 +197,7 @@ public class DefaultMenu
 				System.out.println();
 			}
 			System.out.println();
+			System.out.println();
 		}
 		//System.out.println();
 
@@ -211,6 +242,7 @@ public class DefaultMenu
 				System.out.println();
 			}
 			System.out.println();
+			System.out.println();
 		}
 		//System.out.println();
 
@@ -229,9 +261,52 @@ public class DefaultMenu
 				System.out.println();
 			}
 			System.out.println();
+			System.out.println();
 		}
 		//System.out.println();	
 	}
+
+
+	void addCount() throws IOException//객체 수량 늘리기
+	{	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String strTemp;
+		int intTemp=0;
+		
+		//DefaultMenu dm = new DefaultMenu(); // 이러면 디폴트메뉴 생성자 때문에 안 됨
+
+		System.out.print("\n현재 옵션과 같은 메뉴를 추가하시겠습니까? (Y/N) : ");
+		strTemp = br.readLine();
+		
+		if(strTemp.equals("Y") || strTemp.equals("y"))
+		{
+			System.out.print("몇 개 추가하시겠습니까? : ");
+			intTemp = Integer.parseInt(br.readLine());
+		}
+	}
+		/*
+		if (!breadArrayList.isEnpty())
+		{
+			for (int i = 0;i<breadArrayList.size() ;i++ )
+			{
+				breadArrayList.get(i).bCount += inTemp;
+			}
+		}
+		if (!saladArrayList.isEnpty())
+		{
+			for (int i = 0;i<saladArrayList.size() ;i++ )
+			{
+				saladArrayList.get(i).bCount += inTemp;
+			}
+		}
+		if (!sidemenuArrayList.isEnpty())
+		{
+			for (int i = 0;i<sidemenuArrayList.size() ;i++ )
+			{
+				sidemenuArrayList.get(i).bCount += inTemp;
+			}
+		}
+		*/
 }
 	
 	//System.out.println();

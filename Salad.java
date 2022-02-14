@@ -6,7 +6,7 @@ class Salad extends SuperMenu
 {
 	String sCategory;     // 디폴트 메뉴 담기
 	int sPrice;           // 샐러드가격 담기;
-	static int sCount = 1;
+	int sCount = 1;
 	static int cccc = 2; ///cccc → bbbb 로 변경 payment.java에서 활용.
 
 	
@@ -25,7 +25,7 @@ class Salad extends SuperMenu
 		ccSelect();          //치즈여부선택하기();
 		vdCustom();          //야채 커스텀();
 		scCustom();          //소스 커스텀();
-		ig.addCount();          //개수추가메소드();
+		//ig.addCount();          //개수추가메소드();
 		//addMenu();           //추가메뉴메소드();
 	}
 
