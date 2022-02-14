@@ -39,7 +39,7 @@ class IngredientManagement
 	{
 		for(String s:breArray)
 		{
-			bread.put(s, 4);
+			bread.put(s, 100);
 		}
 		//bread.put("화이트", 0);
 
@@ -63,14 +63,14 @@ class IngredientManagement
 		//치즈종류
 		for(String s:chArray)
 		{
-			cheese.put(s, 1);
+			cheese.put(s, 100);
 		}
 		//cheese.put("아메리칸 치즈", 0);
 
 		//사이드메뉴종류	
 		for(String s:sideArray)
 		{
-			sidemenu.put(s, 2);
+			sidemenu.put(s, 100);
 		}
 	}
 		
@@ -80,6 +80,7 @@ class IngredientManagement
 		//--==>>100스윗 어니언 수량
 
 		// 재료 넣기 메소드 → 프로그램 main() 에서 관리자 모드에서 실행.
+	/*
 	void ingPut()
 	{	
 		Scanner sc = new Scanner(System.in);
@@ -122,6 +123,163 @@ class IngredientManagement
 			case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
 		}
 		System.out.printf("%s의 증가 후 수량은 %d입니다.%n", ingre, tmp);
+	}
+	*/
+	void managementD() throws IOException// 품절시키기 메소드
+	{	
+		//Scanner sc = new Scanner(System.in);
+		BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+		Scanner sc = new Scanner(System.in);
+
+		//System.out.println("[빵, 야채, 치즈, 소스, 사이드]");
+		//System.out.print("어떤 항목의 재료를 관리하시겠습니까? : "); // 빵 야채 소스
+		//String kinds = sc.next();
+
+		//메뉴판 출력해주자. 사용자가 편하게!
+		System.out.println("============================================");
+		System.out.print("카테고리     재료명");
+		System.out.print("\n빵          : ");
+		for (String s:breArray)
+		{
+			System.out.print(s + " ");
+		}
+		System.out.println();
+
+		System.out.print("야채        : ");
+		for (String s:veArray)
+		{
+			System.out.print(s + " ");
+		}
+		System.out.println();
+
+		System.out.print("소스        : ");
+		for (int i = 0; i<sauArray.length-1;i++)//배열끝 소스제외는 제외!
+		{
+			System.out.print(sauArray[i] + " ");
+		}
+		System.out.println();
+		System.out.print("치즈        : ");
+		
+		for (int i = 0;i<chArray.length-1;i++ )//배열끝 치즈제외는 제외!
+		{
+			System.out.print(chArray[i] + " ");
+		}
+		System.out.println();
+
+		System.out.print("사이드 메뉴 : ");
+		for (String s:sideArray)
+		{
+			System.out.print(s + " ");
+		}
+		System.out.println();
+		System.out.println();
+		
+		
+		System.out.print("품절 시킬 재료의 이름을 입력해 주세요 : "); // 화이트
+		String ingre = br.readLine(); // 재료이름중 스윗 칠리 같은 띄어쓰기도 한 문자열로 처리하기 위해서 BufferedReader 사용!. 
+		/*
+		int tmp = 0; // 재료 수량 기록할 임시 변수
+		switch (kinds) // 현재 재료 수량을 tmp에 담기
+		{
+			case "빵" : tmp = bread.get(ingre); break;
+			case "야채" : tmp = vegetable.get(ingre); break;
+			case "소스" : tmp = sauce.get(ingre); break;
+			case "치즈" : tmp = cheese.get(ingre); break;
+			case "사이드 메뉴" : tmp = sidemenu.get(ingre); break;
+		}
+		System.out.printf("%s의 현재 수량은 %d입니다.%n", ingre, tmp);
+		//int su = sc.nextInt();
+		
+		tmp += su;
+		String[] breArray = {"화이트","허니오트","플랫 브레드"};
+	String[] veArray = {"토마토","양상추","오이","양파","올리브"};
+	String[] sauArray = {"스윗 어니언","스윗 칠리","렌치 드레싱","소스제외"};
+	String[] chArray = {"아메리칸 치즈","슈레드 치즈","치즈제외"};
+	String[] sideArray = {"콜라","커피","쿠키","스프","맥주"};
+
+
+	// 야채,소스,치즈,빵,사이드메뉴 수량 담을 자료구조 생성
+	Map<String, Integer> bread = new HashMap<String, Integer>();
+	Map<String, Integer> vegetable = new HashMap<String, Integer>();
+	Map<String, Integer> sauce = new HashMap<String, Integer>();
+	Map<String, Integer> cheese = new HashMap<String, Integer>();
+	Map<String, Integer> sidemenu = new HashMap<String, Integer>();
+				*/
+		/*
+		switch (kinds) // 기존 수량 + 사용자가 입력한 수량을 put하기 (덮어쓰기)
+		{
+			case "빵" : bread.put(ingre,0); break;
+			case "야채" : vegetable.put(ingre,0); break;
+			case "소스" : sauce.put(ingre,0); break;
+			case "치즈" : cheese.put(ingre,0); break;
+			case "사이드 메뉴" : sidemenu.put(ingre,0); break;
+		}
+		*/
+		//System.out.println(ingre+"가 포함되나?빵에" +bread.containsKey(ingre));
+		if (bread.containsKey(ingre)) //빵종류 해당 메뉴 품절
+		{
+			for (int i = 0;i<breArray.length;i++)
+			{
+				if (breArray[i].equals(ingre))
+				{
+					breArray[i] = "품절";
+				}
+			}
+		}
+		if (vegetable.containsKey(ingre))//야채해당메뉴품절
+		{
+			for (int i = 0;i<veArray.length;i++)
+			{
+				if (veArray[i].equals(ingre))
+				{
+					veArray[i] = "품절";
+				}
+			}
+		}
+		if (sauce.containsKey(ingre))//소스해당메뉴품절
+		{
+			for (int i = 0;i<sauArray.length;i++)
+			{
+				if (sauArray[i].equals(ingre))
+				{
+					sauArray[i] = "품절";
+				}
+			}
+		}
+		if (cheese.containsKey(ingre))//소스해당메뉴품절
+		{
+			for (int i = 0;i<chArray.length;i++)
+			{
+				if (chArray[i].equals(ingre))
+				{
+					chArray[i] = "품절";
+				}
+			}
+		}
+		if (sidemenu.containsKey(ingre))//사이드메뉴 해당메뉴 품절
+		{
+			for (int i = 0;i<sideArray.length;i++)
+			{
+				if (sideArray[i].equals(ingre))
+				{
+					sideArray[i] = "품절";
+				}
+			}
+		}
+		
+		
+		//메뉴판 출력
+		/*
+		for (String s : veArray)
+		{
+			System.out.print(s+ " ");
+		}
+		System.out.println();
+		*/
+
+		System.out.printf("%s가 품절 처리 되었습니다.", ingre);
+		System.out.println("\n============================================");
+		//System.out.println(bread.get("화이트"));
 	}
 /*
 	void addCount() throws IOException//객체 수량 늘리기
@@ -181,6 +339,7 @@ class IngredientManagement
 		
 	}
 	*/
+	/*
 	String decreaseBread(String strxxx, int count22) throws IOException//해당 커스텀의 변수, 객체의 카운트 변수 받아오기
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -255,6 +414,7 @@ class IngredientManagement
 		//System.out.println("현재 남은 재고 수량 : " + bread.get(strxxx));
 		return reStr;
 	}
+	*/
 
 
 	// 오버로딩 구간.
@@ -568,7 +728,7 @@ class IngredientManagement
 
 	}
 	*/
-	
+	/*
 
 	String decreaseSideMenu(String smCategory,int count22) throws IOException
 	{
@@ -593,6 +753,7 @@ class IngredientManagement
 		}
 		return reStr;
 	}
+	*/
 
 
 

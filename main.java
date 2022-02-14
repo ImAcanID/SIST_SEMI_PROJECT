@@ -76,6 +76,7 @@ public class main
 	{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int input = 0;
+		String user; // 품절 계속하기 ...
 		
 		
 		
@@ -84,7 +85,7 @@ public class main
 			
 			try
 			{
-				System.out.println("① 수량 변경");
+				System.out.println("① 재료 품절");
 				System.out.println("② 판매 내역 출력");
 				System.out.print("할 일 입력(1~2): ");
 				input = Integer.parseInt(br.readLine());
@@ -101,7 +102,25 @@ public class main
 		}	
 		
 		if(input == 1)
-			iim.ingPut();
+			//iim.ingPut();
+			
+			try
+			{	
+				do
+				{
+					iim.managementD();
+					System.out.print("\n계속해서 재료를 품절시키겠습니까? (Y/N) : " );
+					user = br.readLine();
+					System.out.println();
+
+				}
+				while (user.equals("y") || user.equals("Y"));
+				
+			}
+			catch (IOException e1)
+			{
+				System.out.println(e1.toString());
+			}
 
 		else
 			sales.print();
@@ -114,7 +133,7 @@ public class main
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int choice = -1;
 		
-		System.out.println("");
+		System.out.print("");
 		System.out.println("■안녕하세요, SUBWAY 입니다.■");
 
 		do

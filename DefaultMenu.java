@@ -32,6 +32,7 @@ public class DefaultMenu
 		dmSelect();
 		addMenu();
 		dmPrint();
+		IngredientManagement ig = new IngredientManagement();
 	}
 
 	void dmSelect() throws IOException
