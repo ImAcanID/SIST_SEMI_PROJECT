@@ -36,12 +36,13 @@ class Salad extends SuperMenu
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
 		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
 		{
-			System.out.println("   [오늘의 메뉴]");
-			System.out.println("월 : 이탈리안 비엠티");
-			System.out.println("화 : 서브웨이 클럽");
-			System.out.println("수 : 에그마요");
-			System.out.println("목 : 이탈리안 비엠티");
-			System.out.println("금 : 서브웨이 클럽");
+			System.out.println(" ");
+			System.out.println("    [오늘의 메뉴]");
+			System.out.println(" 월 : 이탈리안 비엠티");
+			System.out.println(" 화 : 서브웨이 클럽");
+			System.out.println(" 수 : 에그마요");
+			System.out.println(" 목 : 이탈리안 비엠티");
+			System.out.println(" 금 : 서브웨이 클럽");
 
 			System.out.println("\n선택 가능한 메뉴 [에그마요, 이탈리안 비엠티, 서브웨이 클럽]");
 			System.out.print("메뉴를 입력해 주세요 : ");
@@ -78,7 +79,7 @@ class Salad extends SuperMenu
 		
 		if(strTemp.equals("Y") || strTemp.equals("y"))
 		{
-			System.out.print("몇 개 추가하시겠습니까? :  \n (ex. 100개 추가 → 총 개수 : 101 개 )");
+			System.out.print("몇 개 추가하시겠습니까? :  \n (ex. 100개 추가 → 총 개수: 101 개)");
 			intTemp = Integer.parseInt(br.readLine());
 		}
 		sCount += intTemp;
