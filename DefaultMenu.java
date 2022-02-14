@@ -196,12 +196,18 @@ public class DefaultMenu
 					System.out.print(s + " ");
 				}
 				System.out.println();
-				System.out.print("°¡°Ý            : " + breadArrayList.get(i).bPrice);
+				if (breadArrayList.get(i).bLength == 30)
+				{
+					breadArrayList.get(i).bPrice += 5000;
+					System.out.print("°³´ç °¡°Ý       : "+breadArrayList.get(i).bPrice);
+				}
+				else 
+					System.out.print("°³´ç °¡°Ý       : " + breadArrayList.get(i).bPrice);
 				System.out.println();
 				System.out.print("ÃÑ °³¼ö         : " + breadArrayList.get(i).bCount);
 				System.out.println();
-				System.out.print("ÃÑ °¡°Ý         : " + breadArrayList.get(i).bCount*breadArrayList.get(i).bPrice+"\n");
-				System.out.println();
+				//System.out.print("ÃÑ °¡°Ý         : " + breadArrayList.get(i).bCount*breadArrayList.get(i).bPrice+"\n");
+				///System.out.println();
 			}
 			System.out.println();
 			System.out.println();
@@ -245,8 +251,8 @@ public class DefaultMenu
 				System.out.println();
 				System.out.print("ÃÑ °³¼ö         : " + saladArrayList.get(i).sCount);
 				System.out.println();
-				System.out.print("ÃÑ °¡°Ý         : " + saladArrayList.get(i).sCount*saladArrayList.get(i).sPrice+"\n");
-				System.out.println();
+				//System.out.print("ÃÑ °¡°Ý         : " + saladArrayList.get(i).sCount*saladArrayList.get(i).sPrice+"\n");
+				//System.out.println();
 			}
 			System.out.println();
 			System.out.println();
@@ -264,8 +270,8 @@ public class DefaultMenu
 				System.out.println();
 				System.out.print("¼ö·®            : " + sidemenuArrayList.get(i).smCount);
 				System.out.println();
-				System.out.print("ÃÑ °¡°Ý         : " + sidemenuArrayList.get(i).totsmPrice+"\n");
-				System.out.println();
+				//System.out.print("ÃÑ °¡°Ý         : " + sidemenuArrayList.get(i).totsmPrice+"\n");
+				//System.out.println();
 			}
 			System.out.println();
 			System.out.println();
