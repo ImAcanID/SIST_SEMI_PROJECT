@@ -57,12 +57,12 @@ class Bill
 	{
 		
 		// 대충 영수증 양식따라서 출력함. 저거 위에 변수 다 출력
-		System.out.println("              영수증 출력");
-		System.out.println("===============주문 내역===============\n");
+		System.out.println("             [영수증 출력]\n");
+		System.out.println("===============주문내역===============\n");
 		
 		if(order.breadOrder.size() != 0)
 		{
-			System.out.println("================샌드위치===============");
+			System.out.println("===============샌드위치===============");
 			for(int i=0; i<order.breadOrder.size(); i++)
 			{
 				Integer[] temp = order.breadOrder.get(i);
@@ -77,7 +77,7 @@ class Bill
 		
 		if(order.saladOrder.size() != 0)
 		{
-			System.out.println("================샐러드=================");
+			System.out.println("================샐러드================");
 			for(int i=0; i<order.saladOrder.size(); i++)
 			{
 				Integer[] temp = order.saladOrder.get(i);
@@ -90,7 +90,7 @@ class Bill
 		
 		if(order.sideOrder.size() != 0)
 		{
-			System.out.println("==============사이드 메뉴==============");
+			System.out.println("==============사이드 메뉴=============");
 			for(int i=0; i<order.sideOrder.size(); i++)
 			{
 				Integer[] temp = order.sideOrder.get(i);
@@ -116,8 +116,9 @@ class Bill
 		System.out.printf("총 금액\t\t\t- %8d원\n", total);
 		System.out.println();
 		System.out.printf("예상 대기 시간 - %d분\n", watingTime);
-		System.out.printf("%d-%d-%d-%s요일 %d시 %d분\n\n", time.getDate()[0], time.getDate()[1], time.getDate()[2], days[time.getDate()[3]],
+		System.out.printf("%d-%d-%d-%s요일 %d시 %d분\n", time.getDate()[0], time.getDate()[1], time.getDate()[2], days[time.getDate()[3]],
 			time.getTime()[0], time.getTime()[1]);
+		System.out.println("======================================\n\n");
 	}
 
 }

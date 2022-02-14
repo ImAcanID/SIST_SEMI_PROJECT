@@ -67,6 +67,7 @@ class Bread extends SuperMenu
 		//addMenu();      // 추가 메뉴 메소드() (상속) → 이게 여기 있어서 객체 생성이 덜 된 상태로 add 가 되니까
 						  //                              Bread() 생성자 안에있는 변수들이 마지막에 정한걸로 덮어쓰여지는듯하다!
 		addCount();
+		//System.out.println("bCount " + bCount);
 	}
 
 	
@@ -75,6 +76,14 @@ class Bread extends SuperMenu
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
 		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
 		{
+			System.out.println(" ");
+			System.out.println("    [오늘의 메뉴]");
+			System.out.println(" 월 : 이탈리안 비엠티");
+			System.out.println(" 화 : 서브웨이 클럽");
+			System.out.println(" 수 : 에그마요");
+			System.out.println(" 목 : 이탈리안 비엠티");
+			System.out.println(" 금 : 서브웨이 클럽");
+
 			System.out.println("\n선택 가능한 메뉴 [에그마요, 이탈리안 비엠티, 서브웨이 클럽]");
 			System.out.print("메뉴를 입력해 주세요 : ");
 			bCategory = br.readLine();
@@ -127,16 +136,17 @@ class Bread extends SuperMenu
 		int intTemp=0;
 		
 		//DefaultMenu dm = new DefaultMenu(); // 이러면 디폴트메뉴 생성자 때문에 안 됨
-
-		System.out.print("\n현재 옵션과 같은 메뉴를 추가하시겠습니까? (Y/N) : ");
+		
+		System.out.print("\n현재 옵션과 같은 메뉴를 추가하시겠습니까? (Y/N): ");
 		strTemp = br.readLine();
 		
 		if(strTemp.equals("Y") || strTemp.equals("y"))
 		{
-			System.out.print("몇 개 추가하시겠습니까? : ");
+			System.out.print("몇 개 추가하시겠습니까?  \n (ex. 100개 추가 → 총 개수 : 101 개 ): ");
 			intTemp = Integer.parseInt(br.readLine());
 		}
 		bCount += intTemp;
+		//System.out.println("addCount() - bCount " + bCount);
 	}
 
 		

@@ -296,6 +296,7 @@ class Payment
 				case "이탈리안 비엠티" : earlyTime +=2; break;
 				case "서브웨이 클럽":earlyTime +=10; break;
 			}
+
 			earlyTime *= (((Bread)s).bCount;
 		}
 		else
@@ -307,6 +308,7 @@ class Payment
 				case "이탈리안 비엠티" : earlyTime +=12; break;
 				case "서브웨이 클럽":earlyTime +=20; break;
 			}
+
 			earlyTime *= (((Salad)s).sCount;
 		}
 	

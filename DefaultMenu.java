@@ -8,6 +8,11 @@ import java.util.List;
 import java.util.ListIterator; 
 
 
+
+import java.util.InputMismatchException;
+
+
+
 public class DefaultMenu
 {
 //=====================================================================================================================
@@ -33,7 +38,8 @@ public class DefaultMenu
 	{
 		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //-- 문자열 담는 용도. 
 		Scanner sc = new Scanner(System.in);
-
+		//System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
+		
 		//System.out.println("테) 빵객체 생성 → 1번");
 		//System.out.println("테) 사이드메뉴객체 생성 → 3번");
 		//System.out.println("안녕하세요. SUBWAY입니다.\n"); // 추가 주문할 때는 얘 나오면 안 되는데 걍 메인에서 ㄱ?
@@ -196,12 +202,18 @@ public class DefaultMenu
 					System.out.print(s + " ");
 				}
 				System.out.println();
-				System.out.print("가격            : " + breadArrayList.get(i).bPrice);
+				if (breadArrayList.get(i).bLength == 30)
+				{
+					breadArrayList.get(i).bPrice += 5000;
+					System.out.print("개당 가격       : "+breadArrayList.get(i).bPrice);
+				}
+				else 
+					System.out.print("개당 가격       : " + breadArrayList.get(i).bPrice);
 				System.out.println();
 				System.out.print("총 개수         : " + breadArrayList.get(i).bCount);
 				System.out.println();
-				System.out.print("총 가격         : " + breadArrayList.get(i).bCount*breadArrayList.get(i).bPrice+"\n");
-				System.out.println();
+				//System.out.print("총 가격         : " + breadArrayList.get(i).bCount*breadArrayList.get(i).bPrice+"\n");
+				///System.out.println();
 			}
 			System.out.println();
 			System.out.println();
@@ -245,8 +257,8 @@ public class DefaultMenu
 				System.out.println();
 				System.out.print("총 개수         : " + saladArrayList.get(i).sCount);
 				System.out.println();
-				System.out.print("총 가격         : " + saladArrayList.get(i).sCount*saladArrayList.get(i).sPrice+"\n");
-				System.out.println();
+				//System.out.print("총 가격         : " + saladArrayList.get(i).sCount*saladArrayList.get(i).sPrice+"\n");
+				//System.out.println();
 			}
 			System.out.println();
 			System.out.println();
@@ -264,8 +276,8 @@ public class DefaultMenu
 				System.out.println();
 				System.out.print("수량            : " + sidemenuArrayList.get(i).smCount);
 				System.out.println();
-				System.out.print("총 가격         : " + sidemenuArrayList.get(i).totsmPrice+"\n");
-				System.out.println();
+				//System.out.print("총 가격         : " + sidemenuArrayList.get(i).totsmPrice+"\n");
+				//System.out.println();
 			}
 			System.out.println();
 			System.out.println();

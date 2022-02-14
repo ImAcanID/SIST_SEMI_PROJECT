@@ -80,6 +80,7 @@ public class SuperMenu
 				else
 					System.out.println("]");
 			}
+			
 			System.out.print("빵 종류를 입력해 주세요 : ");
 			strTemp = br.readLine();
 

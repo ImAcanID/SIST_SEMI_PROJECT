@@ -114,11 +114,15 @@ public class main
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int choice = -1;
 		
+		System.out.println("");
+		System.out.println("■안녕하세요, SUBWAY 입니다.■");
+
 		do
 		{
 			try
 			{
-				System.out.printf("매장에서 드실 거면  \"0\"\n테이크아웃 하실거면 \"1\" 입력: ");
+				System.out.print("매장 식사는 '0'번, 포장은 '1'번을 입력해 주세요: ");
+				//System.out.printf("매장에서 드실 거면  \"0\"\n테이크아웃 하실거면 \"1\" 입력: ");
 				choice = Integer.parseInt(br.readLine());
 				System.out.println();
 			}
