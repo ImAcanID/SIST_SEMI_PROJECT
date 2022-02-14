@@ -102,7 +102,7 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 				return;
 			}
 		}
-			//System.out.print("총 수량을 입력해 주세요 : \n (ex. 100개 추가 → 총 개수 : 101 개 )" );
+			//System.out.println("(ex. 총 수량 : 100 총 개수 : 101 개 )" );
 			System.out.print("총 수량을 입력해 주세요 : ");
 			smCount = Integer.parseInt(br.readLine());
 

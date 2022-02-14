@@ -142,7 +142,8 @@ class Bread extends SuperMenu
 		
 		if(strTemp.equals("Y") || strTemp.equals("y"))
 		{
-			System.out.print("몇 개 추가하시겠습니까?  \n (ex. 100개 추가 → 총 개수 : 101 개 ): ");
+			System.out.println("(ex. 100개 추가 → 총 개수 : 101 개 )");
+			System.out.print("몇 개 추가하시겠습니까? : ");
 			intTemp = Integer.parseInt(br.readLine());
 		}
 		bCount += intTemp;

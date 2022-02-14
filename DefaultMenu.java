@@ -32,82 +32,111 @@ public class DefaultMenu
 		dmSelect();
 		addMenu();
 		dmPrint();
+		IngredientManagement ig = new IngredientManagement();
 	}
 
 	void dmSelect() throws IOException
 	{
 		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //-- 문자열 담는 용도. 
 		Scanner sc = new Scanner(System.in);
+		int testKey = 1111;
 		//System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
 		
 		//System.out.println("테) 빵객체 생성 → 1번");
 		//System.out.println("테) 사이드메뉴객체 생성 → 3번");
 		//System.out.println("안녕하세요. SUBWAY입니다.\n"); // 추가 주문할 때는 얘 나오면 안 되는데 걍 메인에서 ㄱ?
-		System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
-		//strTemp2 = br.readLine();
-		nTemp = sc.nextInt();
-
-		if (nTemp == 1)
+		while (testKey == 1111)
 		{
-			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
-			/*
-			if (!breadArrayList.isEmpty())
-			{
-				addCount();
-
-				for (int i = 0;i<breadArrayList.size() ;i++ )
-				{
-					breadArrayList.get(i).bCount += inTemp;
-					System.out.println("여기가 돌아가?빵");
-				}
-			}
-			*/
-		}
-
-		else if (nTemp == 2)
-		{
-			saladArrayList.add(new Salad());
-			/*
-			if (!saladArrayList.isEmpty())
-			{
-				addCount();
-				for (int i = 0;i<saladArrayList.size() ;i++ )
-				{
-					saladArrayList.get(i).sCount += inTemp;
-					System.out.println("여기가 돌아가?샐러드");
-				}
-			}
-			*/
-		}
-		else if (nTemp == 3)
-		{
-			sidemenuArrayList.add(new SideMenu());
-			/*
-			if (!sidemenuArrayList.isEmpty())
-			{
-				addCount();
-				for (int i = 0;i<sidemenuArrayList.size() ;i++ )
-				{
-					sidemenuArrayList.get(i).smCount += inTemp;
-				}
-			}
-			*/
 			
-		}
-		else if (nTemp == 4)
-		{
-			dmPrint();
-		}
+			try
+			{
+				System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
+				//strTemp2 = br.readLine();
+				nTemp = sc.nextInt();
+				if (nTemp == 1)
+				{
+					breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
+					/*
+					if (!breadArrayList.isEmpty())
+					{
+						addCount();
 
-		/*
-		do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
-		{
-			System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
-			strTemp = br.readLine();
+						for (int i = 0;i<breadArrayList.size() ;i++ )
+						{
+							breadArrayList.get(i).bCount += inTemp;
+							System.out.println("여기가 돌아가?빵");
+						}
+					}
+					*/
+				}
+
+				else if (nTemp == 2)
+				{
+					saladArrayList.add(new Salad());
+					/*
+					if (!saladArrayList.isEmpty())
+					{
+						addCount();
+						for (int i = 0;i<saladArrayList.size() ;i++ )
+						{
+							saladArrayList.get(i).sCount += inTemp;
+							System.out.println("여기가 돌아가?샐러드");
+						}
+					}
+					*/
+				}
+				else if (nTemp == 3)
+				{
+					sidemenuArrayList.add(new SideMenu());
+					/*
+					if (!sidemenuArrayList.isEmpty())
+					{
+						addCount();
+						for (int i = 0;i<sidemenuArrayList.size() ;i++ )
+						{
+							sidemenuArrayList.get(i).smCount += inTemp;
+						}
+					}
+					*/
+					
+				}
+				else if (nTemp == 4)
+				{
+					dmPrint();
+				}
+
+				testKey = 2222;
+
+				/*
+				do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
+				{
+					System.out.print("메뉴를 선택해 주세요(에그마요, 이탈리안 비엠티, 서브웨이클럽) : ");
+					strTemp = br.readLine();
+
+				}
+				while (!strTemp.equals("에그마요")&&!strTemp.equals("이탈리안 비엠티")&&!strTemp.equals("서브웨이클럽"));
+				*/
+			}
+			catch (InputMismatchException im)
+			{
+				sc = new Scanner(System.in);
+				System.out.println("※숫자로 입력해 주세요.\n\n");
+				
+			}
+			//break;
+			/*
+			if (testKey == 1111)
+			{
+				break;
+			}
+			*/
+
+
 
 		}
-		while (!strTemp.equals("에그마요")&&!strTemp.equals("이탈리안 비엠티")&&!strTemp.equals("서브웨이클럽"));
-		*/
+		
+		
+		
 
 
 		
