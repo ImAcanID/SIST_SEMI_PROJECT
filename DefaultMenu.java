@@ -44,6 +44,7 @@ public class DefaultMenu
 		if (nTemp == 1)
 		{
 			breadArrayList.add(new Bread()); // 빵객체를 하나 생성해서 자료구조에 담는다.
+			/*
 			if (!breadArrayList.isEmpty())
 			{
 				addCount();
@@ -51,26 +52,31 @@ public class DefaultMenu
 				for (int i = 0;i<breadArrayList.size() ;i++ )
 				{
 					breadArrayList.get(i).bCount += inTemp;
+					System.out.println("여기가 돌아가?빵");
 				}
 			}
+			*/
 		}
 
 		else if (nTemp == 2)
 		{
 			saladArrayList.add(new Salad());
+			/*
 			if (!saladArrayList.isEmpty())
 			{
 				addCount();
 				for (int i = 0;i<saladArrayList.size() ;i++ )
 				{
 					saladArrayList.get(i).sCount += inTemp;
+					System.out.println("여기가 돌아가?샐러드");
 				}
 			}
-			
+			*/
 		}
 		else if (nTemp == 3)
 		{
 			sidemenuArrayList.add(new SideMenu());
+			/*
 			if (!sidemenuArrayList.isEmpty())
 			{
 				addCount();
@@ -79,6 +85,7 @@ public class DefaultMenu
 					sidemenuArrayList.get(i).smCount += inTemp;
 				}
 			}
+			*/
 			
 		}
 		else if (nTemp == 4)
@@ -266,7 +273,7 @@ public class DefaultMenu
 		//System.out.println();	
 	}
 
-
+/*
 	void addCount() throws IOException//객체 수량 늘리기
 	{	
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
