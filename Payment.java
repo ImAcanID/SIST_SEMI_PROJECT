@@ -259,9 +259,6 @@ class Payment
 			calWatingTime(b);	// 샌드위치 제작 대기 시간 계산
 		}
 		
-		System.out.println("개수: "+saladArray.size());
-		System.out.println(saladArray.get(0).sCategory);
-
 		for (Salad s: saladArray)
 		{
 			order.recordOrder(s, timeDiscount);
