@@ -38,13 +38,15 @@ public class DefaultMenu
 	{
 		//BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //-- 문자열 담는 용도. 
 		Scanner sc = new Scanner(System.in);
+		int testKey = 1111;
 		//System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
 		
 		//System.out.println("테) 빵객체 생성 → 1번");
 		//System.out.println("테) 사이드메뉴객체 생성 → 3번");
 		//System.out.println("안녕하세요. SUBWAY입니다.\n"); // 추가 주문할 때는 얘 나오면 안 되는데 걍 메인에서 ㄱ?
-		while (true)
+		while (testKey == 1111)
 		{
+			
 			try
 			{
 				System.out.print("원하시는 종류의 번호를 선택해 주세요.\n①빵 ②샐러드 ③사이드 메뉴 ④현재 주문 옵션 : ");
@@ -102,6 +104,8 @@ public class DefaultMenu
 					dmPrint();
 				}
 
+				testKey = 2222;
+
 				/*
 				do //→ 얘 나중에 Bread,Salad클래스에만 따로 빼든가.
 				{
@@ -116,7 +120,15 @@ public class DefaultMenu
 			{
 				sc = new Scanner(System.in);
 				System.out.println("※숫자로 입력해 주세요.\n\n");
+				
 			}
+			//break;
+			/*
+			if (testKey == 1111)
+			{
+				break;
+			}
+			*/
 
 
 
