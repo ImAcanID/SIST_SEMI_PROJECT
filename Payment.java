@@ -334,8 +334,7 @@ class Payment
 				default: promotionMenu = "없음";
 			}
 		}
-		System.out.println(promotionMenu+ " " + randomDay);
-		
+				
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		System.out.print("포인트 적립하실래요?(Y/N) : ");
 		String yesOrNo = br.readLine().toUpperCase();
