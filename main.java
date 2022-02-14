@@ -25,8 +25,6 @@ public class main
 		sales = new Sales();	// 판매내역 
 		iim = new IngredientManagement();	// 재료 관리
 				
-		ct = new Customer[4]; // 사람 더미 데이터.
-
 		ct = new Customer[4];  // 사람 더미 데이터.
 		ct[0] = new Customer("김영빈", 12234, 1500);  // 이름, 멤버쉽번호, 잔여포인트
 		ct[1] = new Customer("유미란", 12352, 1000);
