@@ -32,9 +32,11 @@ class EunhyeTEST
 		//-->> 객체안에 변수 (사이드메뉴 종류 ~ 가격 ~ 개수 등등 이런거 가져오는 법은 알았어.)
 		//	   문제는 객체가 계속 덮어쓰여진다는 것!
 
-
+		/*
 		DefaultMenu2 dm = new DefaultMenu2();
 		dm.dmSelect();
+		*/
+		IngredientManagementTest2 ig2 = new IngredientManagementTest2();
 
 	}
 }
