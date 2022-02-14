@@ -40,7 +40,7 @@ class Order
 		// 디폴트 메뉴 설정
 		if (b.bCategory.equals("에그마요"))
 			temp[0] = 0;
-		else if (b.bCategory.equals("이탈리아 비엠티"))
+		else if (b.bCategory.equals("이탈리안 비엠티"))
 			temp[0] = 1;
 		else
 			temp[0] = 2;
@@ -81,14 +81,20 @@ class Order
 	void recordOrder(Salad s, boolean timeDiscount)
 	{
 		Integer[] temp = new Integer[4];
-		
+				
 		// 디폴트 메뉴 설정
 		if (s.sCategory.equals("에그마요"))
 			temp[0] = 0;
-		else if (s.sCategory.equals("이탈리아 비엠티"))
+		else if (s.sCategory.equals("이탈리안 비엠티"))
+		{
 			temp[0] = 1;
+		}
+			
 		else
+		{
 			temp[0] = 2;
+		}
+			
 						
 		// 시간 할인 적용 여부
 		if(timeDiscount)

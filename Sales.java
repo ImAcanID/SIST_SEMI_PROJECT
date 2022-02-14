@@ -198,10 +198,10 @@ class Sales		// 판매 내역을 기록하는 클래스
 
 		
 		//breadSales.get(0).temp[1]
-		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리아 비엠티", "서브웨이클럽", "총");
+		System.out.printf("%5s\t%8s\t%8s\t%8s\t%5s\n","빵","에그마요","이탈리안 비엠티", "서브웨이클럽", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수",breadSales.get(0)[1], breadSales.get(1)[1], breadSales.get(2)[1],totBread);
 		System.out.println();
-		System.out.printf("%5s%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리아 비엠티", "서브웨이클럽", "총");
+		System.out.printf("%5s%8s\t%8s\t%8s\t%5s\n","샐러드","에그마요","이탈리안 비엠티", "서브웨이클럽", "총");
 		System.out.printf("%5s\t%8d\t%8d\t%8d\t%5d\n", "개수",saladSales.get(0)[1],saladSales.get(1)[1],saladSales.get(2)[1],totSalad);
 		System.out.println();
 		//콜라/커피/쿠피/스프/맥주

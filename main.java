@@ -42,7 +42,7 @@ public class main
 				continue;
 			}
 			DefaultMenu dm = new DefaultMenu(); //음식 선택
-			
+
 			Payment payment = new Payment(dm.breadArrayList, dm.saladArrayList, dm.sidemenuArrayList);
 						
 			//System.out.println("첫번째 breadArrayList의 요소 : " + dm.breadArrayList.get(0));
