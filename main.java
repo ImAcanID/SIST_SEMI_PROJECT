@@ -44,6 +44,9 @@ public class main
 			DefaultMenu dm = new DefaultMenu(); //음식 선택
 
 			Payment payment = new Payment(dm.breadArrayList, dm.saladArrayList, dm.sidemenuArrayList);
+
+
+
 						
 			//System.out.println("첫번째 breadArrayList의 요소 : " + dm.breadArrayList.get(0));
 			//System.out.println("두번째 breadArrayList의 요소 : " + dm.breadArrayList.size()); // 3개까진 선택해야 출력해보겠네.

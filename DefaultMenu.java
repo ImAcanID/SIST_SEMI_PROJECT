@@ -17,9 +17,9 @@ public class DefaultMenu
 
 	int inTemp; //-- 추가메뉴 그릇
 	
-	static ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
-	static ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
-	static ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
+	ArrayList<Bread> breadArrayList = new ArrayList<Bread>(); // 빵객체가 하나씩 담기는 ArrayList
+	ArrayList<Salad> saladArrayList = new ArrayList<Salad>();
+	ArrayList<SideMenu> sidemenuArrayList = new ArrayList<SideMenu>(); 
 
 	// 생성자.
 	DefaultMenu() throws IOException

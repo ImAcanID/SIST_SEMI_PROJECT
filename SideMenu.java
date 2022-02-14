@@ -11,7 +11,7 @@ class SideMenu //extends SuperMenu → 할 필요 없을듯?
 {
 	String smCategory; //-- 사용자가 선택한 사이드 메뉴.
 	int smPrice; //-- 해당 사이드 메뉴의 가격.
-	int smCount;// 사이드메뉴 수량.
+	int smCount=1;// 사이드메뉴 수량.
 	int totsmPrice;// 수량 * 가격
 	//countSalad =1;
 	/*
