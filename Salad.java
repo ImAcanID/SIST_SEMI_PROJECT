@@ -6,7 +6,7 @@ class Salad extends SuperMenu
 {
 	String sCategory;     // 디폴트 메뉴 담기
 	int sPrice;           // 샐러드가격 담기;
-	static int sCount = 1;
+	int sCount = 1;
 	static int cccc = 2; ///cccc → bbbb 로 변경 payment.java에서 활용.
 
 	
@@ -21,12 +21,14 @@ class Salad extends SuperMenu
 	
 	Salad() throws IOException //-- 생성자.
 	{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //--문자열 담는 용도. 
 		scSelect();          //SaladCategory샐러드종류 select(디폴트 n)
 		ccSelect();          //치즈여부선택하기();
 		vdCustom();          //야채 커스텀();
 		scCustom();          //소스 커스텀();
-		ig.addCount();          //개수추가메소드();
+		//ig.addCount();          //개수추가메소드();
 		//addMenu();           //추가메뉴메소드();
+		addCount();
 	}
 
 	void scSelect() throws IOException
@@ -56,4 +58,23 @@ class Salad extends SuperMenu
 			this.sPrice  = 7000;
 		}
 	}
+	void addCount() throws IOException//객체 수량 늘리기
+	{	
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String strTemp;
+		int intTemp=0;
+		
+		//DefaultMenu dm = new DefaultMenu(); // 이러면 디폴트메뉴 생성자 때문에 안 됨
+
+		System.out.print("\n현재 옵션과 같은 메뉴를 추가하시겠습니까? (Y/N) : ");
+		strTemp = br.readLine();
+		
+		if(strTemp.equals("Y") || strTemp.equals("y"))
+		{
+			System.out.print("몇 개 추가하시겠습니까? : ");
+			intTemp = Integer.parseInt(br.readLine());
+		}
+		sCount += intTemp;
+	}
+
 }

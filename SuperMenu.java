@@ -110,7 +110,7 @@ public class SuperMenu
 		System.out.println("\n[현재 선택 옵션]");
 		cusKey = 1;
 		checkCustom();
-		breadkind = ig.decreaseBread(breadkind, Bread.bCount);
+		//breadkind = ig.decreaseBread(breadkind, bCount);
 		//decrease();
 		
 		
@@ -180,6 +180,7 @@ public class SuperMenu
 		checkCustom();
 		cusKey = 2;
 		checkCustom();
+		/*
 		if (moon == 1)
 		{
 			cheese = ig.decreaseBread(cheese, Bread.bCount);
@@ -188,6 +189,7 @@ public class SuperMenu
 		{
 			cheese = ig.decreaseBread(cheese, Salad.sCount);
 		}
+		*/
 		
 		
 	}
