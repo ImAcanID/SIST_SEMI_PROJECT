@@ -115,7 +115,7 @@ class Bread extends SuperMenu
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         
 		System.out.println("\n선택 가능한 빵 길이 [15cm, 30cm]");
-		System.out.println(" ※ 30cm 선택 시 5000원이 추가 됩니다.");
+		System.out.printf(" ※ 30cm 선택 시 %d원이 추가 됩니다.\n", main.LONG_BREAD_MONEY);
 		System.out.print("빵의 길이를 입력해 주세요(15, 30) : ");
 
 		bLength = Integer.parseInt(br.readLine());

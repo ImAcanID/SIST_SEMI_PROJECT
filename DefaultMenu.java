@@ -233,8 +233,8 @@ public class DefaultMenu
 				System.out.println();
 				if (breadArrayList.get(i).bLength == 30)
 				{
-					breadArrayList.get(i).bPrice += 5000;
-					System.out.print("개당 가격       : "+breadArrayList.get(i).bPrice);
+					int tempPrice = breadArrayList.get(i).bPrice + 4900;
+					System.out.print("개당 가격       : "+tempPrice);
 				}
 				else 
 					System.out.print("개당 가격       : " + breadArrayList.get(i).bPrice);

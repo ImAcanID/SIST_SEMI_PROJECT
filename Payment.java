@@ -297,7 +297,7 @@ class Payment
 				case "서브웨이 클럽":earlyTime +=10; break;
 			}
 
-			earlyTime *= (((Bread)s).bCount;
+			earlyTime *= ((Bread)s).bCount;
 		}
 		else
 		{
@@ -309,7 +309,7 @@ class Payment
 				case "서브웨이 클럽":earlyTime +=20; break;
 			}
 
-			earlyTime *= (((Salad)s).sCount;
+			earlyTime *= ((Salad)s).sCount;
 		}
 	
 		earlyTime = earlyTime *  1; 
@@ -352,7 +352,10 @@ class Payment
 					boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
 					if(cond)
 					{
-						main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+						int tempPrice = b.bPrice;
+						if(b.bLength == 30)
+							tempPrice += main.LONG_BREAD_MONEY;
+						main.ct[customerNumber].point += (int)(tempPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
 						totalPoint = main.ct[customerNumber].point;
 						
 						saveMembership = true;
@@ -368,7 +371,10 @@ class Payment
 						boolean cond = b.bCategory.equals(promotionMenu); // 오늘의 프로모션 메뉴와 주문한 디폴트 메뉴가 같을경우 true.
 						if(cond)
 						{
-							main.ct[customerNumber].point += (int)(b.bPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
+							int tempPrice = b.bPrice;
+							if(b.bLength == 30)
+								tempPrice += main.LONG_BREAD_MONEY;
+							main.ct[customerNumber].point += (int)(tempPrice * b.bCount * 0.05); // 해당 메뉴 가격의 5퍼센트 포인트 적립
 							totalPoint = main.ct[customerNumber].point;
 
 							saveMembership = true;
